@@ -4,7 +4,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 import "swiper/css";
 import { servicesArr } from "../../assets/constants";
-import { Button } from "../ui/button";
 import leftarrow from "../../assets/services/arrowleft.png";
 import rightarrow from "../../assets/services/arrowright.png";
 import { useRouter } from "next/navigation";
@@ -25,12 +24,11 @@ function ServicesHome() {
           We're brand builders at heart, creators by design, tech enthusiasts in
           practice, and integrated at our core.
         </p>
-        <Button
-          onClick={() => router.push("/services")}
-          className="rounded-[3rem] bg-transparent text-white border px-16 py-4"
-        >
-          OUR SERVICES
-        </Button>
+
+        <button className='border px-10 py-2 mt-5 rounded-full relative overflow-hidden group z-10' onClick={() => router.push("/services")}>
+          <span className='absolute left-0 top-0 w-0 h-full bg-white transition-all duration-500 group-hover:w-full -z-10'></span>
+          <span className='relative group-hover:text-black transition-colors duration-500'>OUR SERVICES</span>
+        </button>
       </div>
       <div className="w-[90%] lg:w-1/2 relative">
         <Swiper
@@ -51,7 +49,7 @@ function ServicesHome() {
               <div
                 className={`flex h[14rem] relative justify-center items-center`}
               >
-                <Image src={elem.img} alt="" className="w-[60%] lg:w-auto" quality={100} />
+                <Image src={elem.img} alt="" className="w-[60%] lg:w-[60%]" quality={100} />
               </div>
             </SwiperSlide>
           ))}

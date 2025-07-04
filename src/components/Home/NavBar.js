@@ -86,7 +86,7 @@ function NavBar() {
 
   return (
     <div className="relative z-50">
-      <Image src={logoTitle} alt="logoText" className={`absolute top-1 duration-500 ${titlevis ? 'translate-x-[6rem]' : 'translate-x-[-17rem]'}`} />
+      <Image src={logoTitle} alt="logoText" className={` hidden sm:block absolute top-1 duration-500 ${titlevis ? 'translate-x-[6rem]' : 'translate-x-[-17rem]'}`} />
       <div className="navBar lg:!flex !hidden" style={{ width: state ? "100%" : "5%" }}>
         <div
           style={{

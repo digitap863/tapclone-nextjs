@@ -4,6 +4,7 @@ import astro from "../../assets/home/astro2.svg";
 import blog from "../../assets/home/blogimage.png";
 import Image from "next/image";
 import Link from "next/link";
+import Knowmore from "../Shared/Knowmore";
 
 const BlogListContent = () => {
   return (
@@ -33,6 +34,7 @@ const BlogListContent = () => {
             </div>
           </div>
         </div>
+        <Knowmore />
       </div>
     </StarPortal>
   );

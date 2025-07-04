@@ -48,26 +48,6 @@ const MobileNavbar = () => {
               SERVICES
             </Link>{" "}
           </li>
-          {/* <li>
-            <NavLink
-              to="/projects"
-              style={({ isActive }) => ({
-                color: isActive ? "#aeef24" : "#fff",
-              })}
-            >
-              PROJECTS
-            </NavLink>{" "}
-          </li> */}
-          {/* <li>
-            <NavLink
-              to="/team"
-              style={({ isActive }) => ({
-                color: isActive ? "#aeef24" : "#fff",
-              })}
-            >
-              TEAM
-            </NavLink>{" "}
-          </li> */}
           <li>
             <Link 
               href="/contact"

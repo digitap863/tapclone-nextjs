@@ -4,6 +4,11 @@ import MobileNavbar from '@/components/Home/MobileNavbar'
 import NavBar from '@/components/Home/NavBar'
 import React from 'react'
 
+export const metadata = {
+  title: "Tapclone Blog | Insights, Tips & Trends",
+  description: "Stay ahead with our latest blog posts on web development, content creation, and digital marketing. We share expert insights and trends to help you grow your business.",
+};
+
 const BlogDetails = () => {
   return (
     <div className='bg-black'>

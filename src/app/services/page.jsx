@@ -1,6 +1,10 @@
 import Footer from '@/components/Footer/Footer'
 import ServicesMain from '@/components/Services/ServicesMain'
 
+ const metadata = {
+  title: "Tapclone Services | Web, Marketing & Content Solutions",
+  description: "Discover full-stack digital services – from web development to branding and performance marketing – all under one roof.",
+};
 
 const Services = () => {
   return (

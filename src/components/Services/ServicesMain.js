@@ -23,6 +23,7 @@ import MobileNavbar from "../Home/MobileNavbar";
 import grid from "../../assets/services/grid_behind_icons.svg";
 import StarPortal from "../Shared/StarPortal";
 import Image from "next/image";
+import Knowmore from "../Shared/Knowmore";
 
 
 function ServicesMain() {
@@ -239,20 +240,8 @@ function ServicesMain() {
               alt="ufoPlanet2"
             />
           </div>
-          {/* <div className="star-space">
-            <div class="galaxy">
-              <div class="stars"></div>
-            </div>
-          </div> */}
-          <div className="knowMoreServices">
-            <span className="knowMoreText">
-              Need to <br /> Know More
-            </span>
-            <div className="callBtn" onClick={() => doPhoneCallClick()}>
-              <span>Contact Us</span>
-            </div>
-          </div>
-          <div className="knowMoreLayer"></div>
+     
+          <Knowmore />
         </div>
       </div>
 

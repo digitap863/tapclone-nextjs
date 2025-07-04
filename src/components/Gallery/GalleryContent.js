@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import StarPortal from '../Shared/StarPortal'
 import { imgArr1, imgArr2 } from '../../assets/posters'
 import Image from 'next/image'
+import Knowmore from '../Shared/Knowmore'
 
 const GalleryContent = () => {
   const [selectedImage, setSelectedImage] = useState(null)
@@ -87,6 +88,7 @@ const GalleryContent = () => {
             </div>
           </div>
         )}
+        <Knowmore />
       </div>
     </StarPortal>
   )
