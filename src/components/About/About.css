@@ -163,7 +163,7 @@
 
 .aboutDetails .about-desc .about-desc-content p {
   text-transform: uppercase;
-  text-align: justify;
+  /* text-align: justify; */
   font-size: 1.37rem;
   line-height: 1.5rem;
   font-weight: 300;

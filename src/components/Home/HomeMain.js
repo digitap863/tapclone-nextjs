@@ -347,9 +347,8 @@ function HomeMain() {
   return (
     <StarPortal>
       <div
-        className={`h-screen bg-black  z-50 absolute duration-500 flex justify-center items-center overflow-hidden ${
-          splash ? "translate-y-0" : "-translate-y-full"
-        } w-full`}
+        className={`h-screen bg-black  z-50 absolute duration-500 flex justify-center items-center overflow-hidden ${splash ? "translate-y-0" : "-translate-y-full"
+          } w-full`}
       >
         <Image
           src={planetPre}
@@ -365,15 +364,14 @@ function HomeMain() {
           <Image
             src={logo1}
             alt="logo"
-            className="animate-fade-in w-[10%] lg:w-auto"
+            className="animate-fade-in w-[10%] lg:w-[20%]"
           />
           <div className="w-[70%] lg:w-full h-full overflow-hidden relative">
             <Image
               src={logoText}
               alt="logotext"
-              className={`absolute w-[90%] lg:w-auto top-[30%] lg:top-[15%] left-3 duration-[1200ms] ease-in ${
-                logoanim ? "translate-x-0" : "-translate-x-[110%]"
-              }`}
+              className={`absolute w-[90%] lg:w-full top-[30%] lg:top-[15%] left-3 duration-[1200ms] ease-in ${logoanim ? "translate-x-0" : "-translate-x-[110%]"
+                }`}
             />
           </div>
         </div>
@@ -449,28 +447,28 @@ function HomeMain() {
               </svg>
             </>
           )}
-
-          {/* <svg
-          className="rocketPath "
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 150 300"
-          shape-rendering="geometricPrecision"
-          text-rendering="geometricPrecision"
-        >
-          <path
-            id="pathWhite"
-            d="M75,0 A75,75 0 0 0 75,150"
-            fill="none"
-            stroke-width="0.4"
-          />
-          <path
-            id="pathBlack"
-            d="M75,0 A75,75 0 0 0 75,150"
-            fill="none"
-            stroke="black"
-            stroke-width="1"
-          />
-        </svg> */}
+{/* 
+          <svg
+            className="rocketPath "
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 150 300"
+            shape-rendering="geometricPrecision"
+            text-rendering="geometricPrecision"
+          >
+            <path
+              id="pathWhite"
+              d="M75,0 A75,75 0 0 0 75,150"
+              fill="none"
+              stroke-width="0.4"
+            />
+            <path
+              id="pathBlack"
+              d="M75,0 A75,75 0 0 0 75,150"
+              fill="none"
+              stroke="black"
+              stroke-width="1"
+            />
+          </svg> */}
 
           {/* <svg className='rocketPath'  viewBox="0 0 754 899" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path id='pathWhite' d="M898 1L753 1" stroke="white"  />
@@ -652,8 +650,8 @@ function HomeMain() {
               <Image className="puzzle " ref={astroRef} src={ASTRO42} alt="" />
             </div>
           )}
-          <div className="Contents ">
-            <h1 style={{ margin: "0", zIndex: "2" }}>
+          <div className="Contents">
+            <h1 style={{ margin: "0", zIndex: "2" }} >
               Straight <br /> talk <br />
               <span style={{ color: "#aeef24" }}>
                 {" "}
@@ -667,7 +665,7 @@ function HomeMain() {
                 Direct <br /> results.
               </span>
             </h1>
-            <p className="mt-5 max-w-md">
+            <p className="mt-5 max-w-md mx-auto sm:mx-0 text-center sm:text-left text-xs sm:text-xl font-light leading-8">
               it is tough to make things simple. We aren&apos;t different just for
               the sake of being different. We are here to make a difference to
               brands.
@@ -727,7 +725,7 @@ function HomeMain() {
             </div>
           </div>
         </section> */}
-        <Ourportfolio/>
+        <Ourportfolio />
         <ProjectSection />
         <section
           className="packagesSection"
@@ -817,9 +815,8 @@ function HomeMain() {
             {mapArr.map(({ country, mapIndex }) => (
               <div
                 key={mapIndex}
-                className={`map-dot ${country} ${
-                  activeMapButton === mapIndex ? "map-dot-active" : ""
-                }`}
+                className={`map-dot ${country} ${activeMapButton === mapIndex ? "map-dot-active" : ""
+                  }`}
               >
                 {activeMapButton === mapIndex ? (
                   <>
@@ -872,7 +869,7 @@ function HomeMain() {
           </div> */}
         </section>
 
-        <div className="knowMoreLayer "></div>
+        {/* <div className="knowMoreLayer "></div> */}
 
         <Footer />
       </div>

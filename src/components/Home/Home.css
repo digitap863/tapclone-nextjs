@@ -612,24 +612,18 @@ margin-top: 1rem;
   }
 }
 
-.section2 .Contents h1 {
-  color: white;
-  font-size: 3.5rem;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 0.93;
-  letter-spacing: 0.96px;
-}
+  .section2 .Contents h1 {
+    color: white;
+    font-size: 3.5rem;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 0.93;
+    letter-spacing: 0.96px;
+  }
 
-.section2 .Contents p {
-  margin-top: 1.5rem;
-  font-size: 1.2rem;
-  font-weight: 300;
-  letter-spacing: 0.24px;
-  text-align: left;
-  line-height: 1.52;
-}
+
+
 
 .shadow {
   -webkit-text-stroke: 0.8px rgb(255 255 255 / 35%);
@@ -1332,7 +1326,7 @@ section {
   font-family: "Poppins", sans-serif;
   margin: 0;
   /* font-size: 2.5rem; */
-  font-size: 3rem;
+  font-size: 2.5rem;
   transition: 0.5s;
   cursor: pointer;
   transition: 0.3s ease;
