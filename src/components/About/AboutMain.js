@@ -86,7 +86,11 @@ function AboutMain() {
         </div>
         <Knowmore />
       </div>
+<<<<<<< HEAD
     </StarBlinkingPortal>
+=======
+    </StarPortal>
+>>>>>>> 81de2d7c8b7de620571f095c72f32473d0cfb6c2
   );
 }
 

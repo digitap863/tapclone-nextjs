@@ -13,7 +13,7 @@ const About = () => {
   return (
     <div className="homeMin overflow-hidden" style={{ backgroundColor: "black" }}>
     <MobileNavbar />
-    <NavBar />
+    {/* <NavBar /> */}
     <AboutMain />
     <Footer />
   </div>
