@@ -1,5 +1,5 @@
 import React from "react";
-import StarPortal from "../Shared/StarPortal";
+import StarPortal from "../Shared/StarBlinkingPortal";
 import { IoArrowBackSharp } from "react-icons/io5";
 import blog from "../../assets/home/blogimage.png";
 import Image from "next/image";

@@ -5,7 +5,7 @@ import curvPath from "../../assets/headCurvPath.png";
 import tailPlanet from "../../assets/navbar_planet.png";
 import "./About.css";
 import Image from "next/image";
-import StarPortal from "../Shared/StarPortal";
+import StarBlinkingPortal from "../Shared/StarBlinkingPortal.jsx";
 import Link from "next/link";
 import AboutCard from "./AboutCard";
 import "../Services/Services.css"
@@ -18,8 +18,8 @@ function AboutMain() {
 
 
   return (
-    <StarPortal>
-      <div style={{ width: "100%", overflowX: "cli" }}>
+    <StarBlinkingPortal>
+      <div style={{ width: "100%", overflowX: "hidden" }}>
         <div className="header">
           <div className="logoSection">
             {/* <h1 style={{ color: "white", margin: "0" }}>LOGO</h1> */}
@@ -86,7 +86,7 @@ function AboutMain() {
         </div>
         <Knowmore />
       </div>
-    </StarPortal>
+    </StarBlinkingPortal>
   );
 }
 

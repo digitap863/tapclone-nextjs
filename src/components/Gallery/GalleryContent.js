@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react'
-import StarPortal from '../Shared/StarPortal'
+import StarPortal from '../Shared/StarBlinkingPortal'
 import { imgArr1, imgArr2 } from '../../assets/posters'
 import Image from 'next/image'
 import Knowmore from '../Shared/Knowmore'

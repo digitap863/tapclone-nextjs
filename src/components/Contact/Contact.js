@@ -25,7 +25,7 @@ import Image from "next/image";
 import { Input } from "../ui/input";
 import { Select, SelectItem, SelectContent } from "../ui/select";
 import { Textarea } from "../ui/textarea";
-import StarPortal from "../Shared/StarPortal";
+import StarBlinkingPortal from "../Shared/StarBlinkingPortal";
 
 
 function Contact() {
@@ -113,7 +113,7 @@ function Contact() {
   };
 
   return (
-    <StarPortal>
+    <StarBlinkingPortal>
       <div style={{ width: "100%" }}>
         <NavBar />
         <MobileNavbar />
@@ -389,7 +389,7 @@ function Contact() {
         <div className="knowMoreLayer"></div>
       </div>
       
-    </StarPortal>
+    </StarBlinkingPortal>
   );
 }
 

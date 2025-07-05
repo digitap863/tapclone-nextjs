@@ -8,6 +8,7 @@ import logoIcon from '../../assets/Shared/favicon.png'
 import logoTitle from '../../assets/Shared/logoName.png'
 import Link from "next/link";
 import Image from "next/image";
+import '@/components/Home/Home.css'
 
 function NavBar() {
   const router = useRouter();
@@ -175,6 +176,7 @@ function NavBar() {
               CONTACT
             </Link>
           </p>
+         
         </div>
         <div>
           <span className="menuTyping">MENU</span>

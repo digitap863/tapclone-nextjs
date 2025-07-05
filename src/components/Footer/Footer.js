@@ -3,6 +3,7 @@ import React from "react";
 import "./Footer.css";
 import footerlogo from "../../assets/home/footerlogo.svg"
 import Image from "next/image";
+
 function Footer() {
   const scrollToTop = () => {
     window.scrollTo({
@@ -12,11 +13,10 @@ function Footer() {
   };
 
   return (
-    <div className="py-6 flex flex-col">
-      <div className="footerMain flex flex-col md:flex-row flex-wrap  justify-around gap-10 ">
-
+    <div className="py-6 flex flex-col ">
+      <div className="footerMain flex flex-col md:flex-row flex-wrap justify-around gap-10 ">
         <div className="flex flex-row justify-between items-center gap-10 w-full">
-          <div className=" w-1/2">
+          <div className="w-1/2">
             <div className="flex flex-col gap-6 max-w-md">
               <input
                 type="text"
@@ -25,11 +25,10 @@ function Footer() {
               />
               <input
                 type="text"
-                placeholder=" Phone"
+                placeholder="Phone"
                 className="w-full bg-transparent border border-[#70FF00] rounded-md px-4 py-2 text-white placeholder:text-gray-400 focus:outline-none focus:border-[#70FF00]"
               />
-
-              <button className="w-full bg-[#70FF00]/60 p-2 uppercase rounded-md">
+              <button className="w-full bg-[#70FF00]/60 p-2 uppercase rounded-md hover:bg-[#70FF00]/80 transition-colors">
                 Contact Us
               </button>
             </div>
@@ -37,7 +36,7 @@ function Footer() {
 
           <div className="w-1/2 flex justify-end items-end">
             <div className="max-w-md">
-              <div className="logoDiv w-full md:w-[25%] flex items-center ">
+              <div className="logoDiv w-full md:w-[25%] flex items-center">
                 <Image
                   src={footerlogo}
                   alt="logo"
@@ -45,14 +44,15 @@ function Footer() {
                 />
               </div>
 
-              <div className="relative flex  items-center gap-10 text-[#FCDDEC] mt-10">
+              <div className="relative flex items-center gap-10 text-[#FCDDEC] mt-10">
                 <h4 className="text-[1.125rem] font-[500]">LETS&nbsp; CONNECT</h4>
-                <ul className=" flex gap-5">
+                <ul className="flex gap-5">
                   <li>
                     <a
                       href="https://www.facebook.com/Tapclone"
                       target="_blank"
                       rel="noopener noreferrer"
+                      className="hover:opacity-80 transition-opacity"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -73,6 +73,7 @@ function Footer() {
                       href="https://www.instagram.com/tapclone_official/"
                       target="_blank"
                       rel="noopener noreferrer"
+                      className="hover:opacity-80 transition-opacity"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -97,6 +98,7 @@ function Footer() {
                       href="https://www.linkedin.com/company/82332328/admin/feed/posts/"
                       target="_blank"
                       rel="noopener noreferrer"
+                      className="hover:opacity-80 transition-opacity"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -117,6 +119,7 @@ function Footer() {
                       href="https://in.pinterest.com/marketingtapclone/"
                       target="_blank"
                       rel="noopener noreferrer"
+                      className="hover:opacity-80 transition-opacity"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -133,22 +136,23 @@ function Footer() {
                     </a>
                   </li>
                 </ul>
-
               </div>
             </div>
           </div>
         </div>
+        
         <div className="flex flex-row gap-10 w-full justify-between">
           <div>
             <h4 className="text-[1.125rem] font-[500]">KOCHI</h4>
-            <ul className="mt-8 text-[0.875rem] text-[#dbdada] space-y-1 ">
+            <ul className="mt-8 text-[0.875rem] text-[#dbdada] space-y-1">
               <li>Tapclone, House no: 32/2517A </li>
               <li>PJ Antony Rd,Sonia Nagar,Palarivattom,</li>
               <li> Kochi,Ernakulam , Kerala - 682025</li>
               <li>Ph: +0484 796 5300  Mob: +91 9037 833 933 </li>
             </ul>
           </div>
-          <button className="mt-10 absolute right-0 -top-5 md:static" onClick={scrollToTop}>
+          
+          <button className="mt-10 absolute right-0 -top-5 md:static hover:scale-110 transition-transform" onClick={scrollToTop}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="64"
@@ -163,8 +167,9 @@ function Footer() {
               <path d="M22 34L32 26L42 34" stroke="white" strokeWidth="1.6" />
             </svg>
           </button>
+          
           <div>
-            <h4 className="text-[1.125rem] font-[500] text-right">CALICUT</h4>
+            <h4 className="text-[1.125rem] font-[500] sm:text-right">CALICUT</h4>
             <ul className="mt-8 text-[0.875rem] text-[#dbdada] space-y-1 text-right">
               <li>Tapclone, Fortune Business Park,2nd Floor,</li>
               <li> Cherooty Nagar,Asokapuram,Calicut-673006 </li>
@@ -172,8 +177,9 @@ function Footer() {
             </ul>
           </div>
         </div>
+   
       </div>
-      <h2 className="md:text-center  text-[1rem] ml-12 pt-8 text-[#dbdada] ">
+      <h2 className="md:text-center text-[1rem] ml-12 pt-8 text-[#dbdada]">
         © 2025 | Tapclone | All Rights Reserved
       </h2>
     </div>

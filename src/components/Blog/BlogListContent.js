@@ -1,5 +1,5 @@
 import React from "react";
-import StarPortal from "../Shared/StarPortal";
+import StarPortal from "../Shared/StarBlinkingPortal";
 import astro from "../../assets/home/astro2.svg";
 import blog from "../../assets/home/blogimage.png";
 import Image from "next/image";

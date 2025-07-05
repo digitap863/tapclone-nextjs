@@ -1,4 +1,4 @@
-import StarPortal from "../Shared/StarPortal";
+import StarPortal from "../Shared/StarBlinkingPortal";
 import astro from "../../assets/home/astro.png";
 import Image from "next/image";
 import Link from "next/link";

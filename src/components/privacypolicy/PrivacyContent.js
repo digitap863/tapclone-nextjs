@@ -1,7 +1,7 @@
 import React from "react";
 
 import "../About/About.css";
-import StarPortal from "../Shared/StarPortal";
+import StarPortal from "../Shared/StarBlinkingPortal";
 
 const PrivacyContent = () => {
   const phoneNumber = "+919037833933";

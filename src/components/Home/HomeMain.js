@@ -53,7 +53,7 @@ import logo1 from "../../assets/Shared/favicon.png";
 import logoText from "../../assets/Shared/logoName.png";
 import Ourportfolio from "./Ourportfolio";
 import Image from "next/image";
-import StarPortal from "../Shared/StarPortal";
+import StarBlinkingPortal from "../Shared/StarBlinkingPortal";
 
 function HomeMain() {
   const router = useRouter();
@@ -345,7 +345,7 @@ function HomeMain() {
     }
   }, [state]);
   return (
-    <StarPortal>
+    <StarBlinkingPortal>
       <div
         className={`h-screen bg-black  z-50 absolute duration-500 flex justify-center items-center overflow-hidden ${splash ? "translate-y-0" : "-translate-y-full"
           } w-full`}
@@ -447,7 +447,7 @@ function HomeMain() {
               </svg>
             </>
           )}
-{/* 
+          {/* 
           <svg
             className="rocketPath "
             xmlns="http://www.w3.org/2000/svg"
@@ -665,7 +665,7 @@ function HomeMain() {
                 Direct <br /> results.
               </span>
             </h1>
-            <p className="mt-5 max-w-md mx-auto sm:mx-0 text-center sm:text-left text-xs sm:text-xl font-light leading-8">
+            <p className="mt-5 max-w-md mx-auto sm:mx-0 text-center sm:text-left !text-lg sm:text-xl text-gray-300 sm:leading-8 !font-light">
               it is tough to make things simple. We aren&apos;t different just for
               the sake of being different. We are here to make a difference to
               brands.
@@ -688,12 +688,12 @@ function HomeMain() {
 
             <Image
               src={blueplanet}
-              className="absolute right-[40%] top-[60%] rotate"
+              className="absolute right-[40%] top-[60%] rotate hidden md:block"
               alt=""
             />
           </div>
           <div className="ufoPlanet  ">
-            <Image src={ufoPlanet} alt="" className=" " />
+            <Image src={ufoPlanet} alt="" className=" hidden md:block " />
           </div>
         </section>
         <ServicesHome />
@@ -874,7 +874,7 @@ function HomeMain() {
         <Footer />
       </div>
 
-    </StarPortal>
+    </StarBlinkingPortal>
   );
 }
 

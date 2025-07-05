@@ -19,7 +19,7 @@ const Ourportfolio = () => {
                     </div>
                     <div className='w-full md:w-1/2 text-right flex flex-col items-center lg:items-end justify-center heroTextServiceHome relative'>
                         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">Our <br className='hidden lg:block' /> <span className='text-[#AEEF24]'>Portfolio</span></h1>
-                        <p className='max-w-sm text-base sm:text-lg md:text-2xl font-poppins font-thin mt-4 text-center lg:text-right'>Explore our portfolio to see a showcase of our expertise, creativity, and successful projects across various industries.</p>
+                        <p className='max-w-sm text-lg text-gray-300 md:text-2xl font-poppins font-thin mt-4 text-center lg:text-right'>Explore our portfolio to see a showcase of our expertise, creativity, and successful projects across various industries.</p>
                         <button className='border px-6 sm:px-8 md:px-10 py-2 mt-6 md:mt-10 rounded-full relative overflow-hidden group z-10 text-sm sm:text-base'>
                             <span className='absolute left-0 top-0 w-0 h-full bg-white transition-all duration-500 group-hover:w-full -z-10'></span>
                             <span className='relative group-hover:text-black transition-colors duration-500'>OUR PROJECTS</span>

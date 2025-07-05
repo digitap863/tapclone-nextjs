@@ -10,7 +10,7 @@ const MobileNavbar = () => {
 
   return (
     <div className="lg:hidden">
-      <nav className="mobile-nav ">
+      <nav className="mobile-nav !z-20 ">
         <input id="nav-toggle" type="checkbox" />
         <ShortDate />
         <div className="logo">

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
-const StarPortal = ({children}) => {
+const StarBlinkingPortal = ({children}) => {
   const [stars, setStars] = useState([]);
 
   const createStars = () => {
@@ -75,4 +75,4 @@ const StarPortal = ({children}) => {
   );
 };
 
-export default StarPortal;
+export default StarBlinkingPortal;

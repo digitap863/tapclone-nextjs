@@ -20,7 +20,7 @@ function ServicesHome() {
         <h1>
           Our <br /> <span className="text-[#AEEF24]">Services</span>
         </h1>
-        <p className="w-[70%] lg:w-[59%] mb-5 text-lg text-gray-300 ">
+        <p className="w-[70%] lg:w-[59%] mb-5 text-lg text-gray-300 text-center sm:text-left ">
           We're brand builders at heart, creators by design, tech enthusiasts in
           practice, and integrated at our core.
         </p>
@@ -49,7 +49,7 @@ function ServicesHome() {
               <div
                 className={`flex h[14rem] relative justify-center items-center`}
               >
-                <Image src={elem.img} alt="" className="w-[60%] lg:w-[60%]" quality={100} />
+                <Image src={elem.img} alt="" className="w-[60%]" quality={100} />
               </div>
             </SwiperSlide>
           ))}

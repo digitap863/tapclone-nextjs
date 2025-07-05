@@ -1,5 +1,4 @@
 .footerMain {
-
   margin-left: 6%;
   padding-bottom: 3rem;
   padding-top: 5rem;
@@ -7,6 +6,66 @@
   background-color: #000;
   position: relative;
   z-index: 1;
+}
+
+/* Mobile responsive adjustments - only for small screens */
+@media (max-width: 768px) {
+  .footerMain {
+    margin-left: 0;
+    padding: 3rem 1rem 2rem 1rem;
+  }
+  
+  /* Stack elements vertically on mobile */
+  .footerMain > div:first-child {
+    flex-direction: column !important;
+    gap: 2rem !important;
+  }
+  
+  .footerMain > div:first-child > div:first-child {
+    width: 100% !important;
+  }
+  
+  .footerMain > div:first-child > div:last-child {
+    width: 100% !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  
+  .footerMain > div:last-child {
+    flex-direction: column !important;
+    gap: 2rem !important;
+    text-align: center !important;
+  }
+  
+  .footerMain > div:last-child > div:first-child,
+  .footerMain > div:last-child > div:last-child {
+    text-align: center !important;
+  }
+  
+  .footerMain > div:last-child > div:last-child ul {
+    text-align: center !important;
+  }
+  
+  /* Center the scroll to top button on mobile */
+  .footerMain > div:last-child button {
+    position: static !important;
+    margin: 1rem auto !important;
+    display: block !important;
+  }
+  
+  /* Center copyright text on mobile */
+  .footerMain + h2 {
+    text-align: center !important;
+    margin-left: 0 !important;
+    padding: 1rem !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .footerMain {
+    margin-left: 3%;
+    padding: 4rem 2rem 2.5rem 2rem;
+  }
 }
 
 /* .logoDiv {
@@ -51,6 +110,7 @@
   line-height: 1.6;
   letter-spacing: 1px;
 }
+
 .contactDiv h2,
 .addressDiv h2 {
   margin: 0;
@@ -63,11 +123,13 @@
   color: #fcddec;
   margin-bottom: 1.2rem;
 }
+
 /* .logoDiv img {
   margin-top: -3rem;
   object-fit: contain;
 
 } */
+
 .socialLinks {
   /* width: 15%; */
   display: flex;
@@ -75,7 +137,29 @@
   justify-content: start;
   flex-direction: column;
 }
+
 .socialLinks a,
 .navLinksDiv a {
   margin-bottom: 1rem;
+}
+
+/* Mobile responsive improvements */
+@media (max-width: 768px) {
+  .addressDiv,
+  .contactDiv,
+  .navLinksDiv {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .socialLinks {
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .socialLinks a,
+  .navLinksDiv a {
+    margin-bottom: 0;
+  }
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import StarPortal from '../Shared/StarPortal'
+import StarPortal from '../Shared/StarBlinkingPortal'
 import { IoArrowBackSharp } from 'react-icons/io5'
 import Link from 'next/link'
 

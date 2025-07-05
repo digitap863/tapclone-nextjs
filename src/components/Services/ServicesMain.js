@@ -21,7 +21,7 @@ import { Autoplay } from "swiper/modules";
 import NavBar from "../Home/NavBar";
 import MobileNavbar from "../Home/MobileNavbar";
 import grid from "../../assets/services/grid_behind_icons.svg";
-import StarPortal from "../Shared/StarPortal";
+import StarPortal from "../Shared/StarBlinkingPortal";
 import Image from "next/image";
 import Knowmore from "../Shared/Knowmore";
 
@@ -39,7 +39,6 @@ function ServicesMain() {
       In the elaborated process of web development we keep it simple for you
       <br/>
       <br/>
-    
       `,
       isFlipped: false,
     },
