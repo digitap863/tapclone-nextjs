@@ -1,7 +1,10 @@
 "use client"
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ReactCardFlip from "react-card-flip";
 import "./Services.css";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 import heading from "../../assets/services/services.svg";
 import service1 from "../../assets/services/Asset 11web development 1.svg";
 import service2 from "../../assets/services/Asset 12UI ux.svg";
@@ -9,15 +12,11 @@ import service3 from "../../assets/services/Asset 16branding 1.svg";
 import service4 from "../../assets/services/Asset 17SOCIAL MEDIA 1.svg";
 import service5 from "../../assets/services/Asset 18SEO 1.svg";
 import service6 from "../../assets/services/Asset 20GMP 1.svg";
-import layerKnowMore from "../../assets/services/pattern.svg";
 import ufoPlanet1 from "../../assets/Asset 4@3002 28.png";
 import ufoPlanet2 from "../../assets/Asset 5@30 1.png";
-import servicePath from "../../assets/servicePath.png";
 import bluePlanet from "../../assets/bluePlanet.png";
-import { createPortal } from "react-dom";
-import logoText from "../../assets/Shared/logoName.png";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import NavBar from "../Home/NavBar";
 import MobileNavbar from "../Home/MobileNavbar";
 import grid from "../../assets/services/grid_behind_icons.svg";
@@ -138,40 +137,55 @@ function ServicesMain() {
         <MobileNavbar />
         <NavBar />
         <div className="header">
-          <div className="logoSection">{/* <img src={logoText} /> */}</div>
-          {/* <div className="dateSection">
-            <p style={{ margin: "0" }}> Mon 22.07</p>
-          </div> */}
+          <div className="logoSection"></div>
         </div>
         <div className="serviceMain">
-          <div className="service-head-wrap " style={{ width: "55%" }}>
+          <div className="service-head-wrap w-full py-20 sm:py-0 !md:w-[55%] " >
             <Image
-              className="header-1 w-[50%] mx-auto "
-              style={{ width: "50%" }}
+              className="header-1 w-[60%] md:!w-[40%] mx-auto "
               src={heading}
               alt=""
             />
-            {/* <img className="servPath" src={servicePath} alt="" /> */}
             <Image className="blue-planet" src={bluePlanet} alt="bluePlanet" />
           </div>
           <div className="md:hidden w-[100%] mt-16">
             <Swiper
-              modules={[Autoplay]}
+              modules={[Autoplay, Navigation, Pagination]}
               loop={true}
               centeredSlides={true}
-              autoplay
-
-              // onSlideChange={() => console.log("slide change")}
-              // onSwiper={(swiper) => console.log(swiper)}
+              autoplay={{
+                delay: 3000,
+                disableOnInteraction: false,
+              }}
               slidesPerView={1}
-              spaceBetween={30}
+              spaceBetween={20}
+              touchRatio={1}
+              touchAngle={45}
+              grabCursor={true}
+              resistance={true}
+              resistanceRatio={0.85}
               breakpoints={{
-                // When screen width is less than 768px (typical for mobile devices)
-                768: {
+                // Mobile devices (320px and up)
+                320: {
+                  slidesPerView: 1,
+                  spaceBetween: 20,
+                },
+                // Small tablets (480px and up)
+                480: {
                   slidesPerView: 1.2,
+                  spaceBetween: 25,
+                },
+                // Tablets (768px and up)
+                768: {
+                  slidesPerView: 1.5,
                   spaceBetween: 30,
                 },
-                // For larger screens, use your original settings
+                // Large tablets (1024px and up)
+                1024: {
+                  slidesPerView: 2,
+                  spaceBetween: 40,
+                },
+                // Desktop (1200px and up)
                 1200: {
                   slidesPerView: 2.25,
                   spaceBetween: 150,
@@ -180,9 +194,15 @@ function ServicesMain() {
             >
               {servicesArr.map((elem,index) => (
                 <SwiperSlide key={index}>
-                  <div className=" w-full flex justify-center flex-col items-center">
-                    <Image src={elem.img} alt="service" className="w-[70%] h-40" />
-                    <h5 className="text-2xl font-semibold mt-5">
+                  <div className="w-full flex justify-center flex-col items-center p-4 min-h-[200px]">
+                    <div className="w-full flex justify-center">
+                      <Image 
+                        src={elem.img} 
+                        alt="service" 
+                        className="w-[70%] h-32 md:h-40 object-contain" 
+                      />
+                    </div>
+                    <h5 className="text-xl md:text-2xl font-semibold mt-4 text-center">
                       {elem.title}
                     </h5>
                   </div>
@@ -190,7 +210,7 @@ function ServicesMain() {
               ))}
             </Swiper>
           </div>
-          <div className="serviceDetails ">
+          <div className="serviceDetails !hidden md:!grid">
             {isFlipped &&
               isFlipped.map((items) => (
                 <ReactCardFlip

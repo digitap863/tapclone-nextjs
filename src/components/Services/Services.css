@@ -220,33 +220,340 @@
   width: 100%;
   min-height: 17rem;
 }
-@media(max-width:992px){
-  .knowMoreLayer{
-    margin-left: 0;
-  }
-  /* .serviceDetails div {
-    width: 20rem;
-    height: 25rem;
-  } */
-}
 
-@media (min-width:1536px) {
+/* Large Desktop Screens */
+@media (min-width: 1536px) {
   .serviceDetails div {
     width: 31rem;
     height: 31rem;
   }
-
-}
-@media(max-width:480px){
-  .serviceDetails{
-    margin-bottom: 0;
+  
+  .serviceDetails h5,
+  .serviceDetails h4 {
+    font-size: 1.8rem;
+    line-height: 1.8rem;
   }
-  .serviceDetails .planetImage1{
+  
+  .knowMoreText {
+    font-size: 6rem;
+  }
+  
+  .callBtn {
+    width: 26rem;
+    height: 10rem;
+  }
+  
+  .callBtn span {
+    font-size: 3rem;
+  }
+}
+
+/* Desktop and Laptop Screens */
+@media (max-width: 1200px) {
+  .serviceMain {
+    margin-left: 4%;
+  }
+  
+  .serviceDetails {
+    width: 85%;
+    column-gap: 4%;
+    row-gap: 5%;
+  }
+  
+  .serviceDetails div {
+    width: 24rem;
+    height: 24rem;
+  }
+  
+  .knowMoreText {
+    font-size: 4.5rem;
+  }
+  
+  .callBtn {
+    width: 20rem;
+    height: 7.5rem;
+  }
+  
+  .callBtn span {
+    font-size: 2.2rem;
+  }
+}
+
+/* Tablet Screens */
+@media (max-width: 992px) {
+  .serviceMain {
+    margin-left: 2%;
+  }
+  
+  .serviceDetails {
+    grid-template-columns: 1fr 1fr;
+    width: 90%;
+    column-gap: 3%;
+    row-gap: 4%;
+    margin-top: 10%;
+    margin-bottom: 15%;
+  }
+  
+  .serviceDetails div {
+    width: 20rem;
+    height: 20rem;
+  }
+  
+  .serviceDetails h5,
+  .serviceDetails h4 {
+    font-size: 1.3rem;
+    line-height: 1.3rem;
+  }
+  
+  .serviceDetails div img {
+    width: 60%;
+  }
+  
+  .serviceDetails .serv-4 img {
+    width: 55%;
+  }
+  
+  .serviceDetails .planetImage1 {
+    width: 4rem;
+    left: -2rem;
+  }
+  
+  .serviceDetails .planetImage2 {
+    width: 5rem;
+    right: -1rem;
+  }
+  
+  .knowMoreText {
+    font-size: 3.5rem;
+    letter-spacing: 2px;
+  }
+  
+  .callBtn {
+    width: 18rem;
+    height: 6.5rem;
+  }
+  
+  .callBtn span {
+    font-size: 1.8rem;
+  }
+  
+  .knowMoreLayer {
+    margin-left: 0;
+    width: 98%;
+  }
+  
+  .star-space {
+    min-height: 12rem;
+  }
+}
+
+/* Large Mobile Screens */
+@media (max-width: 768px) {
+  .serviceMain {
+    margin-left: 0;
+  }
+  
+  .serviceDetails {
+    grid-template-columns: 1fr;
+    width: 95%;
+    column-gap: 0;
+    row-gap: 3rem;
+    margin-top: 8%;
+    margin-bottom: 12%;
+  }
+  
+  .serviceDetails div {
+    width: 18rem;
+    height: 18rem;
+  }
+  
+  .serviceDetails h5,
+  .serviceDetails h4 {
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+  }
+  
+  .serviceDetails div img {
+    width: 55%;
+  }
+  
+  .serviceDetails .serv-4 img {
+    width: 50%;
+  }
+  
+  .serviceDetails .planetImage1 {
+    width: 3.5rem;
+    left: -1.5rem;
+    top: 25%;
+  }
+  
+  .serviceDetails .planetImage2 {
+    width: 4rem;
+    right: -1rem;
+    top: 65%;
+  }
+  
+  .knowMoreServices {
+    padding: 6% 0;
+  }
+  
+  .knowMoreText {
+    font-size: 2.8rem;
+    letter-spacing: 1.5px;
+    -webkit-text-stroke: 1.5px rgb(255 255 255 / 80%);
+  }
+  
+  .callBtn {
+    width: 16rem;
+    height: 5.5rem;
+  }
+  
+  .callBtn span {
+    font-size: 1.5rem;
+  }
+  
+  .star-space {
+    min-height: 10rem;
+  }
+}
+
+/* Mobile Screens */
+@media (max-width: 480px) {
+  .serviceDetails {
+    margin-bottom: 0;
+    width: 98%;
+    row-gap: 2rem;
+  }
+  
+  .serviceDetails div {
+    width: 16rem;
+    height: 16rem;
+  }
+  
+  .serviceDetails h5,
+  .serviceDetails h4 {
+    font-size: 1rem;
+    line-height: 1rem;
+  }
+  
+  .serviceDetails div img {
+    width: 50%;
+  }
+  
+  .serviceDetails .serv-4 img {
+    width: 45%;
+  }
+  
+  .serviceDetails .planetImage1 {
     width: 3rem;
     top: -20rem;
+    left: -1rem;
   }
-  .serviceDetails .planetImage2{
+  
+  .serviceDetails .planetImage2 {
     width: 3rem;
     top: -1rem;
+    right: -0.5rem;
+  }
+  
+  .knowMoreServices {
+    padding: 4% 0;
+  }
+  
+  .knowMoreText {
+    font-size: 2.2rem;
+    letter-spacing: 1px;
+    -webkit-text-stroke: 1px rgb(255 255 255 / 80%);
+  }
+  
+  .callBtn {
+    width: 14rem;
+    height: 4.5rem;
+  }
+  
+  .callBtn span {
+    font-size: 1.2rem;
+  }
+  
+  .star-space {
+    min-height: 8rem;
+  }
+}
+
+/* Small Mobile Screens */
+@media (max-width: 375px) {
+  .serviceDetails div {
+    width: 14rem;
+    height: 14rem;
+  }
+  
+  .serviceDetails h5,
+  .serviceDetails h4 {
+    font-size: 0.9rem;
+    line-height: 0.9rem;
+  }
+  
+  .serviceDetails div img {
+    width: 45%;
+  }
+  
+  .serviceDetails .serv-4 img {
+    width: 40%;
+  }
+  
+  .knowMoreText {
+    font-size: 1.8rem;
+  }
+  
+  .callBtn {
+    width: 12rem;
+    height: 4rem;
+  }
+  
+  .callBtn span {
+    font-size: 1rem;
+  }
+  
+  .star-space {
+    min-height: 6rem;
+  }
+}
+
+/* Extra Small Mobile Screens */
+@media (max-width: 320px) {
+  .serviceDetails div {
+    width: 12rem;
+    height: 12rem;
+  }
+  
+  .serviceDetails h5,
+  .serviceDetails h4 {
+    font-size: 0.8rem;
+    line-height: 0.8rem;
+  }
+  
+  .serviceDetails div img {
+    width: 40%;
+  }
+  
+  .serviceDetails .serv-4 img {
+    width: 35%;
+  }
+  
+  .knowMoreText {
+    font-size: 1.5rem;
+  }
+  
+  .callBtn {
+    width: 10rem;
+    height: 3.5rem;
+  }
+  
+  .callBtn span {
+    font-size: 0.9rem;
+  }
+  
+  .star-space {
+    min-height: 5rem;
   }
 }

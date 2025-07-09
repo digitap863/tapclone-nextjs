@@ -1,20 +1,58 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import StarPortal from '../Shared/StarBlinkingPortal'
-import { imgArr1, imgArr2 } from '../../assets/posters'
 import Image from 'next/image'
 import Knowmore from '../Shared/Knowmore'
 
 const GalleryContent = () => {
   const [selectedImage, setSelectedImage] = useState(null)
-  
-  // Combine all images into one array
-  const allImages = [...imgArr1, ...imgArr2]
-  
+  const [galleryImages, setGalleryImages] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    const fetchGallery = async () => {
+      try {
+        setLoading(true)
+        const res = await fetch('/api/gallery')
+        if (!res.ok) throw new Error('Failed to fetch gallery')
+        const data = await res.json()
+        setGalleryImages(data)
+      } catch (err) {
+        setError(err.message)
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchGallery()
+  }, [])
+
   // Add some variety to image heights for masonry effect
   const getRandomHeight = () => {
     const heights = ['h-64', 'h-80', 'h-96', 'h-72', 'h-88']
     return heights[Math.floor(Math.random() * heights.length)]
+  }
+
+  // Skeleton loader for Pinterest-style grid
+  const SkeletonGrid = () => {
+    // Number of skeleton items to show (adjust as needed)
+    const skeletonCount = 15
+    // Predefined heights for deterministic rendering (avoids hydration error)
+    const heights = ['h-64', 'h-80', 'h-96', 'h-72', 'h-88']
+    return (
+      <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5 gap-4 md:gap-6 pb-20">
+        {Array.from({ length: skeletonCount }).map((_, idx) => (
+          <div
+            key={idx}
+            className={`break-inside-avoid mb-4 md:mb-6 animate-pulse`}
+          >
+            <div
+              className={`rounded-lg bg-gray-700/60 w-full ${heights[idx % heights.length]} shadow-lg`}
+            ></div>
+          </div>
+        ))}
+      </div>
+    )
   }
 
   return (
@@ -30,37 +68,45 @@ const GalleryContent = () => {
               Explore our creative portfolio showcasing innovative designs and stunning visuals
             </p>
           </div>
-          
+
+          {/* Loading/Error State */}
+          {loading && <SkeletonGrid />}
+          {error && (
+            <div className="text-center text-red-500 py-20">{error}</div>
+          )}
+
           {/* Pinterest-style Grid */}
-          <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5 gap-4 md:gap-6 pb-20">
-            {allImages.map((item, index) => (
-              <div 
-                key={index}
-                className={`break-inside-avoid mb-4 md:mb-6 group cursor-pointer transform transition-all duration-300 hover:scale-105 hover:z-10 relative`}
-                onClick={() => setSelectedImage(item)}
-              >
-                <div className="relative overflow-hidden rounded-lg shadow-lg bg-gray-800">
-                  <Image 
-                    src={item.image1} 
-                    alt="gallery image"
-                    className={`w-full object-cover ${getRandomHeight()} transition-transform duration-500 group-hover:scale-110`}
-                    loading="lazy"
-                  />
-                  
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <h3 className="text-white font-semibold text-lg mb-2">{item.text}</h3>
-                      <p className="text-white/80 text-sm">Click to view</p>
+          {!loading && !error && (
+            <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5 gap-4 md:gap-6 pb-20">
+              {galleryImages.map((item, index) => (
+                <div 
+                  key={item._id || index}
+                  className={`break-inside-avoid mb-4 md:mb-6 group cursor-pointer transform transition-all duration-300 hover:scale-105 hover:z-10 relative`}
+                  onClick={() => setSelectedImage(item)}
+                >
+                  <div className="relative overflow-hidden rounded-lg shadow-lg bg-gray-800">
+                    <Image 
+                      src={item.image} 
+                      alt={item.title || 'gallery image'}
+                      className={`w-full object-cover ${getRandomHeight()} transition-transform duration-500 group-hover:scale-110`}
+                      loading="lazy"
+                      width={400}
+                      height={400}
+                    />
+                    {/* Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute bottom-4 left-4 right-4">
+                        <h3 className="text-white font-semibold text-lg mb-2">{item.title}</h3>
+                        <p className="text-white/80 text-sm">Click to view</p>
+                      </div>
                     </div>
+                    {/* Hover effect border */}
+                    <div className="absolute inset-0 border-2 border-[#D8FC00] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"></div>
                   </div>
-                  
-                  {/* Hover effect border */}
-                  <div className="absolute inset-0 border-2 border-[#D8FC00] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"></div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Modal for full-size image view */}
@@ -71,19 +117,20 @@ const GalleryContent = () => {
           >
             <div className="relative max-w-4xl max-h-[90vh]">
               <button 
-                className="absolute -top-12 right-0 text-white text-2xl hover:text-[#D8FC00] transition-colors"
+                className="absolute -top-8 right-0 text-white text-2xl hover:text-[#D8FC00] transition-colors"
                 onClick={() => setSelectedImage(null)}
               >
                 ✕
               </button>
               <Image 
-                src={selectedImage.image1} 
-                alt={selectedImage.text}
+                src={selectedImage.image} 
+                alt={selectedImage.title}
                 className="w-full h-auto max-h-[90vh] object-contain rounded-lg"
-
+                width={800}
+                height={800}
               />
               <div className="mt-4 text-center">
-                <h3 className="text-white text-xl font-semibold">{selectedImage.text}</h3>
+                <h3 className="text-white text-xl font-semibold">{selectedImage.title}</h3>
               </div>
             </div>
           </div>

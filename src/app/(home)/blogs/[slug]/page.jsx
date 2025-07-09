@@ -9,12 +9,13 @@ export const metadata = {
   description: "Stay ahead with our latest blog posts on web development, content creation, and digital marketing. We share expert insights and trends to help you grow your business.",
 };
 
-const BlogDetails = () => {
+const BlogDetails = async ({ params }) => {
+
   return (
     <div className='bg-black'>
       <MobileNavbar/>
       <NavBar/>
-      <BlogDetailContent/>
+      <BlogDetailContent params={params}/>
       <Footer/>
     </div>
   )

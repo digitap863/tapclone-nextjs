@@ -49,11 +49,7 @@ function ServicesHome() {
               <div
                 className={`flex h[14rem] relative justify-center items-center`}
               >
-<<<<<<< HEAD
                 <Image src={elem.img} alt="" className="w-[60%]" quality={100} />
-=======
-                <Image src={elem.img} alt="" className="w-[60%] lg:w-[60%]" quality={100} />
->>>>>>> 81de2d7c8b7de620571f095c72f32473d0cfb6c2
               </div>
             </SwiperSlide>
           ))}

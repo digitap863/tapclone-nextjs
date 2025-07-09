@@ -41,6 +41,7 @@
   width: 25%;
   right: -50%;
   animation: GFG-Planet 8s linear 2s reverse infinite;
+  z-index: 10;
 }
 
 @keyframes GFG-Planet {
@@ -78,10 +79,9 @@
   grid-template-columns: 1fr 1fr;
   place-items: center;
   margin-top: 5%;
-  /* column-gap: 8%; */
-  /* row-gap: 8%; */
   width: 95%;
   min-height: 112rem;
+  gap: 2rem;
 }
 
 .aboutDetails .about-title {
@@ -110,12 +110,12 @@
 }
 
 .aboutDetails .video-play {
-  /* background-position: center center; */
   background-size: contain;
   min-width: 100%;
   min-height: 22rem;
   background: url("../../assets/about/video-backg.svg");
   background-repeat: no-repeat;
+  background-position: center;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -127,6 +127,8 @@
   position: absolute;
   top: 30%;
   left: 36%;
+  width: auto;
+  height: auto;
 }
 
 .aboutDetails .about-desc {
@@ -136,7 +138,6 @@
   background-repeat: no-repeat;
   max-width: 86%;
   min-height: 34rem;
-  /* padding: 0 2rem; */
   box-sizing: border-box;
   display: flex;
   justify-content: center;
@@ -151,10 +152,10 @@
 
 .aboutDetails .about-desc .about-desc-content h1 {
   font-weight: bold;
-  line-height: 3.5rem;
   letter-spacing: 0.2rem;
   font-size: 3.5rem;
   text-transform: uppercase;
+  line-height: 1.2;
 }
 
 .aboutDetails .about-desc .about-desc-content h1 span {
@@ -163,11 +164,34 @@
 
 .aboutDetails .about-desc .about-desc-content p {
   text-transform: uppercase;
-  /* text-align: justify; */
   font-size: 1.37rem;
   line-height: 1.5rem;
   font-weight: 300;
   color: #e8d8d8;
+  margin-top: 1rem;
+}
+
+/* AboutCard specific styles */
+.about-card-title {
+  font-weight: bold;
+  letter-spacing: 0.2rem;
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  line-height: 1.2;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.about-card-description {
+  text-transform: uppercase;
+  font-size: 1.37rem;
+  line-height: 1.5rem;
+  font-weight: 300;
+  color: #e8d8d8;
+  margin-top: 1rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .service-team-btn {
@@ -206,75 +230,423 @@
 .btns-container .btn-bg img {
   max-width: 32rem;
 }
-@media(max-width:992px){
-  .aboutMain{
+
+/* Large Desktop Screens */
+@media (min-width: 1536px) {
+  .aboutDetails .about-desc {
+    max-width: 70%;
+  }
+  
+  .aboutDetails .about-title h1 {
+    font-size: 5.5rem;
+  }
+  
+  .about-card-title {
+    font-size: 4.5rem;
+    letter-spacing: 0.3rem;
+  }
+  
+  .about-card-description {
+    font-size: 1.6rem;
+    line-height: 1.7rem;
+  }
+  
+  .service-team-btn {
+    height: 32rem;
+  }
+  
+  .service-team-btn .btns-container {
+    min-height: 31rem;
+    min-width: 42rem;
+  }
+  
+  .btns-container .btn-bg {
+    min-height: 15rem;
+  }
+  
+  .btns-container .btn-bg img {
+    max-width: 38rem;
+  }
+}
+
+/* Desktop and Laptop Screens */
+@media (max-width: 1200px) {
+  .aboutMain {
+    margin-left: 4%;
+  }
+  
+  .aboutDetails {
+    width: 90%;
+    gap: 1.5rem;
+  }
+  
+  .aboutDetails .about-title h1 {
+    font-size: 4rem;
+    padding: 0 1.5rem;
+  }
+  
+  .about-card-title {
+    font-size: 3rem;
+    letter-spacing: 0.25rem;
+  }
+  
+  .about-card-description {
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+  }
+  
+  .aboutDetails .about-desc {
+    max-width: 90%;
+    min-height: 30rem;
+  }
+  
+  .service-team-btn {
+    height: 26rem;
+  }
+  
+  .service-team-btn .btns-container {
+    min-height: 25rem;
+    min-width: 32rem;
+  }
+}
+
+/* Tablet Screens */
+@media (max-width: 992px) {
+  .aboutMain {
     margin-left: 0;
   }
-  .aboutDetails .about-title h1{
+  
+  .aboutDetails {
+    grid-template-columns: 1fr 1fr;
+    width: 95%;
+    gap: 1rem;
+    margin-top: 3%;
+    min-height: 90rem;
+  }
+  
+  .aboutDetails .about-title h1 {
     font-size: 3.5rem;
     padding: 0 1rem;
   }
-  .aboutDetails .video-play{
-    min-width: 19rem !important;
+  
+  .about-card-title {
+    font-size: 2.5rem;
+    letter-spacing: 0.15rem;
+    line-height: 1.1;
+  }
+  
+  .about-card-description {
+    font-size: 1rem;
+    line-height: 1.3rem;
+  }
+  
+  .aboutDetails .video-play {
+    min-width: 19rem;
     min-height: 15rem;
     background-size: contain;
   }
-  .aboutDetails .video-play img{
+  
+  .aboutDetails .video-play img {
     width: 20%;
+    top: 25%;
+    left: 40%;
   }
-  .planet-Path{
+  
+  .planet-Path {
     width: 230%;
     right: -60%;
     top: 20%;
   }
-  .aboutDetails .about-desc{
+  
+  .aboutDetails .about-desc {
     width: 90%;
     background-size: cover;
+    min-height: 28rem;
   }
-  .aboutDetails .about-desc .about-desc-content h1{
-    font-size: 2rem;
+  
+  .aboutDetails .about-desc .about-desc-content {
+    max-width: 85%;
   }
-  .aboutDetails .about-desc .about-desc-content p{
-    font-size: 0.9rem;
+  
+  .service-team-btn {
+    height: 24rem;
+    margin-top: 6%;
   }
-}
-@media (min-width:1536px) {
-  .aboutDetails .about-desc {
-    max-width: 70%;
-  }  
+  
+  .service-team-btn .btns-container {
+    min-height: 23rem;
+    min-width: 28rem;
+    gap: 1.5rem;
+  }
+  
+  .btns-container .btn-bg {
+    min-height: 10rem;
+  }
+  
+  .btns-container .btn-bg img {
+    max-width: 24rem;
+  }
 }
 
-@media(max-width:480px){
-  .aboutDetails{
+/* Large Mobile Screens */
+@media (max-width: 768px) {
+  .aboutDetails {
+    grid-template-columns: 1fr;
+    width: 98%;
+    gap: 2rem;
+    margin-top: 2%;
+    min-height: auto;
+  }
+  
+  .aboutDetails .about-title h1 {
+    font-size: 3rem;
+    padding: 0 0.5rem;
+  }
+  
+  .about-card-title {
+    font-size: 1.4rem;
+    letter-spacing: 0.1rem;
+    line-height: 1.1;
+  }
+  
+  .about-card-description {
+    font-size: 0.9rem;
+    line-height: 1.2rem;
+  }
+  
+  .aboutDetails .video-play {
+    min-width: 16rem;
+    min-height: 12rem;
+  }
+  
+  .aboutDetails .video-play img {
+    width: 18%;
+    top: 20%;
+    left: 42%;
+  }
+  
+  .planet-Path {
+    width: 200%;
+    right: -50%;
+    top: 15%;
+  }
+  
+  .bubble-Planet {
+    width: 30%;
+    left: -40%;
+  }
+  
+  .tail-Planet {
+    width: 20%;
+    right: -40%;
+  }
+  
+  .aboutDetails .about-desc {
+    width: 95%;
+    min-height: 24rem;
+  }
+  
+  .aboutDetails .about-desc .about-desc-content {
+    max-width: 90%;
+  }
+  
+  .service-team-btn {
+    height: 20rem;
+    margin-top: 4%;
+    margin-left: 1%;
+  }
+  
+  .service-team-btn .btns-container {
+    min-height: 19rem;
+    min-width: 22rem;
+    gap: 1rem;
+  }
+  
+  .btns-container .btn-bg {
+    min-height: 8rem;
+  }
+  
+  .btns-container .btn-bg img {
+    max-width: 18rem;
+  }
+}
+
+/* Mobile Screens */
+@media (max-width: 480px) {
+  .aboutDetails {
     margin-top: 20%;
     grid-template-columns: 1fr;
+    width: 100%;
+    gap: 1.5rem;
   }
-  .aboutDetails .about-title h1{
+  
+  .aboutDetails .about-title h1 {
     font-size: 2.5rem;
+    padding: 0 0.3rem;
   }
-  .service-team-btn .btns-container{
+  
+  .about-card-title {
+    font-size: 1.2rem;
+    letter-spacing: 0.05rem;
+    line-height: 1.1;
+  }
+  
+  .about-card-description {
+    font-size: 0.8rem;
+    line-height: 1.1rem;
+  }
+  
+  .aboutDetails .video-play {
+    min-width: 14rem;
+    min-height: 10rem;
+  }
+  
+  .aboutDetails .video-play img {
+    width: 15%;
+    top: 15%;
+    left: 45%;
+  }
+  
+  .planet-Path {
+    width: 180%;
+    right: -40%;
+    top: 10%;
+  }
+  
+  .bubble-Planet {
+    width: 25%;
+    left: -35%;
+  }
+  
+  .tail-Planet {
+    width: 18%;
+    right: -35%;
+  }
+  
+  .aboutDetails .about-desc {
+    width: 98%;
+    min-height: 20rem;
+  }
+  
+  .aboutDetails .about-desc .about-desc-content {
+    max-width: 95%;
+  }
+  
+  .service-team-btn {
+    height: 16rem;
+    margin-top: 3%;
+    margin-left: 0;
+  }
+  
+  .service-team-btn .btns-container {
     padding-top: 5rem;
     min-width: 18rem;
+    min-height: 15rem;
   }
-  .btns-container .btn-bg img{
+  
+  .btns-container .btn-bg img {
     max-width: 12rem;
   }
-  .btns-container .btn-bg{
+  
+  .btns-container .btn-bg {
     background-size: contain;
     min-height: 7.5rem;
   }
-  .knowMoreText{
-    font-size: 3rem;
+}
+
+/* Small Mobile Screens */
+@media (max-width: 375px) {
+  .aboutDetails .about-title h1 {
+    font-size: 2.2rem;
   }
-  .callBtn{
-    width: 15rem;
-    height: 5rem;
+  
+  .about-card-title {
+    font-size: 1rem;
+    letter-spacing: 0.02rem;
+    line-height: 1.1;
   }
-  .callBtn span{
-    font-size: 2rem;
+  
+  .about-card-description {
+    font-size: 0.75rem;
+    line-height: 1rem;
   }
-  .Ellipse2{
-    bottom: 5rem !important;
+  
+  .aboutDetails .video-play {
+    min-width: 12rem;
+    min-height: 8rem;
+  }
+  
+  .aboutDetails .video-play img {
+    width: 12%;
+  }
+  
+  .aboutDetails .about-desc {
+    min-height: 18rem;
+  }
+  
+  .service-team-btn {
+    height: 14rem;
+  }
+  
+  .service-team-btn .btns-container {
+    min-width: 16rem;
+    min-height: 13rem;
+  }
+  
+  .btns-container .btn-bg img {
+    max-width: 10rem;
+  }
+  
+  .btns-container .btn-bg {
+    min-height: 6rem;
+  }
+}
+
+/* Extra Small Mobile Screens */
+@media (max-width: 320px) {
+  .aboutDetails .about-title h1 {
+    font-size: 1.8rem;
+  }
+  
+  .about-card-title {
+    font-size: 0.9rem;
+    letter-spacing: 0.01rem;
+    line-height: 1.1;
+  }
+  
+  .about-card-description {
+    font-size: 0.7rem;
+    line-height: 0.9rem;
+  }
+  
+  .aboutDetails .video-play {
+    min-width: 10rem;
+    min-height: 6rem;
+  }
+  
+  .aboutDetails .video-play img {
+    width: 10%;
+  }
+  
+  .aboutDetails .about-desc {
+    min-height: 16rem;
+  }
+  
+  .service-team-btn {
+    height: 12rem;
+  }
+  
+  .service-team-btn .btns-container {
+    min-width: 14rem;
+    min-height: 11rem;
+  }
+  
+  .btns-container .btn-bg img {
+    max-width: 8rem;
+  }
+  
+  .btns-container .btn-bg {
+    min-height: 5rem;
   }
 }
 

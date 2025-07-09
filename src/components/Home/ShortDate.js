@@ -1,20 +1,24 @@
+"use client"
 import React from "react";
 
 const ShortDate = () => {
   const currentDate = new Date();
+  
+  // Set timezone to Indian Standard Time
   const options = {
-    weekday: "short",
-    month: "2-digit",
-    day: "2-digit",
+    timeZone: 'Asia/Kolkata',
+    // weekday: "short",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true
   };
+
   const formattedDate = currentDate
-    .toLocaleDateString("en-US", options)
+    .toLocaleString("en-IN", options)
     .replace(",", "")
-    .replace(/(\d+)\/(\d+)/, "$2.$1")
-    .replace(/(\w+)\s(\d+\.\d+)/, "$1\u00A0\u00A0$2")
-    // .replace(/(\w+)\s(\d+\.\d+)/, "$1\u00A0$2")
     .toUpperCase();
-  return <div className="nav-date ">{formattedDate}</div>;
+
+  return <div className="nav-date !text-sm !md:text-base ">{formattedDate}</div>;
 };
 
 export default ShortDate;

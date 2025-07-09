@@ -447,11 +447,7 @@ function HomeMain() {
               </svg>
             </>
           )}
-<<<<<<< HEAD
           {/* 
-=======
-{/* 
->>>>>>> 81de2d7c8b7de620571f095c72f32473d0cfb6c2
           <svg
             className="rocketPath "
             xmlns="http://www.w3.org/2000/svg"
@@ -669,11 +665,7 @@ function HomeMain() {
                 Direct <br /> results.
               </span>
             </h1>
-<<<<<<< HEAD
             <p className="mt-5 max-w-md mx-auto sm:mx-0 text-center sm:text-left !text-lg sm:text-xl text-gray-300 sm:leading-8 !font-light">
-=======
-            <p className="mt-5 max-w-md mx-auto sm:mx-0 text-center sm:text-left text-xs sm:text-xl font-light leading-8">
->>>>>>> 81de2d7c8b7de620571f095c72f32473d0cfb6c2
               it is tough to make things simple. We aren&apos;t different just for
               the sake of being different. We are here to make a difference to
               brands.

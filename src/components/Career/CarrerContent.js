@@ -53,41 +53,41 @@ const CarrerContent = () => {
       <div>
 
 
-        <div className=" w-full container mx-auto relative px-20">
+        <div className="w-full container mx-auto relative px-4 sm:px-8 md:px-12 lg:px-20 py-20">
           <div className="flex flex-col items-center justify-center min-h-[40vh] relative">
-            <Image src={astro} alt="astro" className="absolute top-20 right-20 " />
-            <h2 className="text-[#D8FC00] text-9xl font-poppins font-extrabold  leading-[1.1] animate-[textStroke_0.5s_ease-out_2.5s_forwards] inline-block mb-8">
+            <Image src={astro} alt="astro" className="absolute top-10 right-4 sm:top-16 sm:right-8 md:top-20 md:right-20 w-16 h-16 sm:w-20 sm:h-20 md:w-auto md:h-auto" />
+            <h2 className="text-[#D8FC00]  text-6xl md:text-8xl lg:text-9xl font-poppins font-extrabold leading-[1.1] animate-[textStroke_0.5s_ease-out_2.5s_forwards] inline-block mb-4 sm:mb-6 md:mb-8 text-center">
               Career
             </h2>
-            <p className="text-white text-xl font-poppins font-thin max-w-2xl text-center">
+            <p className="text-white text-sm sm:text-lg md:text-xl font-poppins font-thin max-w-2xl text-center px-4">
               Careers refer to the various paths individuals choose to pursue in
               their professional lives, typically encompassing a series of related
               jobs and roles over time.
             </p>
           </div>
-          <div className="space-y-8  py-10">
+          <div className="space-y-4 sm:space-y-6 md:space-y-8 py-6 sm:py-8 md:py-10">
             {jobData.map((job, idx) => (
               <div
                 key={job.title}
-                className="bg-[#000000] rounded-lg px-4 py-8 flex flex-row items-center justify-between shadow-md border  border-[#FFFFFF] gap-4 flex-wrap md:flex-nowrap"
+                className="bg-[#000000] rounded-lg px-3 sm:px-4 py-4 sm:py-6 md:py-8 flex flex-col sm:flex-row items-start sm:items-center justify-between shadow-md border border-[#FFFFFF] gap-3 sm:gap-4"
               >
-                <div className="flex-1 min-w-[160px]">
-                  <h3 className="text-lg md:text-xl font-medium font-poppins text-white ">{job.title}</h3>
+                <div className="flex-1 w-full sm:min-w-[160px]">
+                  <h3 className="text-base sm:text-lg md:text-xl font-medium font-poppins text-white">{job.title}</h3>
                 </div>
-                <div className="flex-1 min-w-[140px]">
-                  <span className="block font-semibold text-white whitespace-nowrap">Experience</span>
-                  <span className="block text-sm text-white whitespace-nowrap">{job.experience}</span>
+                <div className="flex-1 w-full sm:min-w-[140px]">
+                  <span className="block font-semibold text-white text-sm sm:text-base">Experience</span>
+                  <span className="block text-xs sm:text-sm text-white">{job.experience}</span>
                 </div>
-                <div className="flex-[2] min-w-[200px]">
-                  <span className="block font-semibold text-white whitespace-nowrap">Skills</span>
-                  <span className="block text-sm text-white whitespace-normal break-words">{job.skills}</span>
+                <div className="flex-[2] w-full sm:min-w-[200px]">
+                  <span className="block font-semibold text-white text-sm sm:text-base">Skills</span>
+                  <span className="block text-xs sm:text-sm text-white break-words">{job.skills}</span>
                 </div>
-                <div className="flex-1 min-w-[70px]">
-                  <span className="block font-semibold text-white whitespace-nowrap ">Location</span>
-                  <span className="block text-sm text-white whitespace-nowrap">{job.location}</span>
+                <div className="flex-1 w-full sm:min-w-[70px]">
+                  <span className="block font-semibold text-white text-sm sm:text-base">Location</span>
+                  <span className="block text-xs sm:text-sm text-white">{job.location}</span>
                 </div>
-                <div className="flex-1 flex justify-center md:justify-end items-center min-w-[120px]">
-                  <Link href={`/careers/${job.id}`} className="border px-8 py-2 rounded-full relative overflow-hidden group z-10 whitespace-nowrap">
+                <div className="flex-1 flex justify-center sm:justify-end items-center w-full sm:min-w-[120px] mt-4 sm:mt-0">
+                  <Link href={`/careers/${job.id}`} className="border px-4 sm:px-6 md:px-8 py-2 rounded-full relative overflow-hidden group z-10 whitespace-nowrap text-sm sm:text-base">
                     <span className="absolute left-0 top-0 w-0 h-full bg-white transition-all duration-500 group-hover:w-full -z-10"></span>
                     <span className="relative group-hover:text-black transition-colors duration-500">
                       MORE INFO

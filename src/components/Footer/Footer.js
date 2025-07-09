@@ -40,7 +40,7 @@ function Footer() {
                 <Image
                   src={footerlogo}
                   alt="logo"
-                  className="w-full md:w-[20rem]"
+                  className="w-[14rem] mx-auto  md:w-[20rem]"
                 />
               </div>
 

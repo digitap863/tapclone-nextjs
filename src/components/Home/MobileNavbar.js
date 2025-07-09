@@ -1,5 +1,5 @@
 "use client"
-import React from "react";
+import React, { useState } from "react";
 import "./MobileNavbar.css";
 import ShortDate from "./ShortDate";
 import Link from "next/link";
@@ -7,64 +7,92 @@ import { usePathname } from "next/navigation";
 
 const MobileNavbar = () => {
   const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
 
   return (
     <div className="lg:hidden">
-      <nav className="mobile-nav !z-20 ">
-        <input id="nav-toggle" type="checkbox" />
+      <nav className="mobile-nav !z-20">
         <ShortDate />
-        <div className="logo">
-          <h2>TAPCLONE</h2>
+        <div className="logo ">
+          <h2>TAP<span className="font-light ">CLONE</span></h2>
         </div>
 
-        <ul className="mobnav-links ">
-          <li>
-            <Link 
-              href="/"
-              style={{
-                color: pathname === "/" ? "#aeef24" : "#fff",
-              }}
-            >
-              HOME
-            </Link>
-          </li>
-          <li>
-            <Link 
-              href="/about"
-              style={{
-                color: pathname === "/about" ? "#aeef24" : "#fff",
-              }}
-            >
-              ABOUT
-            </Link>{" "}
-          </li>
-          <li>
-            <Link 
-              href="/services"
-              style={{
-                color: pathname === "/services" ? "#aeef24" : "#fff",
-              }}
-            >
-              SERVICES
-            </Link>{" "}
-          </li>
-          <li>
-            <Link 
-              href="/contact"
-              style={{
-                color: pathname === "/contact" ? "#aeef24" : "#fff",
-              }}
-            >
-              CONTACT
-            </Link>
-          </li>
-        </ul>
+        <button 
+          className={`hamburger-btn ${isOpen ? 'open' : ''}`} 
+          onClick={toggleMenu}
+          aria-label="Toggle menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
 
-        <label htmlFor="nav-toggle" className="icon-burger">
-          <div className="line"></div>
-          <div className="line"></div>
-          <div className="line"></div>
-        </label>
+        <div className={`nav-menu ${isOpen ? 'open' : ''}`}>
+          <ul className="nav-links">
+            <li>
+              <Link 
+                href="/"
+                onClick={closeMenu}
+                className={pathname === "/" ? "active" : ""}
+              >
+                HOME
+              </Link>
+            </li>
+            <li>
+              <Link 
+                href="/about"
+                onClick={closeMenu}
+                className={pathname === "/about" ? "active" : ""}
+              >
+                ABOUT
+              </Link>
+            </li>
+            <li>
+              <Link 
+                href="/services"
+                onClick={closeMenu}
+                className={pathname === "/services" ? "active" : ""}
+              >
+                SERVICES
+              </Link>
+            </li>
+            <li>
+              <Link 
+                href="/careers"
+                onClick={closeMenu}
+                className={pathname === "/careers" ? "active" : ""}
+              >
+                CAREERS
+              </Link>
+            </li>
+            <li>
+              <Link 
+                href="/blogs"
+                onClick={closeMenu}
+                className={pathname === "/blogs" ? "active" : ""}
+              >
+                BLOGS
+              </Link>
+            </li>
+            <li>
+              <Link 
+                href="/contact"
+                onClick={closeMenu}
+                className={pathname === "/contact" ? "active" : ""}
+              >
+                CONTACT
+              </Link>
+            </li>
+          </ul>
+        </div>
       </nav>
     </div>
   );
