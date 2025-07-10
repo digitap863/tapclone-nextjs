@@ -9,6 +9,7 @@ import {
   LayoutDashboard,
   LogOut,
   List,
+  Briefcase,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -36,6 +37,11 @@ const sidebarData = [
     label: "Gallery",
     icon: <Columns4 />,
     link: "/admin/gallery",
+  },
+  {
+    label: "Career",
+    icon: <Briefcase />,
+    link: "/admin/career",
   },
 ];
 

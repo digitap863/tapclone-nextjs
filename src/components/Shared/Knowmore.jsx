@@ -4,6 +4,7 @@ import "../Services/Services.css"
 
 const Knowmore = () => {
 
+    const phoneNumber = "+919037833933";
     const doPhoneCallClick = () => {
         window.open(`tel:${phoneNumber}`, '_blank');
     };

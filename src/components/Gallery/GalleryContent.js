@@ -3,9 +3,10 @@ import React, { useState, useEffect } from 'react'
 import StarPortal from '../Shared/StarBlinkingPortal'
 import Image from 'next/image'
 import Knowmore from '../Shared/Knowmore'
+import { useRouter } from 'next/navigation'
 
 const GalleryContent = () => {
-  const [selectedImage, setSelectedImage] = useState(null)
+  const router = useRouter()
   const [galleryImages, setGalleryImages] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -82,7 +83,7 @@ const GalleryContent = () => {
                 <div 
                   key={item._id || index}
                   className={`break-inside-avoid mb-4 md:mb-6 group cursor-pointer transform transition-all duration-300 hover:scale-105 hover:z-10 relative`}
-                  onClick={() => setSelectedImage(item)}
+                  onClick={() => router.push(`/gallery/${item._id || index}`)}
                 >
                   <div className="relative overflow-hidden rounded-lg shadow-lg bg-gray-800">
                     <Image 
@@ -110,31 +111,7 @@ const GalleryContent = () => {
         </div>
 
         {/* Modal for full-size image view */}
-        {selectedImage && (
-          <div 
-            className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
-            onClick={() => setSelectedImage(null)}
-          >
-            <div className="relative max-w-4xl max-h-[90vh]">
-              <button 
-                className="absolute -top-8 right-0 text-white text-2xl hover:text-[#D8FC00] transition-colors"
-                onClick={() => setSelectedImage(null)}
-              >
-                ✕
-              </button>
-              <Image 
-                src={selectedImage.image} 
-                alt={selectedImage.title}
-                className="w-full h-auto max-h-[90vh] object-contain rounded-lg"
-                width={800}
-                height={800}
-              />
-              <div className="mt-4 text-center">
-                <h3 className="text-white text-xl font-semibold">{selectedImage.title}</h3>
-              </div>
-            </div>
-          </div>
-        )}
+        {/* Removed modal code */}
         <Knowmore />
       </div>
     </StarPortal>

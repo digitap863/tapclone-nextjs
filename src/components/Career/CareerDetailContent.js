@@ -3,45 +3,51 @@ import StarPortal from '../Shared/StarBlinkingPortal'
 import { IoArrowBackSharp } from 'react-icons/io5'
 import Link from 'next/link'
 
-
-const CareerDetailContent = () => {
+const CareerDetailContent = ({ job }) => {
+  if (!job) {
+    return (
+      <StarPortal>
+        <div className="container mx-auto p-8 md:p-20 min-h-screen flex flex-col items-center justify-center">
+          <h1 className="text-2xl text-white font-bold mb-4">Job Not Found</h1>
+          <p className="text-gray-400 mb-8">Sorry, the job you are looking for does not exist or has been removed.</p>
+          <Link href='/careers'>
+            <div className='text-white rounded-full border border-white text-2xl p-3 hover:bg-white hover:text-black transition-all duration-300 cursor-pointer w-fit'><IoArrowBackSharp /></div>
+          </Link>
+        </div>
+      </StarPortal>
+    );
+  }
 
   return (
     <StarPortal>
       <div className="container mx-auto p-8 md:p-20 min-h-screen">
-
         <div className="max-w-4xl mx-auto">
           <Link href='/careers'>
             <div className='text-white rounded-full border border-white text-2xl p-3 mb-10 hover:bg-white hover:text-black transition-all duration-300 cursor-pointer w-fit'><IoArrowBackSharp /></div>
           </Link>
           {/* Job Title */}
-          <h1 className="text-white text-3xl md:text-4xl font-bold mb-4">UI/UX Designer</h1>
+          <h1 className="text-white text-3xl md:text-4xl font-bold mb-4 capitalize">{job.position}</h1>
 
           {/* Job Description */}
-          <div className="text-[#F0ECEC] text-base md:text-lg mb-6 space-y-2">
-            <p>We Are Seeking A Talented And Creative UI/UX Designer To Join Our Team. As A UI/UX Designer, You Will Be Responsible For Designing And Implementing Intuitive And Engaging User Experiences For Our Web And Mobile Applications.</p>
-            <p>In This Role, You Will Work Closely With Our Product And Development Teams To Understand User Needs And Develop User Flows, Wireframes, Prototypes, And High-Fidelity Designs. You Will Also Be Responsible For Conducting User Research And Testing To Validate Design Concepts And Ensure A Seamless User Experience.</p>
-            <p>The Ideal Candidate Will Have A Strong Portfolio Of UI/UX Design Work, Excellent Communication Skills, And A Passion For Solving Complex Design Challenges.</p>
-          </div>
+          <div className="text-[#F0ECEC] text-base md:text-lg mb-6 space-y-2" dangerouslySetInnerHTML={{ __html: job.description }} />
 
-          {/* Responsibilities */}
-          <div className="mb-8">
-            <h2 className="text-w text-xl font-semibold mb-2">Responsibilities:</h2>
-            <ul className="list-disc pl-6 text-[#F0ECEC] space-y-1">
-              <li>Collaborate With Cross-Functional Teams To Understand User Needs And Develop User Flows, Wireframes, Prototypes, And High-Fidelity Designs</li>
-              <li>Conduct User Research And Testing To Validate Design Concepts And Ensure A Seamless User Experience</li>
-              <li>Create And Maintain Design Systems And Style Guides</li>
-              <li>Design Visually Appealing And Intuitive Interfaces For Web And Mobile Applications</li>
-              <li>Stay Up-To-Date With Industry Trends And Best Practices In UI/UX Design</li>
-              <li>Proficiency In Design Tools And Strong Portfolio Of UI/UX Design Work</li>
-              <li>Excellent Communication And Problem-Solving Skills</li>
-              <li>Experience With User Research And Testing Methods</li>
-              <li>Familiarity With HTML, CSS, and JavaScript Is A Plus.</li>
-            </ul>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div>
+              <h2 className="text-w text-xl font-semibold mb-2">Experience:</h2>
+              <p className="text-[#F0ECEC]">{job.experience}</p>
+            </div>
+            <div>
+              <h2 className="text-w text-xl font-semibold mb-2">Location:</h2>
+              <p className="text-[#F0ECEC]">{job.location}</p>
+            </div>
+            <div className="md:col-span-2">
+              <h2 className="text-w text-xl font-semibold mb-2">Skills:</h2>
+              <p className="text-[#F0ECEC]">{Array.isArray(job.skills) ? job.skills.join(', ') : job.skills}</p>
+            </div>
           </div>
 
           {/* Application Form */}
-          <div className=" rounded-xl p-6 md:p-10 shadow-md border border-[#e5e5e5]">
+          <div className="rounded-xl p-6 md:p-10 shadow-md border border-[#e5e5e5]">
             <form className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
@@ -60,15 +66,15 @@ const CareerDetailContent = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-[#F0ECEC] mb-1">Select Location *</label>
-                  <input type="text" className="w-full border border-[#e5e5e5] rounded-md px-3 py-2 bg-black" placeholder="Select Location" />
+                  <input type="text" className="w-full border border-[#e5e5e5] rounded-md px-3 py-2 bg-black" placeholder="Select Location" defaultValue={job.location} />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-[#F0ECEC] mb-1">Select Position *</label>
-                  <input type="text" className="w-full border border-[#e5e5e5] rounded-md px-3 py-2 bg-black" placeholder="Select Position" />
+                  <input type="text" className="w-full border border-[#e5e5e5] rounded-md px-3 py-2 bg-black" placeholder="Select Position" defaultValue={job.position} />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-[#F0ECEC] mb-1">Experience *</label>
-                  <input type="text" className="w-full border border-[#e5e5e5] rounded-md px-3 py-2 bg-black" placeholder="Experience" />
+                  <input type="text" className="w-full border border-[#e5e5e5] rounded-md px-3 py-2 bg-black" placeholder="Experience" defaultValue={job.experience} />
                 </div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
