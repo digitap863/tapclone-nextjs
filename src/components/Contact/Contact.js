@@ -3,7 +3,6 @@ import React, { useCallback, useEffect, useState } from "react";
 import contactHeading from "../../assets/contact/contact.svg";
 import grid from "../../assets/contact/grid.svg";
 import "./Contact.css";
-import { createPortal } from "react-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Ellipse1 from "../../assets/contact/Ellipse 17.png";
@@ -22,11 +21,9 @@ import blueplanet from "../../assets/Asset 4@3002 28.png"
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Image from "next/image";
-import { Input } from "../ui/input";
-import { Select, SelectItem, SelectContent } from "../ui/select";
-import { Textarea } from "../ui/textarea";
 import StarBlinkingPortal from "../Shared/StarBlinkingPortal";
 import { motion } from "framer-motion";
+import { Toaster } from "react-hot-toast";
 
 
 const containerVariant = {
@@ -74,44 +71,43 @@ function Contact() {
     name: Yup.string()
       .matches(/^[A-Za-z\s]+$/, 'Please enter a valid name')
       .required('Name is required'),
+    company: Yup.string().required('Company is required'),
+    position: Yup.string().required('Position is required'),
     email: Yup.string()
       .email('Please enter a valid email address')
       .required('Email is required'),
     phone: Yup.string()
       .required('Phone is required'),
-    service: Yup.array()
-      .min(1, 'Please select at least one service')
-      .required('Service is required'),
+    service: Yup.string().required('Service is required'),
     message: Yup.string()
   });
 
   const formik = useFormik({
     initialValues: {
       name: '',
+      company: '',
+      position: '',
       email: '',
       phone: '',
-      service: [],
+      service: '',
       message: ''
     },
     validationSchema,
     onSubmit: async (values) => {
       try {
-        // Show loading state
         toast.info("Submitting form...");
-
-        // Format services array to string
-        const servicesString = values.service.join(", ");
-
         const formData = new URLSearchParams({
           Name: values.name,
+          Company: values.company,
+          Position: values.position,
           Email: values.email,
           Phone: values.phone,
-          Service: servicesString,
+          Service: values.service,
           Message: values.message || "No message provided",
           Url: window.location.href
         }).toString();
 
-        const response = await fetch(
+        await fetch(
           "https://script.google.com/macros/s/AKfycby9QcgSjFVVIIBLSjSmeCEXnvbGL5GCuzZ672pHR6Sm444nMoL5LciAWFwFKuidrFjL/exec",
           {
             method: "POST",
@@ -123,12 +119,13 @@ function Contact() {
           }
         );
 
-        // Since no-cors mode doesn't give us response details,
-        // we'll assume success if no error is thrown
-        toast.success("Thanks for submitting the form!");
-        setShakeTrigger(true);
-        setTimeout(() => setShakeTrigger(false), 600);
-        formik.resetForm();
+        // Wait a moment to simulate submission
+        setTimeout(() => {
+          toast.success("Thanks for submitting the form!");
+          setShakeTrigger(true);
+          setTimeout(() => setShakeTrigger(false), 600);
+          formik.resetForm();
+        }, 1000);
 
       } catch (error) {
         console.error("Submission error:", error);
@@ -136,7 +133,6 @@ function Contact() {
       }
     }
   });
-
 
   const notify = () => {
     formik.handleSubmit();
@@ -178,17 +174,25 @@ function Contact() {
               <motion.form
                 className="space-y-8 md:space-y-10 lg:space-y-14 font-serif"
                 variants={containerVariant}
+                onSubmit={formik.handleSubmit}
               >
                 <motion.div variants={itemVariant} className="flex flex-col md:flex-row gap-2 md:gap-3 lg:gap-4 items-baseline">
                   <p className="text-2xl md:text-3xl lg:text-4xl font-serif text-gray-300">Hello! I&apos;m</p>
                   <div className="relative flex-1 min-w-[200px]">
                     <input
                       type="text"
+                      name="name"
+                      value={formik.values.name}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
                       className="w-full border-b border-gray-400 pb-1 bg-transparent focus:outline-none focus:border-gray-800"
                     />
                     <span className="absolute -top-2 md:-top-3 lg:-top-5 left-0 text-xs text-gray-500 font-poppins">
                       YOUR NAME
                     </span>
+                    {formik.touched.name && formik.errors.name && (
+                      <div className="text-red-400 text-xs">{formik.errors.name}</div>
+                    )}
                   </div>
                   <p className="text-2xl md:text-3xl lg:text-4xl font-serif text-gray-300">And I&apos;m Contacting You</p>
                 </motion.div>
@@ -198,21 +202,35 @@ function Contact() {
                   <div className="relative flex-1 min-w-[200px]">
                     <input
                       type="text"
+                      name="company"
+                      value={formik.values.company}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
                       className="w-full border-b border-gray-400 pb-1 bg-transparent focus:outline-none focus:border-gray-800"
                     />
                     <span className="absolute -top-2 md:-top-3 lg:-top-5 left-0 text-xs text-gray-500 font-poppins">
                       TYPE COMPANY NAME
                     </span>
+                    {formik.touched.company && formik.errors.company && (
+                      <div className="text-red-400 text-xs">{formik.errors.company}</div>
+                    )}
                   </div>
                   <p className="text-2xl md:text-3xl lg:text-4xl font-serif text-gray-300">As The</p>
                   <div className="relative flex-1 min-w-[150px]">
                     <input  
                       type="text"
+                      name="position"
+                      value={formik.values.position}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
                       className="w-full border-b border-gray-400 pb-1 bg-transparent focus:outline-none focus:border-gray-800"
                     />
                     <span className="absolute -top-2 md:-top-3 lg:-top-5 left-0 text-xs text-gray-500 font-poppins">
                       POSITION
                     </span>
+                    {formik.touched.position && formik.errors.position && (
+                      <div className="text-red-400 text-xs">{formik.errors.position}</div>
+                    )}
                   </div>
                 </motion.div>
 
@@ -221,11 +239,18 @@ function Contact() {
                   <div className="relative flex-1">
                     <input
                       type="tel"
+                      name="phone"
+                      value={formik.values.phone}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
                       className="w-full border-b border-gray-400 pb-1 bg-transparent focus:outline-none focus:border-gray-800"
                     />
                     <span className="absolute -top-2 md:-top-3 lg:-top-5 left-0 text-xs text-gray-500 font-poppins">
                       PHONE
                     </span>
+                    {formik.touched.phone && formik.errors.phone && (
+                      <div className="text-red-400 text-xs">{formik.errors.phone}</div>
+                    )}
                   </div>
                 </motion.div>
 
@@ -234,11 +259,18 @@ function Contact() {
                   <div className="relative flex-1 min-w-[150px]">
                     <input
                       type="email"
+                      name="email"
+                      value={formik.values.email}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
                       className="w-full border-b border-gray-400 pb-1 bg-transparent focus:outline-none focus:border-gray-800"
                     />
                     <span className="absolute -top-2 md:-top-3 lg:-top-5 left-0 text-xs text-gray-500 font-poppins">
                       EMAIL
                     </span>
+                    {formik.touched.email && formik.errors.email && (
+                      <div className="text-red-400 text-xs">{formik.errors.email}</div>
+                    )}
                   </div>
                   <p className="text-2xl md:text-3xl lg:text-4xl font-serif text-gray-300">
                     I&apos;m Looking To Get Your
@@ -250,15 +282,37 @@ function Contact() {
                   <div className="relative flex-1">
                     <input
                       type="text"
+                      name="service"
+                      value={formik.values.service}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
                       className="w-2/3 border-b border-gray-400 pb-1 bg-transparent focus:outline-none focus:border-gray-800"
                     />
                     <span className="absolute -top-2 md:-top-3 lg:-top-5 left-0 text-xs text-gray-500 font-poppins">
                       REQUEST
                     </span>
+                    {formik.touched.service && formik.errors.service && (
+                      <div className="text-red-400 text-xs">{formik.errors.service}</div>
+                    )}
                   </div>
                 </motion.div>
 
-
+                <motion.div variants={itemVariant} className="flex flex-col md:flex-row gap-2 md:gap-3 lg:gap-4 items-baseline">
+                  <p className="text-2xl md:text-3xl lg:text-4xl font-serif text-gray-300">Message</p>
+                  <div className="relative flex-1">
+                    <textarea
+                      name="message"
+                      value={formik.values.message}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      className="w-full border-b border-gray-400 pb-1 bg-transparent focus:outline-none focus:border-gray-800"
+                      rows={2}
+                    />
+                    {formik.touched.message && formik.errors.message && (
+                      <div className="text-red-400 text-xs">{formik.errors.message}</div>
+                    )}
+                  </div>
+                </motion.div>
 
                 <div
                   className={`${shakeTrigger ? "sendButton sendShakeBtn" : "sendButton"} flex items-center justify-center cursor-pointer mx-auto !mt-20 mb-8`}
@@ -370,6 +424,7 @@ function Contact() {
             </div>
           </div>
         </div>
+        <Toaster/>
         <div className="knowMoreLayer"></div>
       </div>
 

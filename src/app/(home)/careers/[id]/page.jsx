@@ -15,12 +15,13 @@ export const metadata = {
 const CareerDetails = async ({ params }) => {
   const { id } = await params;
   const job = await Career.findById(id);
+  const plainJob = job ? JSON.parse(JSON.stringify(job)) : null;
   
   return (
     <div className='bg-black'>
         <MobileNavbar />
         <NavBar />
-        <CareerDetailContent job={job} />
+        <CareerDetailContent job={plainJob} />
         <Footer />
     </div>
   )

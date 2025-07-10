@@ -1,9 +1,24 @@
-import React from 'react'
+'use client'
+import React, { useState } from 'react'
 import StarPortal from '../Shared/StarBlinkingPortal'
 import { IoArrowBackSharp } from 'react-icons/io5'
 import Link from 'next/link'
 
 const CareerDetailContent = ({ job }) => {
+  const [form, setForm] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    location: job?.location || '',
+    position: job?.position || '',
+    experience: job?.experience || '',
+    currentSalary: '',
+    qualification: '',
+    gender: '',
+  });
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState('');
+
   if (!job) {
     return (
       <StarPortal>
@@ -17,6 +32,43 @@ const CareerDetailContent = ({ job }) => {
       </StarPortal>
     );
   }
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setMessage('');
+    try {
+      const res = await fetch('/api/career-apply', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      if (res.ok) {
+        setMessage('Application sent successfully!');
+        setForm({
+          firstName: '',
+          lastName: '',
+          email: '',
+          location: job?.location || '',
+          position: job?.position || '',
+          experience: job?.experience || '',
+          currentSalary: '',
+          qualification: '',
+          gender: '',
+        });
+      } else {
+        setMessage('Failed to send application.');
+      }
+    } catch {
+      setMessage('Failed to send application.');
+    }
+    setLoading(false);
+  };
 
   return (
     <StarPortal>
@@ -48,74 +100,70 @@ const CareerDetailContent = ({ job }) => {
 
           {/* Application Form */}
           <div className="rounded-xl p-6 md:p-10 shadow-md border border-[#e5e5e5]">
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-[#F0ECEC] mb-1">First name *</label>
-                  <input type="text" className="w-full border border-[#e5e5e5] rounded-md px-3 py-2 bg-black" placeholder="First name *" />
+                  <input name="firstName" value={form.firstName} onChange={handleChange} type="text" className="w-full border border-[#e5e5e5] rounded-md px-3 py-2 bg-black" placeholder="First name *" required />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-[#F0ECEC] mb-1">Last name *</label>
-                  <input type="text" className="w-full border border-[#e5e5e5] rounded-md px-3 py-2 bg-black" placeholder="Last name *" />
+                  <input name="lastName" value={form.lastName} onChange={handleChange} type="text" className="w-full border border-[#e5e5e5] rounded-md px-3 py-2 bg-black" placeholder="Last name *" required />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-[#F0ECEC] mb-1">Email id *</label>
-                  <input type="email" className="w-full border border-[#e5e5e5] rounded-md px-3 py-2 bg-black" placeholder="Email id *" />
+                  <input name="email" value={form.email} onChange={handleChange} type="email" className="w-full border border-[#e5e5e5] rounded-md px-3 py-2 bg-black" placeholder="Email id *" required />
                 </div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-[#F0ECEC] mb-1">Select Location *</label>
-                  <input type="text" className="w-full border border-[#e5e5e5] rounded-md px-3 py-2 bg-black" placeholder="Select Location" defaultValue={job.location} />
+                  <input name="location" value={form.location} onChange={handleChange} type="text" className="w-full border border-[#e5e5e5] rounded-md px-3 py-2 bg-black" placeholder="Select Location" required />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-[#F0ECEC] mb-1">Select Position *</label>
-                  <input type="text" className="w-full border border-[#e5e5e5] rounded-md px-3 py-2 bg-black" placeholder="Select Position" defaultValue={job.position} />
+                  <input name="position" value={form.position} onChange={handleChange} type="text" className="w-full border border-[#e5e5e5] rounded-md px-3 py-2 bg-black" placeholder="Select Position" required />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-[#F0ECEC] mb-1">Experience *</label>
-                  <input type="text" className="w-full border border-[#e5e5e5] rounded-md px-3 py-2 bg-black" placeholder="Experience" defaultValue={job.experience} />
+                  <input name="experience" value={form.experience} onChange={handleChange} type="text" className="w-full border border-[#e5e5e5] rounded-md px-3 py-2 bg-black" placeholder="Experience" required />
                 </div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-[#F0ECEC] mb-1">Current Salary *</label>
-                  <input type="text" className="w-full border border-[#e5e5e5] rounded-md px-3 py-2 bg-black" placeholder="Current Salary" />
+                  <input name="currentSalary" value={form.currentSalary} onChange={handleChange} type="text" className="w-full border border-[#e5e5e5] rounded-md px-3 py-2 bg-black" placeholder="Current Salary" required />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-[#F0ECEC] mb-1">Qualification</label>
-                  <input type="text" className="w-full border border-[#e5e5e5] rounded-md px-3 py-2 bg-black" placeholder="Qualification" />
+                  <input name="qualification" value={form.qualification} onChange={handleChange} type="text" className="w-full border border-[#e5e5e5] rounded-md px-3 py-2 bg-black" placeholder="Qualification" />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-[#F0ECEC] mb-1">Gender *</label>
                   <div className="flex gap-3 mt-2">
                     <label className="inline-flex items-center">
-                      <input type="radio" name="gender" className="form-radio" />
+                      <input type="radio" name="gender" value="Male" checked={form.gender === 'Male'} onChange={handleChange} className="form-radio" required />
                       <span className="ml-2 text-[#F0ECEC]">Male</span>
                     </label>
                     <label className="inline-flex items-center">
-                      <input type="radio" name="gender" className="form-radio" />
+                      <input type="radio" name="gender" value="Female" checked={form.gender === 'Female'} onChange={handleChange} className="form-radio" required />
                       <span className="ml-2 text-[#F0ECEC]">Female</span>
                     </label>
                     <label className="inline-flex items-center">
-                      <input type="radio" name="gender" className="form-radio" />
+                      <input type="radio" name="gender" value="Others" checked={form.gender === 'Others'} onChange={handleChange} className="form-radio" required />
                       <span className="ml-2 text-[#F0ECEC]">Others</span>
                     </label>
                   </div>
                 </div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
-                <div className="md:col-span-2">
-                  <label className="block text-sm font-medium text-[#F0ECEC] mb-1">Upload Resume *</label>
-                  <div className="flex items-center gap-2">
-                    <input type="file" className="block w-full text-sm text-[#F0ECEC] border border-[#e5e5e5] rounded-md cursor-pointer bg-black" />
-                    <span className="text-xs text-[#888]">No File Chosen</span>
-                  </div>
-                </div>
-                <div className="md:col-span-1 flex justify-end">
-                  <button type="submit" className="bg-w text-white px-8 py-2 rounded-md font-semibold mt-4 md:mt-0 w-full md:w-auto border border-[#F0ECEC]">Apply Now</button>
+                <div className="">
+                  <button type="submit" disabled={loading} className="bg-w text-white px-8 py-2 rounded-md font-semibold mt-4 md:mt-0 w-full md:w-auto border border-[#F0ECEC]">
+                    {loading ? 'Submitting...' : 'Apply Now'}
+                  </button>
                 </div>
               </div>
+              {message && <div className={`text-center text-sm ${message.includes('success') ? 'text-green-400' : 'text-red-400'}`}>{message}</div>}
             </form>
           </div>
         </div>
