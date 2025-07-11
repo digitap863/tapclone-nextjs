@@ -1,10 +1,18 @@
 "use client"
-import React from "react";
+import React, { useState } from "react";
 import "./Footer.css";
 import footerlogo from "../../assets/home/footerlogo.svg"
 import Image from "next/image";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Footer() {
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: ""
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const scrollToTop = () => {
     window.scrollTo({
         top: 0,
@@ -12,26 +20,91 @@ function Footer() {
     });
   };
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    // Basic validation
+    if (!formData.name.trim() || !formData.phone.trim()) {
+      toast.error("Please fill in both name and phone number");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const formDataToSend = new URLSearchParams({
+        Name: formData.name,
+        Phone: formData.phone,
+        Source: "Footer Contact Form",
+        Url: window.location.href
+      }).toString();
+
+      await fetch(
+        "https://script.google.com/macros/s/AKfycby9QcgSjFVVIIBLSjSmeCEXnvbGL5GCuzZ672pHR6Sm444nMoL5LciAWFwFKuidrFjL/exec",
+        {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: formDataToSend,
+        }
+      );
+
+      // Wait a moment to simulate submission
+      setTimeout(() => {
+        toast.success("Thank you! We'll contact you soon.");
+        setFormData({ name: "", phone: "" });
+        setIsSubmitting(false);
+      }, 1000);
+
+    } catch (error) {
+      console.error("Submission error:", error);
+      toast.error("Failed to submit form. Please try again.");
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="py-6 flex flex-col ">
       <div className="footerMain flex flex-col md:flex-row flex-wrap justify-around gap-10 ">
         <div className="flex flex-row justify-between items-center gap-10 w-full">
           <div className="w-1/2">
-            <div className="flex flex-col gap-6 max-w-md">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-6 max-w-md">
               <input
                 type="text"
+                name="name"
                 placeholder="Name"
+                value={formData.name}
+                onChange={handleInputChange}
                 className="w-full bg-transparent border border-[#70FF00] rounded-md px-4 py-2 text-white placeholder:text-gray-400 focus:outline-none focus:border-[#70FF00]"
+                disabled={isSubmitting}
               />
               <input
-                type="text"
+                type="tel"
+                name="phone"
                 placeholder="Phone"
+                value={formData.phone}
+                onChange={handleInputChange}
                 className="w-full bg-transparent border border-[#70FF00] rounded-md px-4 py-2 text-white placeholder:text-gray-400 focus:outline-none focus:border-[#70FF00]"
+                disabled={isSubmitting}
               />
-              <button className="w-full bg-[#70FF00]/60 p-2 uppercase rounded-md hover:bg-[#70FF00]/80 transition-colors">
-                Contact Us
+              <button 
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full bg-[#70FF00]/60 p-2 uppercase rounded-md hover:bg-[#70FF00]/80 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? "Submitting..." : "Contact Us"}
               </button>
-            </div>
+            </form>
           </div>
 
           <div className="w-1/2 flex justify-end items-end">
@@ -182,6 +255,7 @@ function Footer() {
       <h2 className="md:text-center text-[1rem] ml-12 pt-8 text-[#dbdada]">
         © 2025 | Tapclone | All Rights Reserved
       </h2>
+      <ToastContainer />
     </div>
   );
 }

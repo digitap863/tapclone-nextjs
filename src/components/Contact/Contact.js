@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import contactHeading from "../../assets/contact/contact.svg";
 import grid from "../../assets/contact/grid.svg";
 import "./Contact.css";
-import { toast } from "react-toastify";
+import { toast,ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Ellipse1 from "../../assets/contact/Ellipse 17.png";
 import Ellipse2 from "../../assets/contact/Ellipse 18.png";
@@ -23,7 +23,7 @@ import * as Yup from 'yup';
 import Image from "next/image";
 import StarBlinkingPortal from "../Shared/StarBlinkingPortal";
 import { motion } from "framer-motion";
-import { Toaster } from "react-hot-toast";
+i
 
 
 const containerVariant = {
@@ -424,7 +424,7 @@ function Contact() {
             </div>
           </div>
         </div>
-        <Toaster/>
+        <ToastContainer/>
         <div className="knowMoreLayer"></div>
       </div>
 
