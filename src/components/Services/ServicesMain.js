@@ -1,6 +1,5 @@
 "use client"
 import React, { useState } from "react";
-import ReactCardFlip from "react-card-flip";
 import "./Services.css";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -39,7 +38,7 @@ function ServicesMain() {
       <br/>
       <br/>
       `,
-      isFlipped: false,
+      
     },
     {
       id: 2,
@@ -49,7 +48,7 @@ function ServicesMain() {
 
       UI/UX design and web development are interconnected stages in the creation of a digital product. Effective collaboration between designers and developers is crucial to ensure a cohesive and successful end result that not only looks visually appealing but also provides a seamless and enjoyable user experience
       `,
-      isFlipped: false,
+      
     },
     {
       id: 3,
@@ -66,7 +65,7 @@ function ServicesMain() {
 
       Our goal? To carve out a clear space in the minds of your audience, where you are their cherished and unrivaled choice. Through our expertise, be known, loved, and preferred      
       `,
-      isFlipped: false,
+      
     },
     {
       id: 4,
@@ -77,7 +76,7 @@ function ServicesMain() {
       As owners of businesses who are targeting to grow their consumer base should really have a strong digital base first. A business page is one thing to start with but utilizing it the right way is something every business seems to struggle with  <br/> <br/>
       
       So  instead of posting promotions for users without any thought. We make sure that the content you post satisfies connection and engages in communication while building community `,
-      isFlipped: false,
+
     },
 
     {
@@ -89,7 +88,7 @@ function ServicesMain() {
       Make no mistake - SEO is not just some passing trend or a bonus add-on. It's a crucial element of any marketing plan aimed at attracting qualified leads and boosting sales. By improving your site's search engine rankings, SEO can help your business reach new audiences.
       
       `,
-      isFlipped: false,
+
     },
     {
       id: 6,
@@ -107,27 +106,15 @@ function ServicesMain() {
       
       Imagine your business being front and center when potential customers in and around your store location search for the services you offer. Imagine captivating their attention and drawing them in with all the relevant information
        `,
-      isFlipped: false,
+
     },
   ];
   
 
   
 
-  //card fliping
-  const [isFlipped, setisFlipped] = useState(servicesArr);
 
-  // const handleClick = () => {
-  //   setisFlipped(!isFlipped);
-  // };
-  const handleClick = (id) => {
-    // Find the item with the given id and update isFlipped
-    setisFlipped((prevServices) =>
-      prevServices.map((item) =>
-        item.id === id ? { ...item, isFlipped: !item.isFlipped } : item
-      )
-    );
-  };
+  
 
   
 
@@ -211,35 +198,31 @@ function ServicesMain() {
             </Swiper>
           </div>
           <div className="serviceDetails !hidden md:!grid">
-            {isFlipped &&
-              isFlipped.map((items) => (
-                <ReactCardFlip
-                  key={items.id}
-                  isFlipped={items.isFlipped}
-                  flipDirection="horizontal"
-                >
+            {servicesArr &&
+              servicesArr.map((items) => (
+        
                   <div
                     className=" serv-1 md:!flex !hidden  cursor-pointer  items-center justify-center mx-auto"
-                    onMouseEnter={() => handleClick(items.id)}
                     style={{
                       backgroundImage: `url('${grid}')`,
                       backgroundSize: "cover",
                     }}
+                    key={items.id}
                   >
                     <Image src={items.img} alt="service" />
                     <h5 className="mb-10">{items.title}</h5>
                   </div>
-                  <div
-                    className=" w-[80%]   bg-slate-700/30 backdrop-blur-md rounded-2xl border border-gray-600 cursor-pointer px-6 py-6  2xl:py-10"
-                    onMouseLeave={() => handleClick(items.id)}
-                  >
-                    <h4 className="">{items.title}</h4>
-                    <p
-                      className="text-[0.780rem]  2xl:text-[0.900rem] mt-3 2xl:mt-5"
-                      dangerouslySetInnerHTML={{ __html: items.para }}
-                    ></p>
-                  </div>
-                </ReactCardFlip>
+                  // <div
+                  //   className=" w-[80%]   bg-slate-700/30 backdrop-blur-md rounded-2xl border border-gray-600 cursor-pointer px-6 py-6  2xl:py-10"
+                  //   onMouseLeave={() => handleClick(items.id)}
+                  // >
+                  //   <h4 className="">{items.title}</h4>
+                  //   <p
+                  //     className="text-[0.780rem]  2xl:text-[0.900rem] mt-3 2xl:mt-5"
+                  //     dangerouslySetInnerHTML={{ __html: items.para }}
+                  //   ></p>
+                  // </div>
+   
               ))}
 
             <Image
