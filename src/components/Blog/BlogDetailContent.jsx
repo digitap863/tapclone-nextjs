@@ -2,16 +2,10 @@
 import React from "react";
 import StarPortal from "../Shared/StarBlinkingPortal";
 import { IoArrowBackSharp } from "react-icons/io5";
-import blog from "../../assets/home/blogimage.png";
 import Image from "next/image";
 import Link from "next/link";
-import { connect } from "@/dbConfig/db.Config";
-import { Blog } from "@/models/blog";
 
-const BlogDetailContent = async ({ params }) => {
-  await connect();
-  const blog = await Blog.findOne({ slug: params.slug });
- 
+const BlogDetailContent = ({ blog }) => {
   const createdAt = blog.createdAt ? new Date(blog.createdAt).toLocaleDateString() : '';
   const content = typeof blog.content === 'string' ? blog.content : '';
   return (

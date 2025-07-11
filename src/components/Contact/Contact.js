@@ -22,8 +22,8 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Image from "next/image";
 import StarBlinkingPortal from "../Shared/StarBlinkingPortal";
-import { motion } from "framer-motion";
-i
+import { motion } from "motion/react";
+
 
 
 const containerVariant = {
