@@ -8,7 +8,15 @@ const gallerySchema = new mongoose.Schema({
   },
   image: {
     type: String,
-    required: [true, "Image is required"],
+    // required: [true, "Image is required"],
+  },
+  video: {
+    type: String,
+    // required: [true, "Video ID is required"],
+  },
+  videoId:{
+    type: String,
+    // required: [true, "Video ID is required"],
   }
 }, {
   timestamps: true,

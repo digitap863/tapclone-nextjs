@@ -21,18 +21,21 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { MoreHorizontal, Trash2, Plus } from 'lucide-react';
-
-
+import { MoreHorizontal, Trash2, Plus, Play } from 'lucide-react';
 
 const Gallery = () => {
   const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isUploading, setIsUploading] = useState(false);
   const [showUploadForm, setShowUploadForm] = useState(false);
+  const [showUploadFormVideo, setShowUploadFormVideo] = useState(false);  
   const [formData, setFormData] = useState({
     title: '',
     image: null,
+  });
+  const [videoFormData, setVideoFormData] = useState({
+    title: '',
+    video: '',
   });
 
   useEffect(() => {
@@ -43,13 +46,13 @@ const Gallery = () => {
     try {
       const response = await fetch('/api/admin/gallery');
       if (!response.ok) {
-        throw new Error('Failed to fetch images');
+        throw new Error('Failed to fetch gallery items');
       }
       const data = await response.json();
       setImages(data);
     } catch (error) {
-      console.error('Error fetching images:', error);
-      toast.error('Failed to fetch images');
+      console.error('Error fetching gallery items:', error);
+      toast.error('Failed to fetch gallery items');
     } finally {
       setIsLoading(false);
     }
@@ -60,13 +63,39 @@ const Gallery = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
+  const handleVideoInputChange = (e) => {
+    const { name, value } = e.target;
+    setVideoFormData(prev => ({ ...prev, [name]: value }));
+  };
+
   const handleImageChange = (e) => {
     if (e.target.files && e.target.files[0]) {
       setFormData(prev => ({ ...prev, image: e.target.files[0] }));
     }
   };
 
-  const handleSubmit = async (e) => {
+  const extractYouTubeId = (url) => {
+  try {
+    const parsedUrl = new URL(url);
+    const hostname = parsedUrl.hostname;
+
+    // Case: https://www.youtube.com/watch?v=ID
+    if (parsedUrl.searchParams.has('v')) {
+      return parsedUrl.searchParams.get('v');
+    }
+
+    // Case: https://youtu.be/ID or https://youtube.com/shorts/ID
+    const pathParts = parsedUrl.pathname.split('/');
+    const possibleId = pathParts[pathParts.length - 1];
+    
+    return possibleId.length === 11 ? possibleId : null;
+  } catch (error) {
+    return null;
+  }
+};
+
+
+  const handleImageSubmit = async (e) => {
     e.preventDefault();
     if (!formData.title || !formData.image) {
       toast.error('Title and image are required');
@@ -123,8 +152,83 @@ const Gallery = () => {
     }
   };
 
+  const handleVideoSubmit = async (e) => {
+    console.log('handleVideoSubmit called'); // Debug log
+    e.preventDefault();
+    
+    if (!videoFormData.title || !videoFormData.video) {
+      toast.error('Title and video link are required');
+      return;
+    }
+    
+    const video = videoFormData.video;
+
+    console.log('Video URL:', video); // Debug log
+    const videoId = extractYouTubeId(videoFormData.video);
+    console.log('Extracted Video ID:', videoId); // Debug log
+    
+    if (!videoId) {
+      toast.error('Please enter a valid YouTube URL');
+      return;
+    }
+
+    console.log('Video ID:', videoId); // Debug log
+    try {
+      setIsUploading(true);
+      
+      const response = await fetch('/api/admin/gallery', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          title: videoFormData.title,
+          video: video,
+          videoId: videoId,
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to upload video');
+      }
+
+      toast.success('Video uploaded successfully!', {
+        duration: 4000,
+        position: 'top-right',
+        style: {
+          background: '#10B981',
+          color: '#fff',
+          padding: '16px',
+          borderRadius: '8px',
+        },
+      });
+
+      setVideoFormData({
+        title: '',
+        video: '',
+      });
+      setShowUploadFormVideo(false);
+      fetchImages();
+    } catch (error) {
+      console.error('Error uploading video:', error);
+      toast.error(error instanceof Error ? error.message : 'Failed to upload video', {
+        duration: 4000,
+        position: 'top-right',
+        style: {
+          background: '#EF4444',
+          color: '#fff',
+          padding: '16px',
+          borderRadius: '8px',
+        },
+      });
+    } finally {
+      setIsUploading(false);
+    }
+  };
+
   const handleDelete = async (id) => {
-    if (!confirm('Are you sure you want to delete this image? This action cannot be undone.')) {
+    if (!confirm('Are you sure you want to delete this item? This action cannot be undone.')) {
       return;
     }
 
@@ -135,10 +239,10 @@ const Gallery = () => {
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.error || 'Failed to delete image');
+        throw new Error(errorData.error || 'Failed to delete item');
       }
 
-      toast.success('Image deleted successfully!', {
+      toast.success('Item deleted successfully!', {
         duration: 4000,
         position: 'top-right',
         style: {
@@ -151,8 +255,8 @@ const Gallery = () => {
 
       fetchImages();
     } catch (error) {
-      console.error('Error deleting image:', error);
-      toast.error(error instanceof Error ? error.message : 'Failed to delete image', {
+      console.error('Error deleting item:', error);
+      toast.error(error instanceof Error ? error.message : 'Failed to delete item', {
         duration: 4000,
         position: 'top-right',
         style: {
@@ -173,19 +277,63 @@ const Gallery = () => {
     });
   };
 
+  const handleFormToggle = (formType) => {
+    if (formType === 'image') {
+      setShowUploadForm(!showUploadForm);
+      setShowUploadFormVideo(false);
+      // Reset video form when switching
+      setVideoFormData({ title: '', video: '' });
+    } else {
+      setShowUploadFormVideo(!showUploadFormVideo);
+      setShowUploadForm(false);
+      // Reset image form when switching
+      setFormData({ title: '', image: null });
+    }
+  };
+
+  // Separate handlers for showing forms
+  const showImageForm = () => {
+    setShowUploadForm(true);
+    setShowUploadFormVideo(false);
+    setVideoFormData({ title: '', video: '' });
+  };
+
+  const showVideoForm = () => {
+    setShowUploadFormVideo(true);
+    setShowUploadForm(false);
+    setFormData({ title: '', image: null });
+  };
+
+  const hideAllForms = () => {
+    setShowUploadForm(false);
+    setShowUploadFormVideo(false);
+  };
+
   return (
     <div className="container mx-auto px-4 py-8">
       <Card>
         <CardHeader className="flex flex-row items-center justify-between">
-          <CardTitle>Gallery Images</CardTitle>
-          <Button onClick={() => setShowUploadForm(!showUploadForm)}>
-            <Plus className="mr-2 h-4 w-4" />
-            {showUploadForm ? 'Cancel' : 'Upload Image'}
-          </Button>
+          <CardTitle>Gallery</CardTitle>
+          <div className='flex space-x-2'>
+            <Button 
+              onClick={showUploadForm ? hideAllForms : showImageForm}
+              variant={showUploadForm ? "secondary" : "default"}
+            >
+              <Plus className="mr-2 h-4 w-4" />
+              {showUploadForm ? 'Cancel' : 'Upload Image'}
+            </Button>
+            <Button 
+              onClick={showUploadFormVideo ? hideAllForms : showVideoForm}
+              variant={showUploadFormVideo ? "secondary" : "default"}
+            >
+              <Plus className="mr-2 h-4 w-4" />
+              {showUploadFormVideo ? 'Cancel' : 'Upload Video'}
+            </Button>
+          </div>
         </CardHeader>
         <CardContent>
           {showUploadForm && (
-            <form onSubmit={handleSubmit} className="mb-8 space-y-4">
+            <form onSubmit={handleImageSubmit} className="mb-8 space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="title">Title</Label>
                 <Input
@@ -215,6 +363,38 @@ const Gallery = () => {
             </form>
           )}
 
+          {showUploadFormVideo && (
+            <form onSubmit={handleVideoSubmit} className="mb-8 space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="videoTitle">Title</Label>
+                <Input
+                  id="videoTitle"
+                  name="title"
+                  value={videoFormData.title}
+                  onChange={handleVideoInputChange}
+                  placeholder="Enter video title"
+                  required
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="video">YouTube Video URL</Label>
+                <Input
+                  id="video"
+                  name="video"
+                  value={videoFormData.video}
+                  onChange={handleVideoInputChange}
+                  placeholder="Enter YouTube video URL (e.g., https://www.youtube.com/watch?v=...)"
+                  required
+                />
+              </div>
+
+              <Button type="submit" disabled={isUploading}>
+                {isUploading ? 'Uploading...' : 'Upload Video'}
+              </Button>
+            </form>
+          )}
+
           {isLoading ? (
             <div className="flex justify-center items-center h-64">
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
@@ -223,8 +403,9 @@ const Gallery = () => {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Image</TableHead>
+                  <TableHead>Media</TableHead>
                   <TableHead>Title</TableHead>
+                  <TableHead>Type</TableHead>
                   <TableHead>Uploaded</TableHead>
                   <TableHead className="text-right">Actions</TableHead>
                 </TableRow>
@@ -232,25 +413,38 @@ const Gallery = () => {
               <TableBody>
                 {images.length === 0 ? (
                   <TableRow>
-                    <TableCell colSpan={4} className="text-center">
-                      No images found
+                    <TableCell colSpan={5} className="text-center">
+                      No items found
                     </TableCell>
                   </TableRow>
                 ) : (
-                  images.map((image) => (
-                    <TableRow key={image._id}>
+                  images.map((item) => (
+                    <TableRow key={item._id}>
                       <TableCell>
                         <div className="relative w-16 h-16">
-                          <Image
-                            src={image.image}
-                            alt={image.title}
-                            fill
-                            className="object-cover rounded"
-                          />
+                          {item.image ? (
+                            <Image
+                              src={item.image}
+                              alt={item.title}
+                              fill
+                              className="object-cover rounded"
+                            />
+                          ) : item.video ? (
+                            <div className="w-16 h-16 bg-gray-200 rounded flex items-center justify-center">
+                              <Play className="h-6 w-6 text-gray-600" />
+                            </div>
+                          ) : null}
                         </div>
                       </TableCell>
-                      <TableCell className="font-medium">{image.title}</TableCell>
-                      <TableCell>{formatDate(image.createdAt)}</TableCell>
+                      <TableCell className="font-medium">{item.title}</TableCell>
+                      <TableCell>
+                        <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                          item.image ? 'bg-blue-100 text-blue-800' : 'bg-red-100 text-red-800'
+                        }`}>
+                          {item.image ? 'Image' : 'Video'}
+                        </span>
+                      </TableCell>
+                      <TableCell>{formatDate(item.createdAt)}</TableCell>
                       <TableCell className="text-right">
                         <DropdownMenu>
                           <DropdownMenuTrigger asChild>
@@ -259,8 +453,16 @@ const Gallery = () => {
                             </Button>
                           </DropdownMenuTrigger>
                           <DropdownMenuContent align="end">
+                            {item.video && (
+                              <DropdownMenuItem
+                                onClick={() => window.open(`${item.video}`, '_blank')}
+                              >
+                                <Play className="mr-2 h-4 w-4" />
+                                Watch Video
+                              </DropdownMenuItem>
+                            )}
                             <DropdownMenuItem
-                              onClick={() => handleDelete(image._id)}
+                              onClick={() => handleDelete(item._id)}
                               className="text-red-600"
                             >
                               <Trash2 className="mr-2 h-4 w-4" />
