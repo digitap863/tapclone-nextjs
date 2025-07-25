@@ -126,7 +126,7 @@ useEffect(() => {
             </p>
 
             {/* Toggle Buttons */}
-            <div className="flex items-center justify-center mb-8 absolute bottom-0 right-0">
+            <div className="flex items-center justify-center mb-8 md:absolute md:bottom-0 md:right-0">
               <div className="bg-gray-800/50 backdrop-blur-sm rounded-full p-1 border border-gray-600/30">
                 <button
                   onClick={() => setActiveTab('images')}
