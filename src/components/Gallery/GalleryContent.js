@@ -194,7 +194,10 @@ useEffect(() => {
                     )}
 
                     {/* Overlay */}
-                    <div onClick={() => window.open(item.video, '_blank')} className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 group-hover:border-2 group-hover:border-[#D8FC00] transition-opacity duration-300 rounded-lg">
+                    <div 
+                      onClick={() => activeTab !== 'images' && window.open(item.video, '_blank')} 
+                      className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 group-hover:border-2 group-hover:border-[#D8FC00] transition-opacity duration-300 rounded-lg"
+                    >
                       <div className="absolute bottom-4 left-4 right-4">
                         <h3 className="text-white font-semibold text-lg mb-2">{item.title}</h3>
                         <p className="text-white/80 text-sm">

@@ -34,8 +34,14 @@ const GalleryDetailComponent = () => {
         const found = data.find(img => (img._id || String(data.indexOf(img))) === id)
         if (isMounted) {
           setImage(found)
-          setRelatedImages(data.filter(img => (img._id || String(data.indexOf(img))) !== id))
-        }
+          setRelatedImages(
+            data.filter(
+              (img) => 
+                !img.video && // Exclude items with a 'video' field
+                (img._id || String(data.indexOf(img))) !== id
+            )
+          );
+        } 
       } catch (err) {
         if (isMounted) setError(err.message)
       } finally {
