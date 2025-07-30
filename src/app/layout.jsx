@@ -28,8 +28,7 @@ export default function RootLayout({ children }) {
           `}
         </Script>
 
-        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K4S3MRWC"
-        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        
 
 
         <script
@@ -71,6 +70,9 @@ export default function RootLayout({ children }) {
           '--font-monument-ultrabold': '"Monument Extended Ultrabold", sans-serif',
         }}
       >
+        {/* Google Tag Manager Script */}
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K4S3MRWC"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         {children}
         <div id="star-root"></div>
       </body>
