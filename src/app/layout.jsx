@@ -11,6 +11,9 @@ const poppins = Poppins({
 export const metadata = {
   title: "Tapclone | Digital Marketing, Content & Web Development in Kerala",
   description: "Tapclone is a Kerala-based agency offering ROI-driven digital marketing, engaging content production, and custom website development for brands that want to grow.",
+  alternates: {
+    canonical: "https://www.tapclone.in/",
+  },
 };
 
 export default function RootLayout({ children }) {
@@ -48,6 +51,7 @@ export default function RootLayout({ children }) {
             }),
           }}
         />
+        <meta name="robots" content="index, follow"></meta>
       </head>
       <body
         className={`${poppins.variable} antialiased`}

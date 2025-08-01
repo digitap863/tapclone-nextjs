@@ -7,6 +7,9 @@ import React from 'react'
 export const metadata = {
   title: "Tapclone Blogs | Insights, Tips & Trends",
   description: "Stay ahead with our latest blog posts on web development, content creation, and digital marketing. We share expert insights and trends to help you grow your business.",
+  alternates: {
+    canonical: "https://www.tapclone.in/blogs",
+  },
 };
 
 const BlogsPage = () => {
