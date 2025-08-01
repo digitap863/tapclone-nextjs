@@ -9,14 +9,18 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: "Tapclone | Digital Marketing, Content & Web Development in Kerala",
-  description: "Tapclone is a Kerala-based agency offering ROI-driven digital marketing, engaging content production, and custom website development for brands that want to grow.",
+  title: "Digital Marketing Company in Kochi, Kerala |Tapclone ",
+  description: "Grow your company with TAPCLONE, a Top Digital Marketing Company in Kochi, Kerala, that specializes in web design, branding, SEO, GMB, and Google Ads.Call Now",
   robots: {
     index: true,
     follow: true,
   },
   alternates: {
     canonical: "https://www.tapclone.in/",
+  },
+   other: {
+    keywords:
+      "advertising agencies in kochi, best digital marketing agency kochi, advertising companies in kochi, best digital marketing companies in kochi, best advertising agency in kochi",
   },
 };
 
