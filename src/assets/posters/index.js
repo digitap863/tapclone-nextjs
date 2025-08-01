@@ -68,9 +68,9 @@ import poster_64 from "./WhatsApp Image 2025-07-05 at 17.14.29 (1).jpeg";
 // First array with first 34 posters
 export const imgArr1 = [
 
-    { image1: poster_2, text: "Poster" },
-    { image1: poster_3, text: "Poster" },
-    { image1: poster_4, text: "Poster" },
+    { image1: poster_2, text: "Florid" },
+    { image1: poster_3, text: "Zohaland" },
+    { image1: poster_4, text: "limespa" },
     { image1: poster_5, text: "Poster" },
     { image1: poster_6, text: "Poster" },
     { image1: poster_7, text: "Poster" },

@@ -10,7 +10,7 @@ const poppins = Poppins({
 
 export const metadata = {
   title: "Digital Marketing Company in Kochi, Kerala |Tapclone ",
-  description: "Grow your company with TAPCLONE, a Top Digital Marketing Company in Kochi, Kerala, that specializes in web design, branding, SEO, GMB, and Google Ads.Call Now",
+  description: "Grow your company with TAPCLONE, a Top Digital Marketing Company in Kochi, Kerala, that specializes in <b>Web Design,SMM,SEO,GMB,and Google Ads</b>.Call Now",
   robots: {
     index: true,
     follow: true,
