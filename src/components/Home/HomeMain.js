@@ -860,6 +860,13 @@ function HomeMain() {
             <br />
             Lets&apos;s Do Business
           </h1>
+
+          <h1 className="!text-5xl !mb-3 capitalize font-semibold  pt-10">Digital marketing company kochi,Kerala</h1>
+          <p className='max-w-4xl text-lg text-gray-300 md:text-2xl font-poppins font-thin mt-4 text-center lg:text-center'>Delivering successful digital marketing solutions to companies in Kochi and beyond is our area of expertise at Tapclone. One of the top digital marketing company in Kochi,Kerala, we combine strategy, data, and creativity to help your company grow internationally and stand out in the local market.</p>
+
+
+
+          
           {/* <div
             className="contactButton "
             style={{ cursor: "pointer" }}
