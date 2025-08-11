@@ -13,6 +13,7 @@ import ufo from "../../assets/svg/ufo.svg";
 import ufoPlanet from "../../assets/Asset 4@3002 28.png";
 import rocket from "../../assets/svg/rocket.svg";
 import blueplanet from "../../assets/bluePlanet.png";
+import { Plus, Minus } from 'lucide-react';
 import gsap from "gsap";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 import ufo2 from "../../assets/svg/Layer 4.svg";
@@ -39,7 +40,6 @@ import logo_19 from "../../assets/home/logo_19.png";
 import logo_20 from "../../assets/home/logo_20.png";
 import logo_21 from "../../assets/home/logo_21.png";
 import logo_22 from "../../assets/home/logo_22.png";
-
 import planet1 from "../../assets/svg/globe 2.svg";
 import { createPortal } from "react-dom";
 import worldMap from "../../assets/worldMap.svg";
@@ -217,7 +217,13 @@ function HomeMain() {
   const [loaded, setLoaded] = useState(false);
   const myRef = useRef();
   const ufoStartRef = useRef(null);
+   const [openIndex, setOpenIndex] = useState(null);
   // const [ufoVisible, setUfoVisible] = useState(false);
+
+  const handleToggle = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -344,6 +350,46 @@ function HomeMain() {
       setstarsLoader([]);
     }
   }, [state]);
+
+  const faqData = [
+    {
+      question: "What services does Tapclone offer?",
+      answer: "We are here to offer all the services you need, including SEO, social media marketing, Google Ads, branding, UI/UX design, website development, content marketing and more."
+    },
+    {
+      question: "Do you offer complete digital marketing packages?",
+      answer: "Yes, we can tailor packages based on your business goals, industry and budget."
+    },
+    {
+      question: "Does Tapclone provide website design and development?",
+      answer: "Definitely! We build responsive, user-friendly websites that are designed to convert visitors into customers."
+    },
+    {
+      question: "Do you offer social media marketing services?",
+      answer: "Yes, we can manage marketing campaigns on Instagram, Facebook, LinkedIn and YouTube, while including content and ad management."
+    },
+    {
+      question: "Can you help with branding and logo design?",
+      answer: "Sure, Tapclone also does branding, logo creation and visual identity."
+    },
+    {
+      question: "Do you provide local SEO services in Kochi?",
+      answer: "Yes, we provide local SEO strategies to enhance visibility on Google for local searches."
+    },
+    {
+      question: "How long does it take to see results with Tapclone’s digital marketing services?",
+      answer: "It all depends on the service. Some services like social media marketing and online ads may see results instantly, while SEO can take between 3–6 months depending on your website and competition. At Tapclone we focus on providing meaningful, data-fueled results in the fastest way possible."
+    },
+    {
+      question: "Why partner with Tapclone over other digital marketing companies in Kerala?",
+      answer: "Tapclone offers smart, tailored marketing solutions to help your business grow online. We care about results and clients, use the latest strategies, and provide personalized support to every client, which is why we are your trusted partner in Kerala."
+    },
+    {
+      question: "Why is local SEO important when hiring the best SEO company near me?",
+      answer: "Local SEO helps your business appear for searches in your local area so you can be found quicker by your customers. TapClone's local SEO service emphasizes optimizing your Google Business Profile, local keywords and local directory listings so you can be best placed locally."
+    }
+  ];
+
   return (
     <StarBlinkingPortal>
       <div
@@ -697,34 +743,6 @@ function HomeMain() {
           </div>
         </section>
         <ServicesHome />
-        {/* <section className="brandSection pt-28  " ref={ufoStartRef}>
-          <h1>
-            We believe in brands. <br />
-            brands <span style={{ color: "#70ff00" }}>believe in us</span>
-          </h1>
-          <div className="brandSectionUfo relative ">
-            <Image src={ufo2} alt="" className="floating" />
-            <Image src={ufoLight} alt="" className="floating" />
-            <div className="flex items-center justify-center">
-              <div className="logoSlider absolute top-[55%]">
-                <Slider {...settings}>
-                  {images.map((item, idx) => (
-                    <div
-                      key={idx}
-                      className={
-                        idx === imageIndex
-                          ? "brandSliderDiv activeSlide"
-                          : "brandSliderDiv"
-                      }
-                    >
-                      <Image src={item} alt="" />
-                    </div>
-                  ))}
-                </Slider>
-              </div>
-            </div>
-          </div>
-        </section> */}
         <Ourportfolio />
         <ProjectSection />
         <section
@@ -861,20 +879,97 @@ function HomeMain() {
             Lets&apos;s Do Business
           </h1>
 
-          <h1 className="!text-5xl !mb-3 capitalize font-semibold  pt-10">Digital marketing company kochi,Kerala</h1>
-          <p className='max-w-4xl text-lg text-gray-300 md:text-2xl font-poppins font-thin mt-4 text-center lg:text-center'>Delivering successful digital marketing solutions to companies in Kochi and beyond is our area of expertise at Tapclone. One of the top digital marketing company in Kochi,Kerala, we combine strategy, data, and creativity to help your company grow internationally and stand out in the local market.</p>
+          <h1 className="!text-4xl !mb-2 capitalize font-semibold  pt-10">Digital marketing company kochi,Kerala</h1>
+          <p className='max-w-4xl text-lg text-gray-300 md:text-xl font-poppins font-thin mt-4 text-center lg:text-center'>Delivering successful digital marketing solutions to companies in Kochi and beyond is our area of expertise at Tapclone. One of the top digital marketing company in Kochi,Kerala, we combine strategy, data, and creativity to help your company grow internationally and stand out in the local market.</p>
 
+          <div className="max-w-4xl mx-auto text-white pt-14  pb-10">
+              <div className="text-center mb-12">
+                <h2 className="!text-4xl !mb-2 capitalize font-semibold  pt-10">Frequently Asked Questions</h2>
+                <p className="text-gray-400">Can't find the answer you're looking for? Reach out to our team.</p>
+              </div>
 
+              <div className="space-y-4">
+                {faqData.map((faq, index) => (
+                  <div key={index} className="border border-gray-700 rounded-lg overflow-hidden">
+                    {/* Question / Toggle Button */}
+                    <button
+                      onClick={() => handleToggle(index)}
+                      className="w-full flex justify-between items-center text-left p-5 focus:outline-none bg-transparent  transition-colors"
+                    >
+                      <span className="text-lg font-medium">{faq.question}</span>
+                      <span>
+                        {openIndex === index ? (
+                          <Minus className="w-6 h-6 text-green-400" />
+                        ) : (
+                          <Plus className="w-6 h-6 text-gray-400" />
+                        )}
+                      </span>
+                    </button>
 
-          
-          {/* <div
-            className="contactButton "
-            style={{ cursor: "pointer" }}
-            onClick={() => navigate("/contact")}
-          >
-            <span>CONTACT</span>
-          </div> */}
+                    {/* Answer Panel */}
+                    <div
+                      className={`grid overflow-hidden transition-all duration-500 ease-in-out ${
+                        openIndex === index ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+                      }`}
+                    >
+                      <div className="overflow-hidden">
+                        <p className="p-5 bg-black text-gray-300 leading-relaxed">
+                          {faq.answer}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+          </div>
+
         </section>
+
+          {/* --- NEW FAQ Section --- */}
+          {/* <section
+          
+           className="   px-4">
+            <div className="max-w-4xl mx-auto text-white pt-10 pb-10">
+              <div className="text-center mb-12">
+                <h1 className="!text-4xl !mb-2 capitalize font-semibold  pt-10">Frequently Asked Questions</h1>
+                <p className="text-gray-400">Can't find the answer you're looking for? Reach out to our team.</p>
+              </div>
+
+              <div className="space-y-4">
+                {faqData.map((faq, index) => (
+                  <div key={index} className="border border-gray-700 rounded-lg overflow-hidden">
+                   
+                    <button
+                      onClick={() => handleToggle(index)}
+                      className="w-full flex justify-between items-center text-left p-5 focus:outline-none bg-transparent  transition-colors"
+                    >
+                      <span className="text-lg font-medium">{faq.question}</span>
+                      <span>
+                        {openIndex === index ? (
+                          <Minus className="w-6 h-6 text-green-400" />
+                        ) : (
+                          <Plus className="w-6 h-6 text-gray-400" />
+                        )}
+                      </span>
+                    </button>
+
+                 
+                    <div
+                      className={`grid overflow-hidden transition-all duration-500 ease-in-out ${
+                        openIndex === index ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+                      }`}
+                    >
+                      <div className="overflow-hidden">
+                        <p className="p-5 bg-black text-gray-300 leading-relaxed">
+                          {faq.answer}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            </section> */}
 
         {/* <div className="knowMoreLayer "></div> */}
 
