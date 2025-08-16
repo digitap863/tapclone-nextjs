@@ -11,6 +11,7 @@ import service3 from "../../assets/services/Asset 16branding 1.svg";
 import service4 from "../../assets/services/Asset 17SOCIAL MEDIA 1.svg";
 import service5 from "../../assets/services/Asset 18SEO 1.svg";
 import service6 from "../../assets/services/Asset 20GMP 1.svg";
+import service7 from "../../assets/services/service7.svg";
 import ufoPlanet1 from "../../assets/Asset 4@3002 28.png";
 import ufoPlanet2 from "../../assets/Asset 5@30 1.png";
 import bluePlanet from "../../assets/bluePlanet.png";
@@ -94,6 +95,24 @@ function ServicesMain() {
       id: 6,
       title: "Google My Business",
       img: service6,
+      para: `
+      Did you know that 97% of people turn to the online realm when seeking information about a store location or a local business? <br/><br/>
+      
+      
+      As a business owner, you understand the importance of being in the right place at the right time. And in the digital world, that place is none other than the screens of your potential customers. <br/><br/>
+      
+      
+      Google My Business is one of Google’s free features that help you increase your company’s visibility by showcasing all the relevant information in search engines <br/><br/>
+      
+      
+      Imagine your business being front and center when potential customers in and around your store location search for the services you offer. Imagine captivating their attention and drawing them in with all the relevant information
+       `,
+
+    },
+      {
+      id: 7,
+      title: "Google Ads",
+      img: service7,
       para: `
       Did you know that 97% of people turn to the online realm when seeking information about a store location or a local business? <br/><br/>
       
