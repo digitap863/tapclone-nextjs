@@ -107,8 +107,9 @@ function ServicesMain() {
       
       Imagine your business being front and center when potential customers in and around your store location search for the services you offer. Imagine captivating their attention and drawing them in with all the relevant information
        `,
-
-    },
+      slug:"google-my-business"
+      
+      },
       {
       id: 7,
       title: "Google Ads",
@@ -128,14 +129,7 @@ function ServicesMain() {
 
     },
   ];
-  
 
-  
-
-
-  
-
-  
 
   return (
     <StarPortal>
@@ -200,7 +194,9 @@ function ServicesMain() {
             >
               {servicesArr.map((elem,index) => (
                 <SwiperSlide key={index}>
-                  <div className="w-full flex justify-center flex-col items-center p-4 min-h-[200px]">
+                  <div className="w-full flex justify-center flex-col items-center p-4 min-h-[200px]"
+                  onClick={() => router.push(`/service/${slug}`)}
+                  >
                     <div className="w-full flex justify-center">
                       <Image 
                         src={elem.img} 
@@ -231,17 +227,6 @@ function ServicesMain() {
                     <Image src={items.img} alt="service" />
                     <h5 className="mb-10">{items.title}</h5>
                   </div>
-                  // <div
-                  //   className=" w-[80%]   bg-slate-700/30 backdrop-blur-md rounded-2xl border border-gray-600 cursor-pointer px-6 py-6  2xl:py-10"
-                  //   onMouseLeave={() => handleClick(items.id)}
-                  // >
-                  //   <h4 className="">{items.title}</h4>
-                  //   <p
-                  //     className="text-[0.780rem]  2xl:text-[0.900rem] mt-3 2xl:mt-5"
-                  //     dangerouslySetInnerHTML={{ __html: items.para }}
-                  //   ></p>
-                  // </div>
-   
               ))}
 
             <Image

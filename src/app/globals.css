@@ -169,3 +169,19 @@ body {
     height: initial;
   }
 }
+
+
+/* service page ku */
+.pagination-white .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background-color: #ffffff; /* Sets the dot color to white */
+  opacity: 0.5;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Targets the active dot inside our custom-styled swiper */
+.pagination-white .swiper-pagination-bullet-active {
+  opacity: 1;
+  transform: scale(1.2);
+}

@@ -22,8 +22,6 @@ function AboutMain() {
       <div style={{ width: "100%", overflowX: "hidden" }}>
         <div className="header">
           <div className="logoSection">
-            {/* <h1 style={{ color: "white", margin: "0" }}>LOGO</h1> */}
-            {/* <img src={logoText} /> */}
           </div>
         </div>
         <div className="aboutMain ">
@@ -37,6 +35,7 @@ function AboutMain() {
             <Image className="bubble-Planet" src={bubPlanet} alt="bubPlanet" />
             <Image className="tail-Planet" src={tailPlanet} alt="tailPlanet" />
           </div>
+
           <div className="aboutDetails ">
             <div className="about-title  ">
               <h1>
@@ -75,6 +74,7 @@ function AboutMain() {
               description="anchored in the pursuit of ambitious goals. We navigate through challenges and triumphs In every project, venture, and endeavor, we infuse the spirit of our dreams"
             />
           </div>
+
         </div>
         <Knowmore />
       </div>
