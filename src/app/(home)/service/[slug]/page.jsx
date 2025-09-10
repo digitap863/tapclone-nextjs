@@ -324,7 +324,6 @@ import Knowmore from '@/components/Shared/Knowmore';
       
 
   }
-
 };
 
 const kebabToCamel = (str) => {
