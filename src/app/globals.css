@@ -152,8 +152,7 @@
     @apply bg-background text-foreground;
   }
 }
-html,
-body {
+html,body {
   margin: 0;
   padding: 0;
   color: white;
@@ -184,4 +183,12 @@ body {
 .pagination-white .swiper-pagination-bullet-active {
   opacity: 1;
   transform: scale(1.2);
+}
+
+.moving-effect{
+  animation: GFG-Planet 8s linear 1s infinite;
+}
+
+.moving-effect2{
+  animation: GFG-Planet 8s linear 2s reverse infinite;
 }

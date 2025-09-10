@@ -323,8 +323,169 @@ import Knowmore from '@/components/Shared/Knowmore';
     },
       
 
-  }
-  
+  },
+  seo: {
+    heading:"SEO",
+    section1:{
+    title1: [
+      'Boost Your Website','Rankings with the top','SEO Company in','KOCHI, KERALA'],
+    subtitle1:
+      'Searching for reliable SEO services near you? TapClone is the Top SEO Company in Kochi, Kerala, trusted by businesses to deliver real, measurable results. We help brands improve their online presence, attract the right audience, and stay ahead of competitors in today’s competitive digital market.',
+    image1: {
+      src: map,
+      alt: 'Google My Business location on a map',
+    },
+    },
+    section2:{
+    title2: [
+      'GROW YOUR BUSINESS','WITH GOOGLE MY ','BUSINESS OPTIMIZATION ','IN KOCHI'],
+    paragraphs2: [
+      'Google My Business  is a great tool that businesses around the world rely on to connect to local customers and build their business! Google My Business gets potential customers to find, contact and visit your business easily on any platform including mobile, desktop or Google Maps.',
+      'At Tapclone, we take tested SEO techniques, smart optimization, and reporting to give you the best optimization advantages in your local search, and at the specific time a customer is looking for your service or product. We manage your profile accurately but we also manage the keywords, updates, and reviews that will ensure your listings pop out!.',
+    ],
+    image2: {
+      src: step,
+      alt: 'Business growth chart',
+    },
+    },
+    section3:{
+       title: 
+      'GMB VERIFICATION SERVICE IN KOCHI & LOCAL SEO SOLUTIONS IN KERALA',
+    paragraphs: [
+      'Google My Business Is One Of The Most Effective Free Tools From Google, Which Helps Businesses Engage With Local Customers. Being The Largest Search Engine In The World It Promotes Businesses In Each Locality Using GMB Listings. As Such, It Allows Potential Customers To Find Detailed Information About Your Business Presence On A Map; Name, Address Details And The Name Of The Business.',
+      'As Google Added The Verification Process, Audiences Can Trust The Authenticity And Accuracy Of Your Business Information Using Google Verification Check As Well. This Builds Credibility And Often Results In Better Visibility In Local Search. At Tapclone, Our GMB Verification Service In Kochi, Gets Your Listing Verified Quickly, Correctly And Effectively. With The Local SEO Service In Kochi, Kerala We Help You Amplify Your Visibility To Allow You To Rank Better For Local Searches And Ultimately Get You The Chance To Sell More Products To Customers to Your Business.'
+    ],
+    image: {
+      src: google,
+      alt: 'Google G Logo'
+    }
+    },
+    section4:{
+      title: 'WE FOCUS ON',
+      subtitle: 'COMPREHENSIVE GOOGLE MY BUSINESS SOLUTIONS TO BOOST YOUR LOCAL PRESENCE AND DRIVE MORE CUSTOMERS TO YOUR BUSINESS.',
+      count:3,
+      features: [
+
+        {
+          number: '01',
+          title: 'Listing Optimization',
+          description: 'We Help Recover Suspended Google My Business Listings Quickly And Efficiently. Our Team Identifies The Root Cause And Applies The Right Solutions To Get Your Profile Reinstated. This Ensures Your Business Regains Visibility And Continues Attracting Local Customers Without Delay.'
+        },
+        {
+          number: '02',
+          title: 'Quality Issues',
+          description: 'Poor-Quality Or Inaccurate Information Can Hurt Your GMB Performance. We Audit Your Listing, Fix Errors, And Ensure It Meets Google\'s Quality Guidelines. This Builds Trust With Both Google And Your Customers, Improving Search Visibility.'
+        },
+        {
+          number: '03',
+          title: 'Ownership Issues',
+          description: 'If You\'ve Lost Access To Your GMB Listing Or Have Ownership Conflicts, We Can Help. Our Team Works Directly With Google To Verify Your Ownership And Transfer Access. This Gives You Full Control To Manage And Update Your Profile Anytime.'
+        },
+        {
+          number: '04',
+          title: 'Listing Optimization',
+          description: 'We Optimize Every Part Of Your GMB Profile For Maximum Impact. This Includes Keyword-Rich Descriptions, Engaging Photos, And Regular Updates. A Well-Optimized Listing Ranks Higher And Attracts More Clicks From Potential Customers.'
+        },
+        {
+          number: '05',
+          title: 'Management Service',
+          description: 'Our GMB Management Service Keeps Your Profile Fresh, Accurate, And Engaging. From Responding To Reviews To Posting Updates, We Handle It All. This Ongoing Attention Ensures Your Business Stays Competitive In Local Search Results.'
+        },
+        {
+          number: '06',
+          title: 'Local Directory Submission',
+          description: 'We Submit Your Business Details To Trusted Local And Niche Directories. This Boosts Your SEO, Increases Backlinks, And Improves Your Chances Of Appearing In Local Search Results. Consistent Listings Also Enhance Your Online Credibility.'
+        }
+      ]
+    },
+    section5:{
+      title: 'WHAT IS GOOGLE MY BUSINESS (GMB) ?',
+      subtitle: 'LOCAL SEO SERVICES IN KOCHI, KERALA',
+      mainParagraphs: [
+        'GMB, Now Called Google Business Profile, Is A Free And Valuable Resource That Provides A Way For You To Show Your Business In Local Search Results And On Google Maps. It Gives Clients Access To Your Business Contact Information, Location, Service Options, And Reviews — All In One Location.',
+        'If You’re A Business In Kochi Or Any Of The Suburbs In Kerala, You Must Have A Well-Optimized GMB Profile To Build Credibility And Reach Local Clientele. For Businesses Searching For GMB Optimization Services Or An SEO Company Near Me, Having A Strong Local Presence Is Essential.'
+      ],
+      features: [
+        {
+          title: 'Location Information',
+          description: 'Show Your Business Location On Google Maps With Accurate Address Details'
+        },
+        {
+          title: 'Customer Reviews',
+          description: 'Display Customer Reviews And Ratings To Build Trust And Credibility'
+        },
+        {
+          title: 'Contact Details',
+          description: 'Provide Easy Access To Your Phone Number, Website, And Contact Information'
+        },
+        {
+          title: 'Business Hours',
+          description: 'Keep Customers Informed About Your Operating Hours And Availability'
+        }
+      ],
+      concludingParagraphs: [
+        'Tapclone is Dedicated To Local SEO Services in Kochi, Kerala, Ensuring Your GMB Listing Is Fully Optimized For Exposure With The Correct Strategy. We Utilize Keyword-Rich Descriptions, Accurate Business Information, Images, Updates, And Review Management To Improve Your Local Search Position.',
+        'With The Right Strategy, Your Business Can Stand Out In Competitive Markets, Connect With Local Customers, And Help Expand The Business Effectively And Responsibly.'
+      ]
+    },
+    section6:{
+       title: 'BENEFITS OF GMB FOR BUSINESS',
+       subtitle :  'GOOGLE MY BUSINESS SERVICES - TRANSFORM YOUR LOCAL PRESENCE',
+      sections: [
+        {
+          paragraph: 'In A Growing Marketplace, It Is Essential For You To Establish An Effective Online Presence For Customers To Find You And Your Brand. Google My Business Services Offer Your Business The Ability To Show Up A Local Search Result And On Google Maps, Making It Easy For Potential Clients To Find You Quickly. Google My Business Not Only Allows You To Present Your Contact Info And Service Information, But It Can Also Be Used To Display Your Reviews From Customers To Help Build Trust And Increase Your Exposure In The Local Area.',
+          image: {
+            src: gmb,
+            alt: 'Google My Business 3D Illustration'
+          }
+        },
+        {
+          paragraph: 'By Using Tapclone’s GMB Service, You Are Guaranteed A Fully Optimized Business Profile With All The Correct Information, Engaging Images, Rich Descriptions With Relevant Keywords, And Regular Updates. This Improvement In Local Search Ranking Increases The Chances To Connect With Your Audience Directly. If You’ve Been Searching For An SEO Agency Near Me, Tapclone Offers Full Local SEO Strategies To Assist With Ensuring Your Business Is Found Locally, And Establishing Measurable Growth.',
+          image: {
+            src: gmb,
+            alt: 'Google My Business 3D Illustration 2'
+          }
+        }
+      ]
+    },
+    section7:{
+      titleLines: ['TAPCLONE', 'LOCAL SEO COMPANY', 'IN KOCHI'],
+      paragraphs: [
+          'In A Competitive City Like Kochi, Standing Out On Local Searches Is Imperative To Gain Customers. Local SEO Is Focused On Obtaining More Visibility On Location-Based Searches, So Potential Customers Are Able To Find Your Business When They Need It.',
+          'Improving Local SEO Can Be Achieved By Utilizing Unique Keywords, Optimizing The Availability Of Google Maps On Your Site, And Boosting Your Online Reputation. Increased Brand Awareness And Higher Conversion Rates Can Lead To Achieving Results Like This For Your Business.',
+          'It Is A Well-Known Fact That Tapclone Is An Local Seo Company In Kochi That You Can Trust, Providing Result-Driven Google My Business Optimization And Full Local Seo Services. Tapclone Assists You With Everything From Proper Business Listings And Engaging Content, To Keyword-Optimized Gmb Profiles And Managing Reviews To Dominate Local Seo Rankings.'
+      ],
+      services: {
+          title: 'Our Complete Local SEO Services Include:',
+          list: [
+              'GMB Profile Optimization & Management',
+              'Local Directory Submissions',
+              'Review Management & Response',
+              'Local Keyword Optimization',
+              'Citation Building & NAP Consistency'
+          ]
+      },
+      imageUrl: tapp,
+      imageAlt: 'Tapclone T Logo'
+    },
+    section8:{
+       title: 'WHY CHOOSE TAPCLONE?',
+        subtitle: 'LOCAL SEO SERVICES IN KOCHI, KERALA',
+        mainParagraphs: 'At Tapclone, We Integrate Creativity, Strategy And Technology To Deliver Marketing Solutions That Really Work. From Google My Business Optimizations To Local SEO And Even Large-Scale Digital Campaigns, Our Approach Is Results-Focused And Tailored To Suit Your Brand And Its Goals.',
+        features: [
+            { title: 'Proven Results', description: 'We Integrate Creativity, Strategy And Technology To Deliver Marketing Solutions That Really Work.' },
+            { title: 'Expert Team', description: 'Dedicated Professionals Who Manage Everything From GMB Optimization To Review Management.' },
+            { title: 'Results-Focused', description: 'Our Approach Is Results-Focused And Tailored to Suit Your Brand And Its Specific Goals.' },
+            { title: 'Full Transparency', description: 'We Believe In Delivering Full Transparency, Measurable Outcomes And Sustainable Growth Strategies.' }
+        ],
+        concludingParagraphs: [
+            'As A Service-Focused SEO Company Based In Kochi, We Focus On Delivering Highly-Visible Local Search Visibility Results Via Superior Search Rankings, And Finding The Right Audience At The Right Time.',
+            'We Have A Dedicated Team That Can Manage Optimizing Your Listings And Managing Reviews, To Managing Other GMB Issues Like Listing Suspensions, Ownership Issues And Quality Compliance. We Believe In Delivering Full Transparency, Measurable Outcomes and Sustainable Growth Strategies That Keep Your Business Ahead Of The Competition.'
+        ],
+        buttonText: 'START YOUR PROJECT TODAY'
+    }
+  },
+
 };
 
 const kebabToCamel = (str) => {

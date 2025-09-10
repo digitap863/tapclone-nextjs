@@ -1,6 +1,7 @@
-import React from 'react'
+"use client"
+import React, { useState } from 'react'; 
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import StarBlinkingPortal from "../../components/Shared/StarBlinkingPortal.jsx"
 import grids from "../../assets/service/grids.svg";
 import grids2 from "../../assets/service/grids2.png";
@@ -49,10 +50,22 @@ const staggerItem = {
 };
 
 function FeatureBlock({section}) {
+  // State to manage the number of visible features
+  const [visibleItems, setVisibleItems] = useState(6);
+  
+  const features = section.section4?.features || [];
+  const totalFeatures = features.length ;
+
+  // Function to show all features
+  const showMoreItems = () => {
+    console.log(totalFeatures)
+    setVisibleItems(totalFeatures);
+  };
+
   return (
      <StarBlinkingPortal>
      <section className=" text-white antialiased font-poppins">
-     <div className="mx-auto max-w-7xl px-4 py-0 sm:px-6 lg:py-24 lg:px-8 ">
+     <div className="mx-auto max-w-7xl px-4 py-0 sm:px-6 lg:pt-20 lg:px-8 ">
 
       {/* section 1 */}
     <motion.div 
@@ -81,7 +94,7 @@ function FeatureBlock({section}) {
       <Image
           src={section.section1?.image1?.src}
           alt={section.section1?.image1?.alt}
-          className="object-contain h-auto w-full"
+          className="object-contain h-auto w-full moving-effect"
       />    
       </motion.div>
 
@@ -101,7 +114,7 @@ function FeatureBlock({section}) {
       <Image
           src={section.section2.image2?.src}
           alt="Google My Business location on a map"
-          className="object-contain h-auto w-full"
+          className="object-contain h-auto w-full moving-effect"
       />
       </motion.div>
 
@@ -202,7 +215,7 @@ function FeatureBlock({section}) {
             pagination={{ clickable: true }}
             className="pagination-white" // Added padding-bottom to show pagination dots
           >
-            {section.section4?.features?.map((feature) => (
+            {section.section4?.features.map((feature) => (
               <SwiperSlide key={feature.number} className="h-96 pb-10">
                 <div className="bg-gradient-to-b from-[#02060b]/40 via-[#1b2b3e]/40 to-[#283F5C]/20 backdrop-blur-md backdrop-saturate-150 shadow-lg border border-[#35F55B]/50 p-8 rounded-2xl flex flex-col items-center text-center h-full">
                   <div className="flex items-center justify-center h-12 w-12 rounded-full bg-gradient-to-b from-[#35F55B] to-[#237CF9] text-white font-bold text-xl mb-6">
@@ -218,11 +231,17 @@ function FeatureBlock({section}) {
 
         {/* Grid for Desktop View (hidden below 'md' breakpoint) */}
         <motion.div className={`md:mt-16 hidden md:grid gap-8 md:grid-cols-${section.section4?.count} ${section.section4?.count == 2 ? 'px-32' : 'px-0'}`} variants={staggerContainer}>
-          {section.section4?.features?.map((feature) => (
+          <AnimatePresence>
+          {section.section4?.features.slice(0, visibleItems).map((feature) => (
             <motion.div
               key={feature.number}
               className="bg-gradient-to-b from-[#02060b]/40 via-[#1b2b3e]/40 to-[#283F5C]/20 backdrop-blur-md backdrop-saturate-150 shadow-lg border border-[#35F55B]/50 p-8 rounded-2xl flex flex-col items-center text-center"
-              variants={staggerItem}
+               variants={staggerItem}
+        initial="hidden"  // Animate from this state
+        animate="visible" // Animate to this state
+        exit="hidden"     // Animate to this state on removal
+        layout // This helps animate layout changes smoothly
+        
               whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
             >
               <div className="flex items-center justify-center h-12 w-12 rounded-full bg-gradient-to-b from-[#35F55B] to-[#237CF9] text-white font-bold text-xl mb-6">
@@ -232,7 +251,22 @@ function FeatureBlock({section}) {
               <p className="text-white font-light text-sm leading-relaxed">{feature.description}</p>
             </motion.div>
           ))}
+          </AnimatePresence>
         </motion.div>
+
+         {totalFeatures > 6 && visibleItems < totalFeatures && (
+                <div className="hidden md:flex justify-center mt-12">
+                  <motion.button
+                    onClick={showMoreItems}
+                    className="bg-gradient-to-r from-[#35F55B] to-[#237CF9] text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:opacity-90 transition-opacity duration-300"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Load More
+                  </motion.button>
+                </div>
+              )}
+
       </div>
     </motion.div>
 
@@ -329,7 +363,7 @@ function FeatureBlock({section}) {
                 <Image
                   src={sectionItem.image.src}
                   alt={sectionItem.image.alt}
-                  className="object-contain h-auto w-full"
+                  className={`object-contain h-auto w-full  ${index % 2 === 0 ? 'moving-effect' : 'moving-effect2'}`}
                 /> 
               </motion.div>
 
@@ -357,7 +391,7 @@ function FeatureBlock({section}) {
             )}
           </motion.h2>
            <motion.div className="flex justify-center items-center md:hidden " variants={scaleIn}>
-            <Image src={section.section7?.imageUrl} alt={section.section7?.imageAlt} className="w-auto h-52 object-contain" />
+            <Image src={section.section7?.imageUrl} alt={section.section7?.imageAlt} className="w-auto h-52 object-contain moving-effect" />
           </motion.div>
           <motion.div className="space-y-6 text-gray-300 leading-relaxed" variants={staggerContainer}>
             {section.section7?.paragraphs && section.section7?.paragraphs.map((p, i) => 
@@ -368,7 +402,7 @@ function FeatureBlock({section}) {
 
         <motion.div className="space-y-8" variants={fadeInRight}>
           <motion.div className="md:flex justify-center items-center hidden " variants={scaleIn}>
-            <Image src={section.section7?.imageUrl} alt={section.section7?.imageAlt} className="w-auto h-52 object-contain" />
+            <Image src={section.section7?.imageUrl} alt={section.section7?.imageAlt} className="w-auto h-52 object-contain moving-effect2" />
           </motion.div>
           <motion.div 
             className="md:p-8 p-6  border border-[#35F55B]/50 rounded-2xl bg-gradient-to-b from-[#02060b]/40 via-[#1b2b3e]/40 to-[#283F5C]/20 backdrop-blur-md backdrop-saturate-150 shadow-lg"
