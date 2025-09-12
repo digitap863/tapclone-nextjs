@@ -83,7 +83,7 @@ function FeatureBlock({section}) {
             </motion.span>
           ))}
       </motion.h1>
-           <motion.p className="mt-6  md:pl-0 pl-6  md:text-lg text-base uppercase tracking-wider text-gray-300  pr-6" variants={fadeInUp}>
+           <motion.p className="mt-8  md:pl-0 pl-6  md:text-lg text-base  tracking-wider text-gray-300  pr-6" variants={fadeInUp}>
             {section.section1?.subtitle1}
            </motion.p>
      
@@ -144,45 +144,12 @@ function FeatureBlock({section}) {
     </>
     )}
 
-    {/* section 3 */}
-    <motion.div 
-      className=" py-16  px-1 md:px-6 lg:px-8"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
-      variants={staggerContainer}
-    >
-      <div className="max-w-4xl mx-auto md:text-center text-left">
-        {/* Main Title */}
-        <motion.h1 className="text-2xl md:text-4xl lg:text-5xl font-semibold tracking-tight  text-[#7E59CE] font-poppins pr-6 uppercase" variants={fadeInUp}>
-          {section.section3.title }
-        </motion.h1>
-
-        {/* Paragraphs */}
-        <motion.div className="mt-8 sm:mt-10 space-y-6 text-base sm:text-lg leading-relaxed text-gray-300" variants={staggerContainer}>
-          {section.section3.paragraphs && section.section3.paragraphs.map((paragraph, index) => (
-            <motion.p key={index} className='text-base leading-relaxed text-gray-300' variants={staggerItem}>
-              {paragraph}
-            </motion.p>
-          ))}
-        </motion.div>
-
-        {/* Image */}
-        <motion.div className="mt-12 sm:mt-8 flex justify-center relative" variants={scaleIn}>
-        <Image src={grids} alt="grids" className = "absolute -top-2 left-0 object-contain w-[99%] h-auto -z-10 md:hidden block  "    />
-
-          {section.section3.image && (
-              <Image
-                src={section.section3?.image?.src}
-                alt={section.section3.image.alt || 'Feature image'}
-                className="object-contain h-auto md:w-auto w-[90%]"
-              />
-          )}
-        </motion.div>
-      </div>
-    </motion.div>
+    {section?.section3 && (
+    <SectionThree title={section.section3.title } para= {section.section3.paragraphs} image ={section.section3?.image} />
+     )}
 
     {/* section 4 */}
+     {section?.section4 && (
     <motion.div
       className="py-16 md:py-20 md:px-6 lg:px-8 font-poppins"
       initial="hidden"
@@ -269,6 +236,7 @@ function FeatureBlock({section}) {
 
       </div>
     </motion.div>
+    )}
 
     {/* section 5 */}
     {section.section5 && (
@@ -372,56 +340,47 @@ function FeatureBlock({section}) {
         </div>
       </div>
     </motion.div>
-      )}
+      )}   
 
     {/* section 7 */}
      {section.section7 && (
-    <motion.div 
-      className="bg-black text-white font-sans antialiased py-16 sm:py-24 px-0 md:px-6 lg:px-8"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-    >
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-        {/* Left Column: Text Content */}
-        <motion.div className="space-y-8" variants={fadeInLeft}>
-          <motion.h2 className="text-2xl md:text-5xl font-semibold text-[#35F55B] font-poppins" variants={fadeInUp}>
-            {section.section7?.titleLines && section.section7?.titleLines.map((line, i) => 
-              <motion.span key={i} className="block" variants={staggerItem}>{line}</motion.span>
-            )}
-          </motion.h2>
-           <motion.div className="flex justify-center items-center md:hidden " variants={scaleIn}>
-            <Image src={section.section7?.imageUrl} alt={section.section7?.imageAlt} className="w-auto h-52 object-contain moving-effect" />
-          </motion.div>
-          <motion.div className="space-y-6 text-gray-300 leading-relaxed" variants={staggerContainer}>
-            {section.section7?.paragraphs && section.section7?.paragraphs.map((p, i) => 
-              <motion.p key={i} variants={staggerItem} className='capitalize'>{p}</motion.p>
-            )}
-          </motion.div>
-        </motion.div>
+      <>
+    <SectionThree title={section.section7.titleLines } para= {section.section7.paragraphs}  />
 
-        <motion.div className="space-y-8" variants={fadeInRight}>
-          <motion.div className="md:flex justify-center items-center hidden " variants={scaleIn}>
-            <Image src={section.section7?.imageUrl} alt={section.section7?.imageAlt} className="w-auto h-52 object-contain moving-effect2" />
-          </motion.div>
-          <motion.div 
+      <div className= "px-0 md:px-6 lg:px-8">
+    <motion.div 
             className="md:p-8 p-6  border border-[#35F55B]/50 rounded-2xl bg-gradient-to-b from-[#02060b]/40 via-[#1b2b3e]/40 to-[#283F5C]/20 backdrop-blur-md backdrop-saturate-150 shadow-lg"
             variants={fadeInUp}
           >
-            <h3 className="text-xl font-semibold text-white mb-6">{section.section7?.services.title}</h3>
-            <motion.ul className="space-y-4" variants={staggerContainer}>
+            <motion.h1 className="text-2xl md:text-4xl lg:text-4xl font-semibold tracking-tight mx-auto text-center text-[#0A57C2] font-poppins pr-6 uppercase pb-10" variants={fadeInUp}>
+         {section.section7?.services.title}
+        </motion.h1>
+
+            <motion.ul className="space-y-4 lg:pl-20" variants={staggerContainer}>
               {section.section7?.services.list && section.section7?.services.list.map((item, i) => (
-                <motion.li key={i} className="flex items-start" variants={staggerItem}>
-                  <span className="text-[#35F55B] mr-3 mt-1">&#8226;</span>
-                  <span className="text-gray-300">{item}</span>
+                <motion.li key={i} className="flex items-center space-x-4" variants={staggerItem}>
+                 <div className="flex-shrink-0 h-12 w-12 rounded-full bg-gradient-to-b from-green-500 to-[#237CF9] flex items-center justify-center">
+                <CheckmarkIcon />
+              </div>
+                  <span className="text-white uppercase text-base ">{item}</span>
                 </motion.li>
               ))}
             </motion.ul>
           </motion.div>
-        </motion.div>
-      </div>
-    </motion.div>
+          </div>
+
+        </>
+
       )}
+
+    {/* section 7.5 */}
+     {section?.section75?.title1 && (
+    <SectionThree title={section.section75.title1 } para= {section.section75.paragraphs1} image ={section.section75?.image1}  color={section.section75.color1} />
+     )}
+
+    {section?.section75?.title2 && (
+    <SectionThree title={section.section75.title2 } para= {section.section75.paragraphs2} image ={section.section75?.image2}  color={section.section75.color2} />
+     )}
 
     {/* section 8 */}
      {section.section8 && (
@@ -453,7 +412,7 @@ function FeatureBlock({section}) {
         <motion.div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-10 text-left" variants={staggerContainer}>
           {section.section8?.features && section.section8?.features.map((feature, i) => (
             <motion.div key={i} className="flex items-start space-x-4" variants={staggerItem}>
-              <div className="flex-shrink-0 h-12 w-12 rounded-full bg-green-500 flex items-center justify-center">
+              <div className="flex-shrink-0 h-12 w-12 rounded-full bg-gradient-to-b from-green-500 to-[#237CF9] flex items-center justify-center">
                 <CheckmarkIcon />
               </div>
               <div>
@@ -471,6 +430,7 @@ function FeatureBlock({section}) {
           )}
         </motion.div>
 
+          { section?.section8?.buttonText &&(
         <motion.div className="mt-12 text-center" variants={fadeInUp}>
           <Link href="/contact">
           <motion.button  
@@ -482,6 +442,7 @@ function FeatureBlock({section}) {
           </motion.button>
           </Link>
         </motion.div>
+        )}  
       </motion.div>
     </motion.div>
      )}
@@ -497,5 +458,54 @@ const CheckmarkIcon = () => (
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h18v18H3z"></path>
   </svg>
 );
+
+
+const SectionThree = ({title, para, image = null, color = '#41ED63'}) => {
+  return (
+    <div>
+      <motion.div 
+        className="py-16 px-1 md:px-6 lg:px-8 w-full"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={staggerContainer}
+      >
+        <div className="max-w-5xl mx-auto md:text-center text-left">
+          {/* --- CHANGE IS HERE --- */}
+          <motion.h1 
+            className={`text-2xl md:text-4xl lg:text-5xl font-semibold tracking-tight font-poppins pr-6 uppercase`}
+            style={{ color: color }} // Use the dynamic color prop here
+            variants={fadeInUp}
+          >
+            {title}
+          </motion.h1>
+
+          {/* Paragraphs */}
+          <motion.div className="mt-8 sm:mt-10 space-y-6 text-base sm:text-lg leading-relaxed text-gray-300 text-justify px-0 lg:px-4" variants={staggerContainer}>
+            {para && para.map((paragraph, index) => (
+              <motion.p key={index} className='text-base leading-relaxed text-gray-300' variants={staggerItem}>
+                {paragraph}
+              </motion.p>
+            ))}
+          </motion.div>
+
+          {/* Image */}
+          {image && (
+            <motion.div className="mt-12 sm:mt-8 flex justify-center relative" variants={scaleIn}>
+              <Image src={grids} alt="grids" className="absolute -top-2 left-0 object-contain w-[99%] h-auto -z-10 md:hidden block max-w-5xl" />
+              <Image
+                src={image?.src}
+                alt={image.alt || 'Feature image'}
+                width={250}  
+                height={150} 
+                className="object-contain h-auto md:w-[45%] w-full"
+              />
+            </motion.div>
+          )}
+        </div>
+      </motion.div>
+    </div>
+  );
+}
 
 export default FeatureBlock
