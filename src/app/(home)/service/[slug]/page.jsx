@@ -25,10 +25,10 @@ import social4 from  "../../../../assets/service/social4.svg";
 import web1 from  "../../../../assets/service/web1.svg";
 import web2 from  "../../../../assets/service/web2.svg";
 import web3 from  "../../../../assets/service/web3.png";
+import branding1 from  "../../../../assets/service/branding1.svg";
+import branding2 from  "../../../../assets/service/branding2.svg";
 
-
-
-  const sectionsData = {
+const sectionsData = {
   googleMyBusiness: {
     heading:"GOOGLE MY BUSINESS",
     section1:{
@@ -277,7 +277,7 @@ import web3 from  "../../../../assets/service/web3.png";
         subtitle1:
           'Our branding work may include everything from a logo that captures your vision to tag lines that constantly remind customers of how they\'ll feel, to brand storytelling so customers can\'t help but trust you. We’re the top branding company  in Kerala.We combine fresh thinking and an outlet for creativity with strategy to deliver innovative campaigns that attract attention and foster an impression in customers\' minds. With TapClone on your team, your brand will not just slip into the crowd.',
         image1: {
-          src: map,
+          src: branding1,
           alt: 'Google My Business location on a map',
         },
     },
@@ -289,10 +289,11 @@ import web3 from  "../../../../assets/service/web3.png";
           'As has a branding  agency in Kochi,kerala . we understand that branding is much more than just a logo or tagline; it includes the entire story of your business. Our qualified team is good at logo design, designing brochures, product mockups, flyer designing, brand identity design, business cards and letterheads to ensure consistency with every customer interaction. The end result is that we must work on every customer touchpoint and each element we produce, every small detail goes towards creating consistency and must accurately reflect your vision, values and goals. ',
           'At TapClone,  our not just creative people; we add strategy into our designs. So many branding agencies will develop what they call a \'brand\' but are really just developing the standard look and feel for your brand. At TapClone, we put the customer first, instead, we develop meaningful connections between your business and your target audience. With customer first system developers, we are one of the best branding companies  in Kerala, who set out to build a strong brand that is unique and impactful.'
         ],
-        // image: {
-        //   src: google,
-        //   alt: 'Google G Logo'
-        // }
+        image: {
+          src: branding2,
+          alt: 'Google G Logo'
+        } ,
+        color:"#7E59CE", 
     },
     section4:{
       title: 'OUR SERVICES',
@@ -561,6 +562,7 @@ import web3 from  "../../../../assets/service/web3.png";
       src: web1,
       alt: 'Development ',
     },
+
     },
     section2:{
     title2: [
@@ -640,7 +642,6 @@ import web3 from  "../../../../assets/service/web3.png";
         // buttonText: 'START YOUR PROJECT TODAY'
     }
   },
-
 };
 
 const kebabToCamel = (str) => {
@@ -657,20 +658,17 @@ function page() {
  if (!sectionData) {
     return (
       <div className="homeMin overflow-hidden h-screen" style={{ backgroundColor: "black" }}>
-        
         <MobileNavbar />
         <NavBar />
         <h1 className="text-4xl font-bold text-center pt-32">404 - Service Not Found</h1>
         <p className="mt-4 text-center ">The page you are looking for does not exist.</p>
         <Footer />
-
       </div>
     );
   }
 
   return (
     <div className="homeMin overflow-hidden" style={{ backgroundColor: "black" }}>
-
           <MobileNavbar />
             <NavBar />
             <Banner title ={sectionData.heading}/>

@@ -145,13 +145,13 @@ function FeatureBlock({section}) {
     )}
 
     {section?.section3 && (
-    <SectionThree title={section.section3.title } para= {section.section3.paragraphs} image ={section.section3?.image} />
+    <SectionThree title={section.section3.title } para= {section.section3.paragraphs} image ={section.section3?.image} color={section.section3?.color}/>
      )}
 
     {/* section 4 */}
      {section?.section4 && (
     <motion.div
-      className="py-16 md:py-20 md:px-6 lg:px-8 font-poppins"
+      className="py-12 md:py-10 md:px-6 lg:px-8 font-poppins"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
@@ -458,7 +458,6 @@ const CheckmarkIcon = () => (
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h18v18H3z"></path>
   </svg>
 );
-
 
 const SectionThree = ({title, para, image = null, color = '#41ED63'}) => {
   return (
