@@ -18,6 +18,9 @@ export const metadata = {
   alternates: {
     canonical: "https://www.tapclone.in/",
   },
+   verification: {
+    google: "eZeegx7s81AHlml4GE-0Ep6TSwB1J72L4BudIGXV_J0",
+  },
    other: {
     keywords:
       "advertising agencies in kochi, best digital marketing agency kochi, advertising companies in kochi, best digital marketing companies in kochi, best advertising agency in kochi",
