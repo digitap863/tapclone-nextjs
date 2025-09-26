@@ -1,10 +1,11 @@
 import Footer from '@/components/Footer/Footer'
 import ServicesMain from '@/components/Services/ServicesMain'
 
- const metadata = {
-  title: "Tapclone Services | Web, Marketing & Content Solutions",
-  description: "Discover full-stack digital services – from web development to branding and performance marketing – all under one roof.",
-   alternates: {
+export const metadata = {
+  title: "Marketing Agencies in kochi,Kerala | Advertising company in kochi",
+  description: "Leading marketing agencies in Kochi, Kerala, and advertising company in Kochi offering Branding, Video Production, Web Development, SEO, SMM, PPC and UI/UX services.",
+  keywords: "Best Adverting And Ad Agency Companies In Kochi, kerala, best Digital Marketing services in Kochi, social media marketing kochi, it companies in palarivattom, local seo company near me kochi",
+  alternates: {
     canonical: "https://www.tapclone.in/services",
   },
 };

@@ -5,9 +5,10 @@ import NavBar from '@/components/Home/NavBar'
 import React from 'react'
 
 export const metadata = {
-  title: "About Tapclone | Web, Content & Marketing Experts from Kerala",
-  description: "Get to know Tapclone – a creative agency from Kerala delivering top-notch web development, content creation, and digital marketing that drives real results.",
-   alternates: {
+  title: "Best digital marketing agency in kochi,Kerala",
+  description: "TapClone, the best digital marketing agency in Kochi, Kerala, provides ROI-driven digital marketing, engaging content, and custom website development to grow brands.",
+  keywords: "best seo company near me, social media marketing agency in kochi, website design company in kerala, best seo services, digital marketing agency kochi, ui ux design services in kochi, digital marketing company in cochin",
+  alternates: {
     canonical: "https://www.tapclone.in/about",
   },
 };
