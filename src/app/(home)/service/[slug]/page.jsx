@@ -695,7 +695,7 @@ const sectionsData = {
       'Your Partner in Exceptional UI/UX Design Not all designs are created equal. Tapclone stands apart as one of the best UI/UX agency in Kerala by focusing on what matters most — your users. From wireframes to clickable prototypes, our team ensures every detail enhances usability and elevates your brand presence.',
     ],
     image: {
-      src: tappclone,
+      src: social3,
       alt: 'tapclone Logo'
     }
     },
