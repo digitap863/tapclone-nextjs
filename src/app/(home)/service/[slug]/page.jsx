@@ -27,10 +27,26 @@ import web2 from  "../../../../assets/service/web2.svg";
 import web3 from  "../../../../assets/service/web3.png";
 import branding1 from  "../../../../assets/service/branding1.svg";
 import branding2 from  "../../../../assets/service/branding2.svg";
+import uii from "../../../../assets/service/uii.svg"
+import picc from "../../../../assets/service/picc.svg"
+import uiux from "../../../../assets/service/uiux.svg"
+import tappclone from "../../../../assets/service/tappclone.svg"
+
+
+import ui from  "../../../../assets/service/ui.svg";
+import googlemybus from '../../../../assets/service/googlemybus.svg'
+import googleadss from '../../../../assets/service/googleadss.svg'
+import brandingg from '../../../../assets/service/brandingg.svg'
+import webdev from '../../../../assets/service/webdev.svg'
+import soccialmedia from '../../../../assets/service/soccialmedia.svg'
+import seoo from '../../../../assets/service/seoo.svg'
+
+
 
 const sectionsData = {
   googleMyBusiness: {
-    heading:"GOOGLE MY BUSINESS",
+    heading: googlemybus,
+    width:'w-[100%]',
     section1:{
     title1: [
       'GOOGLE MY BUSINESS','LISTING & LOCAL SEO','SERVICES IN','KOCHI, KERALA'],
@@ -190,7 +206,8 @@ const sectionsData = {
     }
   },
   googleAds:{
-    heading:"GOOGLE ADS",
+    heading: googleadss,
+    width:'w-[80%]',
     section1:{
         title1: [
           'Google Ads','Services in Kochi,','Kerala',],
@@ -270,7 +287,8 @@ const sectionsData = {
     }
   },
   branding:{
-     heading:"BRANDING",
+     heading: brandingg,
+     width:'w-[80%]',
       section1:{
         title1: [
           'BRANDING COMPANY','IN KERALA,'],
@@ -340,7 +358,8 @@ const sectionsData = {
 
   },
   seo: {
-    heading:"SEO",
+    heading: seoo,
+    width:'w-[30%]',
     section1:{
     title1: [
       'Boost Your Website','Rankings with the top','SEO Company in','KOCHI, KERALA'],
@@ -349,6 +368,7 @@ const sectionsData = {
     image1: {
       src: seo1,
       alt: 'Google My Business location on a map',
+
     },
     },
     section2:{
@@ -452,7 +472,8 @@ const sectionsData = {
     }
   },
   socialMediaMarketing: {
-    heading:"Social Media Marketing",
+    heading: soccialmedia,
+    width:'w-[100%]',
     section1:{
     title1: [
       'Establish a Strong','Presence. Drive ','Targeted Traffic.','Capture Quality', 'Leads. Scale Your' ,'Success.'],
@@ -552,7 +573,8 @@ const sectionsData = {
     }
   },
   webDevelopment: {
-    heading:" Web Development",
+    heading: webdev,
+    width:'w-[100%]',
     section1:{
     title1: [
       'Custom Web','Development','Solutions for','Businesses That', 'Want to Grow' ],
@@ -642,6 +664,111 @@ const sectionsData = {
         // buttonText: 'START YOUR PROJECT TODAY'
     }
   },
+  uiUxDevelopment:{
+    heading: ui,
+    width:'w-[100%]',
+      section1:{
+    title1: [
+      'UI / UX Design&','Development Company','in Kerala'],
+    subtitle1:
+      '',
+    image1: {
+      src: uii,
+      alt: 'ui ux  location on a map',
+    },
+    },
+    section2:{
+    title2: [
+      'Leading  UI/UX Design','Services in Kochi to  ','transform ideas into ','intuitive digital','experiences. '],
+    paragraphs2: [
+      'We are a specialist at Tapclone in developing user friendly and attractive designs that enable brands to connect with individuals in a significant way. Through our services of UI/UX design services in Kochi, our design approach is made in such a way that incorporates creativity, technology, and thorough research of the user, such that every project performed provides a customer with the ease of digital experiences and engagements. It may be a mobile application, a web site or a business solution, but whatever the case our designs are created to enhance usability, increase engagement and lead to stronger conversion.',
+    ],
+    image2: {
+      src: picc,
+      alt: 'Business growth chart',
+    },
+    },
+    section3:{
+       title: 
+      'Why Choose Tapclone - Best UI/UX Agency in Kerala',
+    paragraphs: [
+      'Your Partner in Exceptional UI/UX Design Not all designs are created equal. Tapclone stands apart as one of the best UI/UX agency in Kerala by focusing on what matters most — your users. From wireframes to clickable prototypes, our team ensures every detail enhances usability and elevates your brand presence.',
+    ],
+    image: {
+      src: tappclone,
+      alt: 'tapclone Logo'
+    }
+    },
+    section4:{
+      title: 'UI UX Services',
+      // subtitle: 'COMPREHENSIVE GOOGLE MY BUSINESS SOLUTIONS TO BOOST YOUR LOCAL PRESENCE AND DRIVE MORE CUSTOMERS TO YOUR BUSINESS.',
+      count:3,
+      features: [
+
+        {
+          number: '01',
+          title: 'User Research & Wire framing ',
+          description: 'Understanding your audience to create meaningful layouts.'
+        },
+        {
+          number: '02',
+          title: 'Interactive Prototyping',
+          description: 'Test ideas before launch with engaging prototypes.'
+        },
+        {
+          number: '03',
+          title: 'Web & Mobile App Design',
+          description: 'Sleek, functional, and conversion-ready interfaces.'
+        },
+        {
+          number: '04',
+          title: 'Usability Testing',
+          description: 'Data-driven insights to optimize user journeys.'
+        },
+        {
+          number: '05',
+          title: 'Design Systems & Branding',
+          description: 'Consistency across all digital touchpoints.'
+        }
+      ]
+    },
+
+    section6:{
+       title: 'Benefits of Choosing Us - UI/UX design agency near me',
+       subtitle :  ' ',
+      sections: [
+        {
+          paragraph: 'Choosing Tapclone means partnering with a trusted UI/UX design agency in Kochi and the go-to choice for anyone searching for a reliable UI/UX Design Agency Near Me, specializing in providing convenient, attractive, and conversion-based online experiences. Mobile apps, websites, and enterprise solutions are all designed with creativity, user research, and the newest technology and actually resonate with your audience. With our individualized system, easy navigation, increased interaction and improved branding will be achieved, making us the choice of the business organization that seeks to boost its online presence.',
+          image: {
+            src: uiux,
+            alt: 'ui ux 3D Illustration'
+          }
+        }
+      ]
+    },
+    section7:{
+      services: {
+          title: 'Why Brands Trust Tapclone: ui ux design company in Kochi ,kerala',
+          list: [
+              'Enhanced customer experience',
+              'Increased conversions & ROI',
+              'Modern, user-friendly interfaces',
+              'Scalable and future-ready designs',
+          ]
+      },
+    },
+    section8:{
+       title: 'Industries We Serve',
+        subtitle: 'From startups to enterprises, Tapclone’s UI/UX design services in Kochi cater to:',
+        // mainParagraphs: 'At Tapclone, We Integrate Creativity, Strategy And Technology To Deliver Marketing Solutions That Really Work. From Google My Business Optimizations To Local SEO And Even Large-Scale Digital Campaigns, Our Approach Is Results-Focused And Tailored To Suit Your Brand And Its Goals.',
+        features: [
+            { title: 'E-Commerce', },
+            { title: 'Healthcare', },
+            { title: 'SaaS & Technology', },
+            { title: 'Real Estate', }
+        ],
+    }
+  }
 };
 
 const kebabToCamel = (str) => {
@@ -671,7 +798,7 @@ function page() {
     <div className="homeMin overflow-hidden" style={{ backgroundColor: "black" }}>
           <MobileNavbar />
             <NavBar />
-            <Banner title ={sectionData.heading}/>
+            <Banner title ={sectionData.heading} className={sectionData.width}/>
             <FeatureBlock section={sectionData} />   
             <Knowmore />    
         <Footer />

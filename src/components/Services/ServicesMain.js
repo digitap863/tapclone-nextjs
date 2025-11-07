@@ -23,14 +23,17 @@ import grid from "../../assets/services/grid_behind_icons.svg";
 import StarPortal from "../Shared/StarBlinkingPortal";
 import Image from "next/image";
 import Knowmore from "../Shared/Knowmore";
-
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 function ServicesMain() {
+  const router = useRouter();
   const servicesArr = [
     {
       id: 1,
       title: "Web Development",
       img: service1,
+      link : '/service/web-development',
       para: `The websites that We create can vary in complexity according to your requirement from a simple webpage to a complicated ecommerce or social networking site plus practically anything in between. <br/> <br/>
 
       From the Initial stage, our Ui/Ux design team and the development team work in tandem, ensuring that the website is both aesthetically pleasing and User-friendly. <br/> <br/>
@@ -49,6 +52,7 @@ function ServicesMain() {
 
       UI/UX design and web development are interconnected stages in the creation of a digital product. Effective collaboration between designers and developers is crucial to ensure a cohesive and successful end result that not only looks visually appealing but also provides a seamless and enjoyable user experience
       `,
+      link : '/service/ui-ux-development'
       
     },
     {
@@ -66,6 +70,7 @@ function ServicesMain() {
 
       Our goal? To carve out a clear space in the minds of your audience, where you are their cherished and unrivaled choice. Through our expertise, be known, loved, and preferred      
       `,
+      link : '/service/branding'
       
     },
     {
@@ -77,6 +82,7 @@ function ServicesMain() {
       As owners of businesses who are targeting to grow their consumer base should really have a strong digital base first. A business page is one thing to start with but utilizing it the right way is something every business seems to struggle with  <br/> <br/>
       
       So  instead of posting promotions for users without any thought. We make sure that the content you post satisfies connection and engages in communication while building community `,
+      link:'/service/social-media-marketing'
 
     },
 
@@ -89,6 +95,7 @@ function ServicesMain() {
       Make no mistake - SEO is not just some passing trend or a bonus add-on. It's a crucial element of any marketing plan aimed at attracting qualified leads and boosting sales. By improving your site's search engine rankings, SEO can help your business reach new audiences.
       
       `,
+      link : '/service/seo'
 
     },
     {
@@ -107,7 +114,7 @@ function ServicesMain() {
       
       Imagine your business being front and center when potential customers in and around your store location search for the services you offer. Imagine captivating their attention and drawing them in with all the relevant information
        `,
-      slug:"google-my-business"
+      link:"/service/google-my-business"
       
       },
       {
@@ -126,6 +133,7 @@ function ServicesMain() {
       
       Imagine your business being front and center when potential customers in and around your store location search for the services you offer. Imagine captivating their attention and drawing them in with all the relevant information
        `,
+       link:'/service/google-ads'
 
     },
   ];
@@ -194,10 +202,13 @@ function ServicesMain() {
             >
               {servicesArr.map((elem,index) => (
                 <SwiperSlide key={index}>
+                  <Link href={elem.link}>
                   <div className="w-full flex justify-center flex-col items-center p-4 min-h-[200px]"
-                  onClick={() => router.push(`/service/${slug}`)}
+                 
                   >
-                    <div className="w-full flex justify-center">
+                    <div 
+                     onClick={() => router.push(`/service/${slug}`)}
+                    className="w-full flex justify-center  z-10">
                       <Image 
                         src={elem.img} 
                         alt="service" 
@@ -208,6 +219,7 @@ function ServicesMain() {
                       {elem.title}
                     </h5>
                   </div>
+                  </Link>
                 </SwiperSlide>
               ))}
             </Swiper>
@@ -215,18 +227,22 @@ function ServicesMain() {
           <div className="serviceDetails !hidden md:!grid">
             {servicesArr &&
               servicesArr.map((items) => (
-        
+                 <Link  key={items.id} href={items.link}> 
                   <div
                     className=" serv-1 md:!flex !hidden  cursor-pointer  items-center justify-center mx-auto"
                     style={{
                       backgroundImage: `url('${grid}')`,
                       backgroundSize: "cover",
                     }}
-                    key={items.id}
+                   
                   >
+                   
                     <Image src={items.img} alt="service" />
+                   
+
                     <h5 className="mb-10">{items.title}</h5>
                   </div>
+                   </Link>
               ))}
 
             <Image

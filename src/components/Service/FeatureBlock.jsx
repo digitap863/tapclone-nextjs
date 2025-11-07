@@ -65,7 +65,7 @@ function FeatureBlock({section}) {
   return (
      <StarBlinkingPortal>
      <section className=" text-white antialiased font-poppins">
-     <div className="mx-auto max-w-7xl px-4 py-0 sm:px-6 lg:pt-20 lg:px-8 ">
+     <div className="mx-auto max-w-7xl px-4 py-0 sm:px-6 lg:pt-10 lg:px-8 ">
 
       {/* section 1 */}
     <motion.div 
@@ -128,7 +128,7 @@ function FeatureBlock({section}) {
           ))}
       </motion.h2>
 
-      <motion.p className="md:mt-6 mt-4 text-base leading-relaxed text-gray-300 md:space-y-3  space-y-10 md:pl-0 pl-2 " variants={fadeInUp}>
+      <motion.p className="md:mt-6 mt-4 text-base leading-relaxed text-gray-300 md:space-y-3  space-y-10 md:pl-0 pl-2 text-justify " variants={fadeInUp}>
       {section?.section2?.paragraphs2?.map((line, index) => (
             <motion.span key={index} className={`block`} variants={staggerItem}>
               {line}
@@ -302,7 +302,7 @@ function FeatureBlock({section}) {
     >
       <div className="max-w-5xl mx-auto">
 
-         <motion.h2 className="text-2xl md:text-4xl font-bold md:text-center text-[#FCF06A] tracking-wide pb-4" variants={fadeInUp}>
+         <motion.h2 className="text-2xl md:text-4xl font-bold md:text-center text-[#FCF06A] tracking-wide pb-4 capitalize lg:pr-6 " variants={fadeInUp}>
           {section.section6?.title}
         </motion.h2>
 
@@ -416,8 +416,8 @@ function FeatureBlock({section}) {
                 <CheckmarkIcon />
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-white">{feature.title}</h3>
-                <p className="mt-1 text-gray-400 text-sm">{feature.description}</p>
+                <h3 className="text-lg font-semibold text-white pt-1">{feature.title}</h3>
+                <p className="mt-1 text-gray-400 text-sm">{feature?.description}</p>
               </div>
             </motion.div>
           ))}
