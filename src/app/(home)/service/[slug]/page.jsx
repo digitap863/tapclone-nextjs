@@ -1,4 +1,3 @@
-"use client"
 import React from 'react'
 import Banner from '@/components/Service/Banner';
 import FeatureBlock from '@/components/Service/FeatureBlock';
@@ -10,7 +9,6 @@ import MobileNavbar from '@/components/Home/MobileNavbar'
 import NavBar from '@/components/Home/NavBar'
 import gmb from "../../../../assets/service/gmb.png";
 import tapp from "../../../../assets/service/tapp.svg";
-import { useParams } from 'next/navigation';
 import Knowmore from '@/components/Shared/Knowmore';
 import googleads from  "../../../../assets/service/googleads.svg";
 import googleads2 from  "../../../../assets/service/googleads2.png";
@@ -42,6 +40,52 @@ import soccialmedia from '../../../../assets/service/soccialmedia.svg'
 import seoo from '../../../../assets/service/seoo.svg'
 
 
+// Function to generate dynamic metadata on the server
+export async function generateMetadata({ params }) {
+  // Use the same logic as the page component to find the data
+  const { slug } = await params;
+  const dataKey = kebabToCamel(slug);
+  const sectionData = sectionsData[dataKey];
+  
+  // If no data, return default metadata
+  if (!sectionData || !sectionData.meta) {
+    return {
+      title: 'Service Not Found',
+      description: 'The service you are looking for does not exist.',
+    };
+  }
+
+  const meta = sectionData.meta;
+  const ogTags = meta.og || {};
+
+  // Next.js Metadata Object structure
+  return {
+    title: meta.title,
+    description: meta.description,
+    keywords: meta.keywords,
+    
+    // Structure Open Graph data for Next.js
+    openGraph: {
+      title: ogTags.title,
+      description: ogTags.description,
+      url: ogTags.url,
+      type: ogTags.type,
+      siteName: ogTags.site_name,
+      images: [
+        {
+          url: ogTags.image,
+          // It's helpful to specify image dimensions
+          width: 1200, 
+          height: 630,
+        },
+      ],
+    },
+    // Canonical link is managed by alternates (optional)
+    alternates: {
+      canonical: ogTags.url, 
+    }
+  };
+}
 
 const sectionsData = {
   googleMyBusiness: {
@@ -203,7 +247,26 @@ const sectionsData = {
             'We Have A Dedicated Team That Can Manage Optimizing Your Listings And Managing Reviews, To Managing Other GMB Issues Like Listing Suspensions, Ownership Issues And Quality Compliance. We Believe In Delivering Full Transparency, Measurable Outcomes and Sustainable Growth Strategies That Keep Your Business Ahead Of The Competition.'
         ],
         buttonText: 'START YOUR PROJECT TODAY'
-    }
+    },
+    meta: {
+      title: "Web Development Company in Kochi, Kerala | Web Design Company",
+      description: "Web Development Company in Kochi, Kerala offering custom websites, UI/UX design, and high-performance web solutions. Build your brand with expert web designers.",
+      keywords: "web design company in kochi,web design company in kerala,web design company in ernakulam,web developemnt comany near me,web design company in cochin",
+      og: {
+        title: "Web Development Company in Kochi, Kerala | Web Design Company",
+        description: "Leading Web Design & Development Company in Kochi, Kerala. We create fast, modern, SEO-friendly websites to boost your brand visibility.",
+        type: "website",
+        url: "https://www.tapclone.in/service/web-development",
+        image: "https://www.tapclone.in/_next/static/media/footerlogo.ede68bc7.svg",
+        site_name: "TapClone",
+      },
+      schema: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Web Development Service",
+        "description": "Custom website development and design."
+      }),
+    },
   },
   googleAds:{
     heading: googleadss,
@@ -284,7 +347,26 @@ const sectionsData = {
             'With verified strategies, open reporting, and accountability to your business needs, Tapclone is the trusted partner for businesses seeking reliable PPC advertising services in Kochi.'
         ],
         buttonText: 'START YOUR PROJECT TODAY'
-    }
+    },
+    meta: {
+      title: "Web Development Company in Kochi, Kerala | Web Design Company",
+      description: "Web Development Company in Kochi, Kerala offering custom websites, UI/UX design, and high-performance web solutions. Build your brand with expert web designers.",
+      keywords: "web design company in kochi,web design company in kerala,web design company in ernakulam,web developemnt comany near me,web design company in cochin",
+      og: {
+        title: "Web Development Company in Kochi, Kerala | Web Design Company",
+        description: "Leading Web Design & Development Company in Kochi, Kerala. We create fast, modern, SEO-friendly websites to boost your brand visibility.",
+        type: "website",
+        url: "https://www.tapclone.in/service/web-development",
+        image: "https://www.tapclone.in/_next/static/media/footerlogo.ede68bc7.svg",
+        site_name: "TapClone",
+      },
+      schema: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Web Development Service",
+        "description": "Custom website development and design."
+      }),
+    },
   },
   branding:{
      heading: brandingg,
@@ -353,6 +435,25 @@ const sectionsData = {
           description: 'Be as nice as possible with your corporate letterhead while creating an overall sense of professionalism, sophistication and elegance.'
         },
       ]
+    },
+    meta: {
+      title: "Web Development Company in Kochi, Kerala | Web Design Company",
+      description: "Web Development Company in Kochi, Kerala offering custom websites, UI/UX design, and high-performance web solutions. Build your brand with expert web designers.",
+      keywords: "web design company in kochi,web design company in kerala,web design company in ernakulam,web developemnt comany near me,web design company in cochin",
+      og: {
+        title: "Web Development Company in Kochi, Kerala | Web Design Company",
+        description: "Leading Web Design & Development Company in Kochi, Kerala. We create fast, modern, SEO-friendly websites to boost your brand visibility.",
+        type: "website",
+        url: "https://www.tapclone.in/service/web-development",
+        image: "https://www.tapclone.in/_next/static/media/footerlogo.ede68bc7.svg",
+        site_name: "TapClone",
+      },
+      schema: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Web Development Service",
+        "description": "Custom website development and design."
+      }),
     },
       
 
@@ -469,7 +570,26 @@ const sectionsData = {
             { title: 'Transparent Reporting', description: 'Detailed insights on your SEO performance.' },
             { title: 'User-Centric Approach:', description: 'Strategies designed to attract and engage your target.' }
         ],
-    }
+    },
+    meta: {
+      title: "Web Development Company in Kochi, Kerala | Web Design Company",
+      description: "Web Development Company in Kochi, Kerala offering custom websites, UI/UX design, and high-performance web solutions. Build your brand with expert web designers.",
+      keywords: "web design company in kochi,web design company in kerala,web design company in ernakulam,web developemnt comany near me,web design company in cochin",
+      og: {
+        title: "Web Development Company in Kochi, Kerala | Web Design Company",
+        description: "Leading Web Design & Development Company in Kochi, Kerala. We create fast, modern, SEO-friendly websites to boost your brand visibility.",
+        type: "website",
+        url: "https://www.tapclone.in/service/web-development",
+        image: "https://www.tapclone.in/_next/static/media/footerlogo.ede68bc7.svg",
+        site_name: "TapClone",
+      },
+      schema: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Web Development Service",
+        "description": "Custom website development and design."
+      }),
+    },
   },
   socialMediaMarketing: {
     heading: soccialmedia,
@@ -570,7 +690,26 @@ const sectionsData = {
             'Social media gives every business — big or small — the chance to compete on an even bigger playing field. It provides a way to advertise on a budget, interact instantly with your customers, and offer a cost-effective way to tell your story, showcase your product, and build trust with your brand. When done properly, online marketing goes beyond promotion — it creates lasting connections.',
         ],
         // buttonText: 'START YOUR PROJECT TODAY'
-    }
+    },
+    meta: {
+      title: "Web Development Company in Kochi, Kerala | Web Design Company",
+      description: "Web Development Company in Kochi, Kerala offering custom websites, UI/UX design, and high-performance web solutions. Build your brand with expert web designers.",
+      keywords: "web design company in kochi,web design company in kerala,web design company in ernakulam,web developemnt comany near me,web design company in cochin",
+      og: {
+        title: "Web Development Company in Kochi, Kerala | Web Design Company",
+        description: "Leading Web Design & Development Company in Kochi, Kerala. We create fast, modern, SEO-friendly websites to boost your brand visibility.",
+        type: "website",
+        url: "https://www.tapclone.in/service/web-development",
+        image: "https://www.tapclone.in/_next/static/media/footerlogo.ede68bc7.svg",
+        site_name: "TapClone",
+      },
+      schema: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Web Development Service",
+        "description": "Custom website development and design."
+      }),
+    },
   },
   webDevelopment: {
     heading: webdev,
@@ -662,7 +801,26 @@ const sectionsData = {
         ],
         
         // buttonText: 'START YOUR PROJECT TODAY'
-    }
+    },
+    meta: {
+      title: "Web Development Company in Kochi, Kerala | Web Design Company",
+      description: "Web Development Company in Kochi, Kerala offering custom websites, UI/UX design, and high-performance web solutions. Build your brand with expert web designers.",
+      keywords: "web design company in kochi,web design company in kerala,web design company in ernakulam,web developemnt comany near me,web design company in cochin",
+      og: {
+        title: "Web Development Company in Kochi, Kerala | Web Design Company",
+        description: "Leading Web Design & Development Company in Kochi, Kerala. We create fast, modern, SEO-friendly websites to boost your brand visibility.",
+        type: "website",
+        url: "https://www.tapclone.in/service/web-development",
+        image: "https://www.tapclone.in/_next/static/media/footerlogo.ede68bc7.svg",
+        site_name: "TapClone",
+      },
+      schema: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Web Development Service",
+        "description": "Custom website development and design."
+      }),
+    },
   },
   uiUxDevelopment:{
     heading: ui,
@@ -695,7 +853,7 @@ const sectionsData = {
       'Your Partner in Exceptional UI/UX Design Not all designs are created equal. Tapclone stands apart as one of the best UI/UX agency in Kerala by focusing on what matters most — your users. From wireframes to clickable prototypes, our team ensures every detail enhances usability and elevates your brand presence.',
     ],
     image: {
-      src: tappclone,
+      src: social3,
       alt: 'tapclone Logo'
     }
     },
@@ -767,7 +925,26 @@ const sectionsData = {
             { title: 'SaaS & Technology', },
             { title: 'Real Estate', }
         ],
-    }
+    },
+    meta: {
+      title: "Web Development Company in Kochi, Kerala | Web Design Company",
+      description: "Web Development Company in Kochi, Kerala offering custom websites, UI/UX design, and high-performance web solutions. Build your brand with expert web designers.",
+      keywords: "web design company in kochi,web design company in kerala,web design company in ernakulam,web developemnt comany near me,web design company in cochin",
+      og: {
+        title: "Web Development Company in Kochi, Kerala | Web Design Company",
+        description: "Leading Web Design & Development Company in Kochi, Kerala. We create fast, modern, SEO-friendly websites to boost your brand visibility.",
+        type: "website",
+        url: "https://www.tapclone.in/service/web-development",
+        image: "https://www.tapclone.in/_next/static/media/footerlogo.ede68bc7.svg",
+        site_name: "TapClone",
+      },
+      schema: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Web Development Service",
+        "description": "Custom website development and design."
+      }),
+    },
   }
 };
 
@@ -776,11 +953,14 @@ const kebabToCamel = (str) => {
   return str.replace(/-(\w)/g, (_, c) => c.toUpperCase());
 };
 
-function page() {
-   const params = useParams();
-   const slug = params.slug;
+async function page({params}) {
+    const { slug } = await params;
    const dataKey = kebabToCamel(slug);
    const sectionData = sectionsData[dataKey];
+   const meta = sectionData.meta; 
+  const schemaMarkup = meta.schema;
+    const ogTags = meta.og || {};
+ 
 
  if (!sectionData) {
     return (
@@ -795,6 +975,17 @@ function page() {
   }
 
   return (
+    <>
+
+    {schemaMarkup && (
+        <script 
+          type="application/ld+json"
+          // This is required to inject a string into a script tag
+          dangerouslySetInnerHTML={{ __html: schemaMarkup }}
+        />
+      )}
+
+
     <div className="homeMin overflow-hidden" style={{ backgroundColor: "black" }}>
           <MobileNavbar />
             <NavBar />
@@ -803,6 +994,7 @@ function page() {
             <Knowmore />    
         <Footer />
     </div>
+    </>
   )
 }
 
