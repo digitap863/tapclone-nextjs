@@ -711,6 +711,7 @@ const sectionsData = {
       }),
     },
   },
+  
   webDevelopment: {
     heading: webdev,
     width:'w-[100%]',
@@ -739,9 +740,9 @@ const sectionsData = {
     },
     section3:{
        title: 
-      'Web Design Company in Kochi, Kerala',
+      'Web Design Company in Kochi',
     paragraphs: [
-      'Tapclone is leading Web Design Company in Kochi, Kerala reputed for developing modern, user-friendly, functional and aesthetically pleasing websites. We focus on creative designs that not only look great but function beautifully to help businesses create their own individuality in today\'s cluttered digital marketplace.',
+      'Tapclone is leading Web Design Company in Kochi reputed for developing modern, user-friendly, functional and aesthetically pleasing websites. We focus on creative designs that not only look great but function beautifully to help businesses create their own individuality in today\'s cluttered digital marketplace.',
       'With many years of design experience behind us, Tapclone has earned itself an outstanding reputation as a trusted Web Design Company in Kochi, Kerala. Our team has the experience, creative talent and technical prowess to design websites that are visually stunning and results-oriented ensuring your brand stands out online.'
     ],
     image: {
@@ -791,7 +792,7 @@ const sectionsData = {
     },
     section8:{
        title: 'Why Tapclone is the Top Web Designing Company in Kerala?',
-        subtitle: 'Web Designing Company IN KOCHI, KERALA',
+        subtitle: 'Web Designing Company in Kerala',
         mainParagraphs: 'If you\'re trying to create a strong online presence, Tapclone is the best web designing company in Kerala. We combine creativity and technical skills with a solid understanding of your business needs. Backed by a team of experienced developers and designers, we don’t just design websites — we craft digital experiences that engage your visitors, build trust, and ultimately deliver results..',
         features: [
             { title: 'Comprehensive Web Solutions', description: 'From Static & Dynamic Websites to E-Commerce Stores, SEO-friendly Websites, Custom Web Applications, and Website Redesign & Revamp, we provide end-to-end services under one roof.' },
@@ -802,26 +803,67 @@ const sectionsData = {
         
         // buttonText: 'START YOUR PROJECT TODAY'
     },
-    meta: {
-      title: "Web Development Company in Kochi, Kerala | Web Design Company",
-      description: "Web Development Company in Kochi, Kerala offering custom websites, UI/UX design, and high-performance web solutions. Build your brand with expert web designers.",
-      keywords: "web design company in kochi,web design company in kerala,web design company in ernakulam,web developemnt comany near me,web design company in cochin",
-      og: {
-        title: "Web Development Company in Kochi, Kerala | Web Design Company",
-        description: "Leading Web Design & Development Company in Kochi, Kerala. We create fast, modern, SEO-friendly websites to boost your brand visibility.",
-        type: "website",
-        url: "https://www.tapclone.in/service/web-development",
-        image: "https://www.tapclone.in/_next/static/media/footerlogo.ede68bc7.svg",
-        site_name: "TapClone",
-      },
-      schema: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Service",
-        "name": "Web Development Service",
-        "description": "Custom website development and design."
-      }),
-    },
+
+meta: {
+  title: "Web Development Company in Kochi, Kerala | Web Design Company",
+  description:
+    "Web Development Company in Kochi, Kerala offering custom websites, UI/UX design, and high-performance web solutions. Build your brand with expert web designers.",
+  keywords:
+    "web design company in kochi,web design company in kerala,web design company in ernakulam,web developemnt comany near me,web design company in cochin",
+
+  og: {
+    title: "Web Development Company in Kochi, Kerala | Web Design Company",
+    description:
+      "Leading Web Design & Development Company in Kochi, Kerala. We create fast, modern, SEO-friendly websites to boost your brand visibility.",
+    type: "website",
+    url: "https://www.tapclone.in/service/web-development",
+    image: "https://www.tapclone.in/_next/static/media/footerlogo.ede68bc7.svg",
+    site_name: "TapClone",
   },
+
+  // ✅ FIXED SCHEMA — NO ERRORS
+  schema: JSON.stringify([
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      name: "Web Development Service",
+      description: "Custom website development and design."
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: "Tapclone",
+      alternateName: "Web Development Company",
+      url: "https://www.tapclone.in/service/web-development",
+      logo: "https://www.tapclone.in/_next/static/media/web1.333cd057.svg",
+      sameAs: [
+        "https://www.facebook.com/Tapclone",
+        "https://www.instagram.com/tapclone_official/",
+        "https://in.pinterest.com/marketingtapclone/",
+        "https://www.linkedin.com/company/82332328/admin/feed/posts/"
+      ]
+    }
+  ]),
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+
+  alternates: {
+    canonical: "https://www.tapclone.in/service/web-development",
+    alternate: [
+      {
+        url: "https://www.tapclone.in/service/web-development",
+        media: "only screen and (max-width: 640px)",
+      },
+    ],
+  },
+},
+
+  },
+
+
   uiUxDevelopment:{
     heading: ui,
     width:'w-[100%]',
